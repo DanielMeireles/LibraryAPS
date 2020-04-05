@@ -40,9 +40,9 @@ public abstract class GenericDAO<T, I extends Serializable> {
             return entity;
         } catch (Exception e) {
             if (e.getMessage().contains("ConstraintViolationException")) {
-                Logger.getLogger(GenericDAO.class.getName()).log(Level.WARNING, "Não foi possível salvar o(a) " + persistedClass.getSimpleName() + ", por não ser é único!", e.getMessage());
+                Logger.getLogger(GenericDAO.class.getName()).log(Level.WARNING, "Não foi possível salvar o(a) " + persistedClass.getSimpleName() + ", por não ser é único! " + e.getMessage());
             } else {
-                Logger.getLogger(GenericDAO.class.getName()).log(Level.WARNING, "Não foi possível salvar o(a) " + persistedClass.getSimpleName() + "!", e.getMessage());
+                Logger.getLogger(GenericDAO.class.getName()).log(Level.WARNING, "Não foi possível salvar o(a) " + persistedClass.getSimpleName() + "! " + e.getMessage());
             }
             return null;
         }
@@ -59,7 +59,7 @@ public abstract class GenericDAO<T, I extends Serializable> {
             tx.commit();
             Logger.getLogger(GenericDAO.class.getName()).log(Level.INFO, persistedClass.getSimpleName() + " removido(a) com sucesso!");
         } catch (Exception e) {
-            Logger.getLogger(GenericDAO.class.getName()).log(Level.WARNING, "Não foi possível remover o(a) " + persistedClass.getSimpleName() + ", por estar sendo utilizado!", e.getMessage());
+            Logger.getLogger(GenericDAO.class.getName()).log(Level.WARNING, "Não foi possível remover o(a) " + persistedClass.getSimpleName() + ", por estar sendo utilizado! " + e.getMessage());
         }
     }
 
@@ -70,7 +70,7 @@ public abstract class GenericDAO<T, I extends Serializable> {
             query.from(persistedClass);
             return entityManager.createQuery(query).getResultList();
         } catch (Exception e) {
-            Logger.getLogger(GenericDAO.class.getName()).log(Level.WARNING, "Não foram encontrados(as) " + persistedClass.getSimpleName() + "s!", e.getMessage());
+            Logger.getLogger(GenericDAO.class.getName()).log(Level.WARNING, "Não foram encontrados(as) " + persistedClass.getSimpleName() + "s! " + e.getMessage());
             return null;
         }
     }
@@ -79,7 +79,7 @@ public abstract class GenericDAO<T, I extends Serializable> {
         try {
             return entityManager.find(persistedClass, id);
         } catch (Exception e) {
-            Logger.getLogger(GenericDAO.class.getName()).log(Level.WARNING, "Não foram encontrados(as) " + persistedClass.getSimpleName() + "s!", e.getMessage());
+            Logger.getLogger(GenericDAO.class.getName()).log(Level.WARNING, "Não foram encontrados(as) " + persistedClass.getSimpleName() + "s! " + e.getMessage());
             return null;
         }
     }

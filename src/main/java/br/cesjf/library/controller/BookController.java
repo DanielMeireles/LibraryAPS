@@ -1,6 +1,7 @@
 package br.cesjf.library.controller;
 
 import br.cesjf.library.dao.BookDAO;
+import br.cesjf.library.model.Author;
 import br.cesjf.library.model.Book;
 import br.cesjf.library.model.BookFactory;
 import br.cesjf.library.model.Publisher;
@@ -14,10 +15,12 @@ public class BookController {
     private Book book;
     private List<Book> books;
     private PublisherController publisherController;
+    private AuthorController authorController;
 
     public BookController() {
         this.clear();
         publisherController = new PublisherController();
+        authorController = new AuthorController();
     }
 
     public void save(Book book) {
@@ -63,6 +66,11 @@ public class BookController {
     public List<Publisher> findPublishers() {
         publisherController.findAll();
         return publisherController.getPublishers();
+    }
+    
+    public List<Author> findAuthors() {
+        authorController.findAll();
+        return authorController.getAuthors();
     }
 
     public void clear() {
