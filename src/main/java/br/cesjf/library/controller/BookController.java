@@ -5,6 +5,7 @@ import br.cesjf.library.model.Author;
 import br.cesjf.library.model.Book;
 import br.cesjf.library.model.BookFactory;
 import br.cesjf.library.model.Publisher;
+import br.cesjf.library.model.Subject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,11 +17,13 @@ public class BookController {
     private List<Book> books;
     private PublisherController publisherController;
     private AuthorController authorController;
+    private SubjectController subjectController;
 
     public BookController() {
         this.clear();
         publisherController = new PublisherController();
         authorController = new AuthorController();
+        subjectController = new SubjectController();
     }
 
     public void save(Book book) {
@@ -71,6 +74,11 @@ public class BookController {
     public List<Author> findAuthors() {
         authorController.findAll();
         return authorController.getAuthors();
+    }
+    
+    public List<Subject> findSubjects() {
+        subjectController.findAll();
+        return subjectController.getSubjects();
     }
 
     public void clear() {

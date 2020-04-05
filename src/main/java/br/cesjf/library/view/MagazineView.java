@@ -5,6 +5,7 @@ import br.cesjf.library.model.Author;
 import br.cesjf.library.model.Magazine;
 import br.cesjf.library.model.MagazineFactory;
 import br.cesjf.library.model.Publisher;
+import br.cesjf.library.model.Subject;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -22,6 +23,7 @@ public class MagazineView extends javax.swing.JFrame {
         this.fillYears();
         this.fillPublishers();
         this.fillAuthors();
+        this.fillSubjects();
     }
 
     @SuppressWarnings("unchecked")
@@ -40,6 +42,8 @@ public class MagazineView extends javax.swing.JFrame {
         ftEdition = new javax.swing.JFormattedTextField();
         cbAuthors = new javax.swing.JComboBox<>();
         lbAutores = new javax.swing.JLabel();
+        cbSubjects = new javax.swing.JComboBox<>();
+        lbSubjects = new javax.swing.JLabel();
         btSave = new javax.swing.JButton();
         btClear = new javax.swing.JButton();
         btExit = new javax.swing.JButton();
@@ -71,6 +75,9 @@ public class MagazineView extends javax.swing.JFrame {
         lbAutores.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbAutores.setText("Autores:");
 
+        lbSubjects.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbSubjects.setText("Assuntos:");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -78,31 +85,30 @@ public class MagazineView extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lbTitle)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfTitle))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(lbPublisher)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cbPublisher, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbEdition)
-                                    .addComponent(lbYear))
-                                .addGap(14, 14, 14)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(cbYear, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(106, 106, 106))
-                                    .addComponent(ftEdition))))
-                        .addGap(0, 230, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(lbAutores)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbAuthors, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbSubjects)
+                            .addComponent(lbAutores)
+                            .addComponent(lbPublisher))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cbAuthors, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbSubjects, 0, 392, Short.MAX_VALUE))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbEdition)
+                            .addComponent(lbYear)
+                            .addComponent(lbTitle))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfTitle)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbYear, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ftEdition, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 216, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -128,6 +134,10 @@ public class MagazineView extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbAutores)
                     .addComponent(cbAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbSubjects)
+                    .addComponent(cbSubjects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -215,6 +225,8 @@ public class MagazineView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Não foi selecionada uma editora!", "Não foi selecionada uma editora", JOptionPane.WARNING_MESSAGE);
         } else if(cbAuthors.getSelectedIndex() < 0) {
             JOptionPane.showMessageDialog(null, "Não foi selecionado um autor!", "Não foi selecionado um autor", JOptionPane.WARNING_MESSAGE);
+        } else if(cbSubjects.getSelectedIndex() < 0) {
+            JOptionPane.showMessageDialog(null, "Não foi selecionado um assunto!", "Não foi selecionado um assunto", JOptionPane.WARNING_MESSAGE);
         } else {
             MagazineFactory magazineFactory = MagazineFactory.getInstance();
             Magazine magazine = (Magazine) magazineFactory.createPublication();
@@ -225,6 +237,9 @@ public class MagazineView extends javax.swing.JFrame {
             List<Author> authors = new ArrayList<>();
             authors.add((Author) cbAuthors.getModel().getSelectedItem());
             magazine.setAuthorList(authors);
+            List<Subject> subjects = new ArrayList<>();
+            subjects.add((Subject) cbSubjects.getModel().getSelectedItem());
+            magazine.setSubjectList(subjects);
             magazineController.save(magazine);
             JOptionPane.showMessageDialog(null, "Revista salvo com sucesso!", "Revista salvo com sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -236,6 +251,7 @@ public class MagazineView extends javax.swing.JFrame {
         cbYear.setSelectedIndex(-1);
         cbPublisher.setSelectedIndex(-1);
         cbAuthors.setSelectedIndex(-1);
+        cbSubjects.setSelectedIndex(-1);
     }//GEN-LAST:event_btClearActionPerformed
 
     public static void main(String args[]) {
@@ -281,6 +297,12 @@ public class MagazineView extends javax.swing.JFrame {
         cbAuthors.setModel(model);
         cbAuthors.setSelectedIndex(-1);
     }
+    
+    public void fillSubjects() {
+        DefaultComboBoxModel model = new DefaultComboBoxModel(new Vector(magazineController.findSubjects()));
+        cbSubjects.setModel(model);
+        cbSubjects.setSelectedIndex(-1);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btClear;
@@ -288,6 +310,7 @@ public class MagazineView extends javax.swing.JFrame {
     private javax.swing.JButton btSave;
     private javax.swing.JComboBox<String> cbAuthors;
     private javax.swing.JComboBox<String> cbPublisher;
+    private javax.swing.JComboBox<String> cbSubjects;
     private javax.swing.JComboBox<String> cbYear;
     private javax.swing.JFormattedTextField ftEdition;
     private javax.swing.JPanel jPanel3;
@@ -295,6 +318,7 @@ public class MagazineView extends javax.swing.JFrame {
     private javax.swing.JLabel lbAutores;
     private javax.swing.JLabel lbEdition;
     private javax.swing.JLabel lbPublisher;
+    private javax.swing.JLabel lbSubjects;
     private javax.swing.JLabel lbTitle;
     private javax.swing.JLabel lbYear;
     private javax.swing.JTextField tfTitle;

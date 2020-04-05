@@ -5,6 +5,7 @@ import br.cesjf.library.model.Author;
 import br.cesjf.library.model.Book;
 import br.cesjf.library.model.BookFactory;
 import br.cesjf.library.model.Publisher;
+import br.cesjf.library.model.Subject;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -22,6 +23,7 @@ public class BookView extends javax.swing.JFrame {
         this.fillYears();
         this.fillPublishers();
         this.fillAuthors();
+        this.fillSubjects();
     }
 
     @SuppressWarnings("unchecked")
@@ -40,8 +42,10 @@ public class BookView extends javax.swing.JFrame {
         cbPublisher = new javax.swing.JComboBox<>();
         cbYear = new javax.swing.JComboBox<>();
         ftEdition = new javax.swing.JFormattedTextField();
-        lbAutores = new javax.swing.JLabel();
+        lbAuthors = new javax.swing.JLabel();
         cbAuthors = new javax.swing.JComboBox<>();
+        lbSubjects = new javax.swing.JLabel();
+        cbSubjects = new javax.swing.JComboBox<>();
         btSave = new javax.swing.JButton();
         btClear = new javax.swing.JButton();
         btExit = new javax.swing.JButton();
@@ -73,8 +77,11 @@ public class BookView extends javax.swing.JFrame {
 
         ftEdition.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
-        lbAutores.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lbAutores.setText("Autores:");
+        lbAuthors.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbAuthors.setText("Autores:");
+
+        lbSubjects.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbSubjects.setText("Assuntos:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -84,34 +91,34 @@ public class BookView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lbTitle)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfTitle))
+                        .addComponent(lbSubjects)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbSubjects, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbEdition)
-                                    .addComponent(lbYear))
-                                .addGap(14, 14, 14)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(cbYear, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(106, 106, 106))
-                                    .addComponent(ftEdition)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbPublisher)
                                     .addComponent(lbIsbn))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(23, 23, 23)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cbPublisher, 0, 176, Short.MAX_VALUE)
+                                    .addComponent(tfIsbn)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(lbAuthors)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfIsbn)
-                                    .addComponent(cbPublisher, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 230, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lbAutores)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbAuthors, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(lbEdition)
+                                    .addComponent(lbYear)
+                                    .addComponent(lbTitle))
+                                .addGap(28, 28, 28)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfTitle)
+                                    .addComponent(cbYear, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ftEdition, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -139,8 +146,12 @@ public class BookView extends javax.swing.JFrame {
                     .addComponent(tfIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbAutores)
+                    .addComponent(lbAuthors)
                     .addComponent(cbAuthors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbSubjects)
+                    .addComponent(cbSubjects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -186,13 +197,13 @@ public class BookView extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btClear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(113, 113, 113))
+                .addGap(110, 110, 110))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,9 +212,9 @@ public class BookView extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btClear)
-                    .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -230,6 +241,8 @@ public class BookView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ISBN não preenchido!", "ISBN não preenchido", JOptionPane.WARNING_MESSAGE);
         } else if(cbAuthors.getSelectedIndex() < 0) {
             JOptionPane.showMessageDialog(null, "Não foi selecionado um autor!", "Não foi selecionado um autor", JOptionPane.WARNING_MESSAGE);
+        } else if(cbSubjects.getSelectedIndex() < 0) {
+            JOptionPane.showMessageDialog(null, "Não foi selecionado um assunto!", "Não foi selecionado um assunto", JOptionPane.WARNING_MESSAGE);
         } else {
             BookFactory bookFactory = BookFactory.getInstance();
             Book book = (Book) bookFactory.createPublication();
@@ -241,6 +254,9 @@ public class BookView extends javax.swing.JFrame {
             List<Author> authors = new ArrayList<>();
             authors.add((Author) cbAuthors.getModel().getSelectedItem());
             book.setAuthorList(authors);
+            List<Subject> subjects = new ArrayList<>();
+            subjects.add((Subject) cbSubjects.getModel().getSelectedItem());
+            book.setSubjectList(subjects);
             bookController.save(book);
             JOptionPane.showMessageDialog(null, "Livro salvo com sucesso!", "Livro salvo com sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -253,6 +269,7 @@ public class BookView extends javax.swing.JFrame {
         cbPublisher.setSelectedIndex(-1);
         tfIsbn.setText("");
         cbAuthors.setSelectedIndex(-1);
+        cbSubjects.setSelectedIndex(-1);
     }//GEN-LAST:event_btClearActionPerformed
 
     public static void main(String args[]) {
@@ -298,6 +315,12 @@ public class BookView extends javax.swing.JFrame {
         cbAuthors.setModel(model);
         cbAuthors.setSelectedIndex(-1);
     }
+    
+    public void fillSubjects() {
+        DefaultComboBoxModel model = new DefaultComboBoxModel(new Vector(bookController.findSubjects()));
+        cbSubjects.setModel(model);
+        cbSubjects.setSelectedIndex(-1);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btClear;
@@ -305,14 +328,16 @@ public class BookView extends javax.swing.JFrame {
     private javax.swing.JButton btSave;
     private javax.swing.JComboBox<String> cbAuthors;
     private javax.swing.JComboBox<String> cbPublisher;
+    private javax.swing.JComboBox<String> cbSubjects;
     private javax.swing.JComboBox<String> cbYear;
     private javax.swing.JFormattedTextField ftEdition;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JLabel lbAutores;
+    private javax.swing.JLabel lbAuthors;
     private javax.swing.JLabel lbEdition;
     private javax.swing.JLabel lbIsbn;
     private javax.swing.JLabel lbPublisher;
+    private javax.swing.JLabel lbSubjects;
     private javax.swing.JLabel lbTitle;
     private javax.swing.JLabel lbYear;
     private javax.swing.JTextField tfIsbn;
