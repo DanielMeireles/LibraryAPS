@@ -26,21 +26,21 @@ public class MainView extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JToolBar.Separator();
         mbTopo = new javax.swing.JMenuBar();
         mnRegister = new javax.swing.JMenu();
+        miRegisterUser = new javax.swing.JMenuItem();
         miRegisterSubject = new javax.swing.JMenuItem();
         miRegisterAuthor = new javax.swing.JMenuItem();
         miRegisterPublisher = new javax.swing.JMenuItem();
         miRegisterBook = new javax.swing.JMenuItem();
         miMagazine = new javax.swing.JMenuItem();
         miRegisterCopy = new javax.swing.JMenuItem();
-        miRegisterUser = new javax.swing.JMenuItem();
         mnSearch = new javax.swing.JMenu();
+        miSearchUser = new javax.swing.JMenuItem();
         miSearchSubject = new javax.swing.JMenuItem();
         miSearchAuthor = new javax.swing.JMenuItem();
         miSearchPublisher = new javax.swing.JMenuItem();
-        miSearchCopy = new javax.swing.JMenuItem();
         miSearchBook = new javax.swing.JMenuItem();
         miSearchMagazine = new javax.swing.JMenuItem();
-        miSearchUser = new javax.swing.JMenuItem();
+        miSearchCopy = new javax.swing.JMenuItem();
         miSearchReservation = new javax.swing.JMenuItem();
         miSearchLoan = new javax.swing.JMenuItem();
         mnLoan = new javax.swing.JMenu();
@@ -134,6 +134,15 @@ public class MainView extends javax.swing.JFrame {
         mnRegister.setText("Cadastrar");
         mnRegister.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
+        miRegisterUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miRegisterUser.setText("Usuário");
+        miRegisterUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miRegisterUserActionPerformed(evt);
+            }
+        });
+        mnRegister.add(miRegisterUser);
+
         miRegisterSubject.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miRegisterSubject.setText("Assunto");
         miRegisterSubject.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +179,7 @@ public class MainView extends javax.swing.JFrame {
         });
         mnRegister.add(miRegisterBook);
 
+        miMagazine.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miMagazine.setText("Revista");
         miMagazine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,19 +197,19 @@ public class MainView extends javax.swing.JFrame {
         });
         mnRegister.add(miRegisterCopy);
 
-        miRegisterUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        miRegisterUser.setText("Usuário");
-        miRegisterUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miRegisterUserActionPerformed(evt);
-            }
-        });
-        mnRegister.add(miRegisterUser);
-
         mbTopo.add(mnRegister);
 
         mnSearch.setText("Pesquisar");
         mnSearch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        miSearchUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miSearchUser.setText("Usuário");
+        miSearchUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miSearchUserActionPerformed(evt);
+            }
+        });
+        mnSearch.add(miSearchUser);
 
         miSearchSubject.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miSearchSubject.setText("Assunto");
@@ -228,15 +238,6 @@ public class MainView extends javax.swing.JFrame {
         });
         mnSearch.add(miSearchPublisher);
 
-        miSearchCopy.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        miSearchCopy.setText("Exemplar");
-        miSearchCopy.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miSearchCopyActionPerformed(evt);
-            }
-        });
-        mnSearch.add(miSearchCopy);
-
         miSearchBook.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miSearchBook.setText("Livro");
         miSearchBook.addActionListener(new java.awt.event.ActionListener() {
@@ -255,14 +256,14 @@ public class MainView extends javax.swing.JFrame {
         });
         mnSearch.add(miSearchMagazine);
 
-        miSearchUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        miSearchUser.setText("Usuário");
-        miSearchUser.addActionListener(new java.awt.event.ActionListener() {
+        miSearchCopy.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miSearchCopy.setText("Exemplar");
+        miSearchCopy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miSearchUserActionPerformed(evt);
+                miSearchCopyActionPerformed(evt);
             }
         });
-        mnSearch.add(miSearchUser);
+        mnSearch.add(miSearchCopy);
 
         miSearchReservation.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miSearchReservation.setText("Reserva");

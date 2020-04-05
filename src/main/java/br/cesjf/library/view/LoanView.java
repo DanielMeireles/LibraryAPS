@@ -305,7 +305,9 @@ public class LoanView extends javax.swing.JFrame {
     public void fillData() {
         Loan loan = loanController.getLoan();
         tfLoanDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(loan.getLoanDate()));
-        tfReturnDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(loan.getReturnDate()));
+        if(loan.getReturnDate() != null) {
+            tfReturnDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(loan.getReturnDate()));
+        }
         cbCopy.setSelectedItem(loan.getIdCopy());
         cbUser.setSelectedItem(loan.getIdUser());
     }
