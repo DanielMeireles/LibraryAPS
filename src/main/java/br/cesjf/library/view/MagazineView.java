@@ -240,6 +240,9 @@ public class MagazineView extends javax.swing.JFrame {
         } else {
             MagazineFactory magazineFactory = MagazineFactory.getInstance();
             Magazine magazine = (Magazine) magazineFactory.createPublication();
+            if(magazineController.getMagazine().getId() != null) {
+                magazine.setId(magazineController.getMagazine().getId());
+            }
             magazine.setTitle(tfTitle.getText());
             magazine.setEdition(Integer.parseInt(ftEdition.getText()));
             magazine.setYear(Integer.parseInt(cbYear.getItemAt(cbYear.getSelectedIndex())));
@@ -250,7 +253,8 @@ public class MagazineView extends javax.swing.JFrame {
             List<Subject> subjects = new ArrayList<>();
             subjects.add((Subject) cbSubjects.getModel().getSelectedItem());
             magazine.setSubjectList(subjects);
-            magazineController.save(magazine);
+            magazineController.setMagazine(magazine);
+            magazineController.save();
             JOptionPane.showMessageDialog(null, "Revista salvo com sucesso!", "Revista salvo com sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btSaveActionPerformed

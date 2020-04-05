@@ -243,15 +243,29 @@ public class ReservationView extends javax.swing.JFrame {
             } catch (ParseException ex) {
                 Logger.getLogger(ReservationView.class.getName()).log(Level.SEVERE, "Falha ao converter String para Date", ex);
             }
-            Reservation reservation = Reservation.Builder
-                            .newInstance()
-                            .setReservationDate(ReservationDate)
-                            .setIdCopy((Copy) cbCopy.getModel().getSelectedItem())
-                            .setIdUser((User) cbUser.getModel().getSelectedItem())
-                            .setCanceled(cbCanceled.isSelected())
-                            .setNoteCancellation(taNoteCancellation.getText())
-                            .build();
-            reservationController.save(reservation);
+            Reservation reservation;
+            if(reservationController.getReservation().getId() == null) {
+                reservation = Reservation.Builder
+                                         .newInstance()
+                                         .setReservationDate(ReservationDate)
+                                         .setIdCopy((Copy) cbCopy.getModel().getSelectedItem())
+                                         .setIdUser((User) cbUser.getModel().getSelectedItem())
+                                         .setCanceled(cbCanceled.isSelected())
+                                         .setNoteCancellation(taNoteCancellation.getText())
+                                         .build();
+            } else {
+                reservation = Reservation.Builder
+                                         .newInstance()
+                                         .setId(reservationController.getReservation().getId())
+                                         .setReservationDate(ReservationDate)
+                                         .setIdCopy((Copy) cbCopy.getModel().getSelectedItem())
+                                         .setIdUser((User) cbUser.getModel().getSelectedItem())
+                                         .setCanceled(cbCanceled.isSelected())
+                                         .setNoteCancellation(taNoteCancellation.getText())
+                                         .build();
+            }
+            reservationController.setReservation(reservation);
+            reservationController.save();
             tfExpectedReturnDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(reservation.getExpectedReturnDate()));
             JOptionPane.showMessageDialog(null, "Reserva salvo com sucesso!", "Reserva salvo com sucesso", JOptionPane.INFORMATION_MESSAGE);
         }

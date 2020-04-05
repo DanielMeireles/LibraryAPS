@@ -162,20 +162,43 @@ public class CopyView extends javax.swing.JFrame {
         } else {
             Publication publication = (Publication) cbBooksAndMagazines.getModel().getSelectedItem();
             Copy copy;
-            if(publication instanceof Book) {
-                copy = Copy.Builder
-                           .newInstance()
-                           .setIdBook((Book) publication)
-                           .setLoanable(chLoanable.isSelected())
-                           .build();
+            if(copyController.getCopy().getId() == null) {
+                if(publication instanceof Book) {
+                    copy = Copy.Builder
+                               .newInstance()
+                               .setIdMagazine(null)
+                               .setIdBook((Book) publication)
+                               .setLoanable(chLoanable.isSelected())
+                               .build();
+                } else {
+                    copy = Copy.Builder
+                               .newInstance()
+                               .setIdMagazine((Magazine) publication)
+                               .setIdBook(null)
+                               .setLoanable(chLoanable.isSelected())
+                               .build();
+                }
             } else {
-                copy = Copy.Builder
-                           .newInstance()
-                           .setIdMagazine((Magazine) publication)
-                           .setLoanable(chLoanable.isSelected())
-                           .build();
+                if(publication instanceof Book) {
+                    copy = Copy.Builder
+                               .newInstance()
+                               .setId(copyController.getCopy().getId())
+                               .setIdMagazine(null)
+                               .setIdBook((Book) publication)
+                               .setLoanable(chLoanable.isSelected())
+                               .build();
+                } else {
+                    copy = Copy.Builder
+                               .newInstance()
+                               .setId(copyController.getCopy().getId())
+                               .setIdMagazine((Magazine) publication)
+                               .setIdBook(null)
+                               .setLoanable(chLoanable.isSelected())
+                               .build();
+                }
             }
-            copyController.save(copy);
+            copyController.setCopy(copy);
+            copyController.save();
             JOptionPane.showMessageDialog(null, "Exemplar salvo com sucesso!", "Exemplar salvo com sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btSaveActionPerformed

@@ -18,11 +18,6 @@ public class SubjectView extends javax.swing.JFrame {
         subjectController = new SubjectController(subject);
         this.fillData();
     }
-    
-    public void fillData() {
-        Subject subject = subjectController.getSubject();
-        tfSubject.setText(subject.getSubject());
-    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -165,11 +160,21 @@ public class SubjectView extends javax.swing.JFrame {
         if(tfSubject.getText().isEmpty() || tfSubject.getText().trim() == null) {
             JOptionPane.showMessageDialog(null, "Assunto não preenchido!", "Assunto não preenchido", JOptionPane.WARNING_MESSAGE);
         } else {
-            Subject subject = Subject.Builder
-                                     .newInstance()
-                                     .setSubject(tfSubject.getText())
-                                     .build();
-            subjectController.save(subject);
+            Subject subject;
+            if(subjectController.getSubject().getId() == null) {
+                subject = Subject.Builder
+                                 .newInstance()
+                                 .setSubject(tfSubject.getText())
+                                 .build();
+            } else {
+                subject = Subject.Builder
+                                 .newInstance()
+                                 .setId(subjectController.getSubject().getId())
+                                 .setSubject(tfSubject.getText())
+                                 .build();
+            }
+            subjectController.setSubject(subject);
+            subjectController.save();
             JOptionPane.showMessageDialog(null, "Assunto salvo com sucesso!", "Assunto salvo com sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btSaveActionPerformed
@@ -196,6 +201,11 @@ public class SubjectView extends javax.swing.JFrame {
                 new SubjectView().setVisible(true);
             }
         });
+    }
+    
+    public void fillData() {
+        Subject subject = subjectController.getSubject();
+        tfSubject.setText(subject.getSubject());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

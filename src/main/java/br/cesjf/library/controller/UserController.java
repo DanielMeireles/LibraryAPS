@@ -20,11 +20,11 @@ public class UserController {
         this.user = user;
     }
 
-    public void save(User user) {
+    public void save() {
         UserDAO.getInstance().persist(user);
     }
 
-    public void delete(User user) {
+    public void delete() {
         UserDAO.getInstance().remove(user.getId());
     }
 

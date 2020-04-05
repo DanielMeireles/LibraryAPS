@@ -256,6 +256,9 @@ public class BookView extends javax.swing.JFrame {
         } else {
             BookFactory bookFactory = BookFactory.getInstance();
             Book book = (Book) bookFactory.createPublication();
+            if(bookController.getBook().getId() != null) {
+                book.setId(bookController.getBook().getId());
+            }
             book.setTitle(tfTitle.getText());
             book.setEdition(Integer.parseInt(ftEdition.getText()));
             book.setYear(Integer.parseInt(cbYear.getItemAt(cbYear.getSelectedIndex())));
@@ -267,7 +270,8 @@ public class BookView extends javax.swing.JFrame {
             List<Subject> subjects = new ArrayList<>();
             subjects.add((Subject) cbSubjects.getModel().getSelectedItem());
             book.setSubjectList(subjects);
-            bookController.save(book);
+            bookController.setBook(book);
+            bookController.save();
             JOptionPane.showMessageDialog(null, "Livro salvo com sucesso!", "Livro salvo com sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btSaveActionPerformed

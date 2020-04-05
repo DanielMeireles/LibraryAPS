@@ -231,14 +231,27 @@ public class LoanView extends javax.swing.JFrame {
                     Logger.getLogger(LoanView.class.getName()).log(Level.SEVERE, "Falha ao converter String para Date", ex);
                 }
             }
-            Loan loan = Loan.Builder
-                            .newInstance()
-                            .setLoanDate(loanDate)
-                            .setReturnDate(returnDate)
-                            .setIdCopy((Copy) cbCopy.getModel().getSelectedItem())
-                            .setIdUser((User) cbUser.getModel().getSelectedItem())
-                            .build();
-            loanController.save(loan);
+            Loan loan;
+            if(loanController.getLoan().getId() == null) {
+                loan = Loan.Builder
+                           .newInstance()
+                           .setLoanDate(loanDate)
+                           .setReturnDate(returnDate)
+                           .setIdCopy((Copy) cbCopy.getModel().getSelectedItem())
+                           .setIdUser((User) cbUser.getModel().getSelectedItem())
+                           .build();
+            } else {
+                loan = Loan.Builder
+                           .newInstance()
+                           .setId(loanController.getLoan().getId())
+                           .setLoanDate(loanDate)
+                           .setReturnDate(returnDate)
+                           .setIdCopy((Copy) cbCopy.getModel().getSelectedItem())
+                           .setIdUser((User) cbUser.getModel().getSelectedItem())
+                           .build();
+            }
+            loanController.setLoan(loan);
+            loanController.save();
             tfExpectedReturnDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(loan.getExpectedReturnDate()));
             JOptionPane.showMessageDialog(null, "Empréstimo salvo com sucesso!", "Empréstimo salvo com sucesso", JOptionPane.INFORMATION_MESSAGE);
         }

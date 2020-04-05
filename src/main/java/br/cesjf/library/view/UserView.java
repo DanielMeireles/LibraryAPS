@@ -202,15 +202,29 @@ public class UserView extends javax.swing.JFrame {
         } else if(new String(jpPassword.getPassword()).isEmpty() || new String(jpPassword.getPassword()).trim() == null){
             JOptionPane.showMessageDialog(null, "Senha não preenchida!", "Senha não preenchida", JOptionPane.WARNING_MESSAGE);
         } else {
-            User user = User.Builder
-                            .newInstance()
-                            .setName(tfName.getText())
-                            .setEmail(tfEmail.getText())
-                            .setType((UserType) cbType.getModel().getSelectedItem())
-                            .setUser(tfUser.getText())
-                            .setPassword(new String(jpPassword.getPassword()))
-                            .build();
-            userController.save(user);
+            User user = new User();
+            if(userController.getUser().getId() == null) {
+                user = User.Builder
+                           .newInstance()
+                           .setName(tfName.getText())
+                           .setEmail(tfEmail.getText())
+                           .setType((UserType) cbType.getModel().getSelectedItem())
+                           .setUser(tfUser.getText())
+                           .setPassword(new String(jpPassword.getPassword()))
+                           .build();
+            } else {
+                user = User.Builder
+                           .newInstance()
+                           .setId(userController.getUser().getId())
+                           .setName(tfName.getText())
+                           .setEmail(tfEmail.getText())
+                           .setType((UserType) cbType.getModel().getSelectedItem())
+                           .setUser(tfUser.getText())
+                           .setPassword(new String(jpPassword.getPassword()))
+                           .build();
+            }
+            userController.setUser(user);
+            userController.save();
             JOptionPane.showMessageDialog(null, "Usuário salvo com sucesso!", "Usuário salvo com sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btSaveActionPerformed
