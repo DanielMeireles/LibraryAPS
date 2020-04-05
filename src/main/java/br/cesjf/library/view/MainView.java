@@ -41,6 +41,7 @@ public class MainView extends javax.swing.JFrame {
         miSearchBook = new javax.swing.JMenuItem();
         miSearchMagazine = new javax.swing.JMenuItem();
         miSearchUser = new javax.swing.JMenuItem();
+        miSearchLoan = new javax.swing.JMenuItem();
         mnLoan = new javax.swing.JMenu();
         miLoan = new javax.swing.JMenuItem();
         mnReservation = new javax.swing.JMenu();
@@ -262,6 +263,15 @@ public class MainView extends javax.swing.JFrame {
         });
         mnSearch.add(miSearchUser);
 
+        miSearchLoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miSearchLoan.setText("Empréstimo");
+        miSearchLoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miSearchLoanActionPerformed(evt);
+            }
+        });
+        mnSearch.add(miSearchLoan);
+
         mbTopo.add(mnSearch);
 
         mnLoan.setText("Emprestar");
@@ -381,6 +391,10 @@ public class MainView extends javax.swing.JFrame {
         new MagazineSearchView().setVisible(true);
     }//GEN-LAST:event_miSearchMagazineActionPerformed
 
+    private void miSearchLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSearchLoanActionPerformed
+        new LoanSearchView().setVisible(true);
+    }//GEN-LAST:event_miSearchLoanActionPerformed
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -430,6 +444,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JMenuItem miSearchAuthor;
     private javax.swing.JMenuItem miSearchBook;
     private javax.swing.JMenuItem miSearchCopy;
+    private javax.swing.JMenuItem miSearchLoan;
     private javax.swing.JMenuItem miSearchMagazine;
     private javax.swing.JMenuItem miSearchPublisher;
     private javax.swing.JMenuItem miSearchSubject;

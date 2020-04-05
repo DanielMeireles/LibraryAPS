@@ -1,6 +1,9 @@
 package br.cesjf.library.view;
 
 import br.cesjf.library.controller.LoanController;
+import br.cesjf.library.model.Loan;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class LoanSearchView extends javax.swing.JFrame {
 
@@ -9,6 +12,7 @@ public class LoanSearchView extends javax.swing.JFrame {
     public LoanSearchView() {
         initComponents();
         loanController = new LoanController();
+        this.createTable();
     }
 
     @SuppressWarnings("unchecked")
@@ -37,32 +41,11 @@ public class LoanSearchView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Livro", "ISBN", "Edição", "Ano"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         tbLoan.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tbLoan);
-        if (tbLoan.getColumnModel().getColumnCount() > 0) {
-            tbLoan.getColumnModel().getColumn(0).setResizable(false);
-            tbLoan.getColumnModel().getColumn(1).setResizable(false);
-            tbLoan.getColumnModel().getColumn(2).setResizable(false);
-            tbLoan.getColumnModel().getColumn(3).setResizable(false);
-        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -70,7 +53,7 @@ public class LoanSearchView extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 746, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -104,31 +87,28 @@ public class LoanSearchView extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(282, 282, 282))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jPanel2.getAccessibleContext().setAccessibleName("Pesquisar Empréstimo");
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -162,6 +142,34 @@ public class LoanSearchView extends javax.swing.JFrame {
                 new LoanSearchView().setVisible(true);
             }
         });
+    }
+    
+    private void createTable() {
+        DefaultTableModel model;
+        model = new DefaultTableModel();
+        model.addColumn("Id");
+        model.addColumn("Data do Empréstimo");
+        model.addColumn("Data de Devoluçao Prevista");
+        model.addColumn("Data de Devoluçao");
+        model.addColumn("Exemplar");
+        model.addColumn("Livro");
+        model.addColumn("Usuário");
+        model.setNumRows(0);
+        
+        loanController.findAll();
+        for (Loan l: loanController.getLoans()) {
+            model.addRow(new Object[]{l.getId(), l.getLoanDate(), l.getExpectedReturnDate(), l.getReturnDate(), l.getIdCopy(), l.getIdCopy().getIdBook().getTitle(), l.getIdUser()});
+        }
+        
+        tbLoan.setModel(model);
+        tbLoan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbLoan.getColumnModel().getColumn(0).setPreferredWidth(30);
+        tbLoan.getColumnModel().getColumn(1).setPreferredWidth(150);
+        tbLoan.getColumnModel().getColumn(2).setPreferredWidth(150);
+        tbLoan.getColumnModel().getColumn(3).setPreferredWidth(150);
+        tbLoan.getColumnModel().getColumn(4).setPreferredWidth(200);
+        tbLoan.getColumnModel().getColumn(5).setPreferredWidth(200);
+        tbLoan.getColumnModel().getColumn(6).setPreferredWidth(100);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

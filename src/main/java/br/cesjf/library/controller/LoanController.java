@@ -81,7 +81,7 @@ public class LoanController {
         this.loan = loan;
     }
 
-    public List getLoans() {
+    public List<Loan> getLoans() {
         return loans;
     }
 
