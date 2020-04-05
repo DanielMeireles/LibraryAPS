@@ -11,7 +11,7 @@ public class MagazineController {
     private Magazine magazine;
     private List<Magazine> magazines;
 
-    private MagazineController() {
+    public MagazineController() {
         this.clear();
     }
 

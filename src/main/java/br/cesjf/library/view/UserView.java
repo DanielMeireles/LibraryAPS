@@ -1,9 +1,14 @@
 package br.cesjf.library.view;
 
+import br.cesjf.library.controller.UserController;
+
 public class UserView extends javax.swing.JFrame {
+
+    private UserController userController;
 
     public UserView() {
         initComponents();
+        userController = new UserController();
     }
 
     @SuppressWarnings("unchecked")

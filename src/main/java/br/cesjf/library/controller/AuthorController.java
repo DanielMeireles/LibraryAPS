@@ -10,7 +10,7 @@ public class AuthorController {
     private Author author;
     private List<Author> authors;
 
-    private AuthorController() {
+    public AuthorController() {
         this.clear();
     }
 

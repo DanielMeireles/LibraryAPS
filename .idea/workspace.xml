@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc036a98-adcc-4709-acb9-09405afcdba0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/AuthorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/AuthorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/BookController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/CopyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/CopyController.java" afterDir="false" />
@@ -15,18 +12,22 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/ReservationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/SubjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/SubjectController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/dao/AuthorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/dao/AuthorDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/dao/BookDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/dao/BookDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/dao/CopyDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/dao/CopyDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/dao/LoanDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/dao/LoanDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/dao/MagazineDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/dao/MagazineDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/dao/PublisherDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/dao/PublisherDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/dao/ReservationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/dao/ReservationDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/dao/SubjectDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/dao/SubjectDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/model/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/model/BookFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/model/BookFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/model/MagazineFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/model/MagazineFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/AuthorSearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/AuthorSearchView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/AuthorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/AuthorView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/BookSearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/BookSearchView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/BookView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/BookView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/CopySearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/CopySearchView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/CopyView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/CopyView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/LoanSearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/LoanSearchView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/LoanView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/LoanView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/MagazineSearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/MagazineSearchView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/MagazineView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/MagazineView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/PublisherSearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/PublisherSearchView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/PublisherView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/PublisherView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/SubjectSearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/SubjectSearchView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/SubjectView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/SubjectView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/UserSearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/UserSearchView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/UserView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/UserView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +100,7 @@
       <workItem from="1586025784957" duration="3406000" />
       <workItem from="1586029575662" duration="3297000" />
       <workItem from="1586033072702" duration="788000" />
-      <workItem from="1586048006995" duration="2881000" />
+      <workItem from="1586048006995" duration="3872000" />
     </task>
     <servers />
   </component>

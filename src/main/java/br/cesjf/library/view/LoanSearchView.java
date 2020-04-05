@@ -1,9 +1,14 @@
 package br.cesjf.library.view;
 
+import br.cesjf.library.controller.LoanController;
+
 public class LoanSearchView extends javax.swing.JFrame {
+
+    private LoanController loanController;
 
     public LoanSearchView() {
         initComponents();
+        loanController = new LoanController();
     }
 
     @SuppressWarnings("unchecked")

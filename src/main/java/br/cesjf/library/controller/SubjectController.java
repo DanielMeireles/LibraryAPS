@@ -10,7 +10,7 @@ public class SubjectController {
     private Subject author;
     private List<Subject> subject;
 
-    private SubjectController() {
+    public SubjectController() {
         this.clear();
     }
 

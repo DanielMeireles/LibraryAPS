@@ -10,7 +10,7 @@ public class UserController {
     private User user;
     private List<User> users;
 
-    private UserController() {
+    public UserController() {
         this.clear();
     }
 

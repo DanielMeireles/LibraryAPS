@@ -1,9 +1,14 @@
 package br.cesjf.library.view;
 
+import br.cesjf.library.controller.MagazineController;
+
 public class MagazineSearchView extends javax.swing.JFrame {
+
+    private MagazineController magazineController;
 
     public MagazineSearchView() {
         initComponents();
+        magazineController = new MagazineController();
     }
 
     @SuppressWarnings("unchecked")

@@ -10,7 +10,7 @@ public class CopyController {
     private Copy copy;
     private List<Copy> copies;
 
-    private CopyController() {
+    public CopyController() {
         this.clear();
     }
 

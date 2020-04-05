@@ -1,9 +1,14 @@
 package br.cesjf.library.view;
 
+import br.cesjf.library.controller.SubjectController;
+
 public class SubjectSearchView extends javax.swing.JFrame {
+
+    private SubjectController subjectController;
 
     public SubjectSearchView() {
         initComponents();
+        subjectController = new SubjectController();
     }
 
     @SuppressWarnings("unchecked")

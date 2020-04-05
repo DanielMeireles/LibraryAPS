@@ -1,9 +1,14 @@
 package br.cesjf.library.view;
 
+import br.cesjf.library.controller.CopyController;
+
 public class CopyView extends javax.swing.JFrame {
+
+    private CopyController copyController;
 
     public CopyView() {
         initComponents();
+        copyController = new CopyController();
     }
 
     @SuppressWarnings("unchecked")

@@ -10,7 +10,7 @@ public class LoanController {
     private Loan loan;
     private List<Loan> loans;
 
-    private LoanController() {
+    public LoanController() {
         this.clear();
     }
 

@@ -1,9 +1,14 @@
 package br.cesjf.library.view;
 
+import br.cesjf.library.controller.BookController;
+
 public class BookSearchView extends javax.swing.JFrame {
+
+    private BookController bookController;
 
     public BookSearchView() {
         initComponents();
+        bookController = new BookController();
     }
 
     @SuppressWarnings("unchecked")

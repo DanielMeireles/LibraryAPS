@@ -10,7 +10,7 @@ public class ReservationController {
     private Reservation reservation;
     private List<Reservation> reservations;
 
-    private ReservationController() {
+    public ReservationController() {
         this.clear();
     }
 

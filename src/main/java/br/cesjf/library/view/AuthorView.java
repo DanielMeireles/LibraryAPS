@@ -1,9 +1,14 @@
 package br.cesjf.library.view;
 
+import br.cesjf.library.controller.AuthorController;
+
 public class AuthorView extends javax.swing.JFrame {
+
+    private AuthorController authorController;
 
     public AuthorView() {
         initComponents();
+        authorController = new AuthorController();
     }
 
     @SuppressWarnings("unchecked")

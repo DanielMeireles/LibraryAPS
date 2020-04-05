@@ -1,9 +1,14 @@
 package br.cesjf.library.view;
 
+import br.cesjf.library.controller.UserController;
+
 public class UserSearchView extends javax.swing.JFrame {
+
+    private UserController userController;
 
     public UserSearchView() {
         initComponents();
+        userController = new UserController();
     }
 
     @SuppressWarnings("unchecked")

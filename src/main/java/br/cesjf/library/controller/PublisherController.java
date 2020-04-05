@@ -10,7 +10,7 @@ public class PublisherController {
     private Publisher publisher;
     private List<Publisher> publishers;
 
-    private PublisherController() {
+    public PublisherController() {
         this.clear();
     }
 

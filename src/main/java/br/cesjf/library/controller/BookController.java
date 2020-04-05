@@ -11,7 +11,7 @@ public class BookController {
     private Book book;
     private List<Book> books;
 
-    private BookController() {
+    public BookController() {
         this.clear();
     }
 

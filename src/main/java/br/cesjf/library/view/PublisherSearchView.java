@@ -1,9 +1,14 @@
 package br.cesjf.library.view;
 
+import br.cesjf.library.controller.PublisherController;
+
 public class PublisherSearchView extends javax.swing.JFrame {
+
+    private PublisherController publisherController;
 
     public PublisherSearchView() {
         initComponents();
+        publisherController = new PublisherController();
     }
 
     @SuppressWarnings("unchecked")
