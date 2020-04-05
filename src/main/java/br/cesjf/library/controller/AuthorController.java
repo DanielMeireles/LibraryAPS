@@ -52,7 +52,7 @@ public class AuthorController {
         this.author = author;
     }
 
-    public List getAuthors() {
+    public List<Author> getAuthors() {
         return authors;
     }
 

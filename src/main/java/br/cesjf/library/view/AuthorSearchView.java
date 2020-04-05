@@ -1,14 +1,19 @@
 package br.cesjf.library.view;
 
 import br.cesjf.library.controller.AuthorController;
+import br.cesjf.library.model.Author;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class AuthorSearchView extends javax.swing.JFrame {
 
     private AuthorController authorController;
+    private DefaultTableModel model;
 
     public AuthorSearchView() {
         initComponents();
         authorController = new AuthorController();
+        this.createTable();
     }
 
     @SuppressWarnings("unchecked")
@@ -32,27 +37,10 @@ public class AuthorSearchView extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Pesquisar Autor", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        tbAuthor.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Autor"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        tbAuthor.setColumnSelectionAllowed(true);
         tbAuthor.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tbAuthor);
-        if (tbAuthor.getColumnModel().getColumnCount() > 0) {
-            tbAuthor.getColumnModel().getColumn(0).setResizable(false);
-        }
+        tbAuthor.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -150,6 +138,24 @@ public class AuthorSearchView extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void createTable() {
+        model = new DefaultTableModel();
+        model.addColumn("Id");
+        model.addColumn("Nome");
+        model.setNumRows(0);
+        
+        authorController.findAll();
+        for (Author a: authorController.getAuthors()) {
+            model.addRow(new Object[]{a.getId(), a.getName()});
+        }
+        
+        tbAuthor.setModel(model);
+        tbAuthor.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbAuthor.getColumnModel().getColumn(0).setPreferredWidth(30);
+        tbAuthor.getColumnModel().getColumn(1).setPreferredWidth(265);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEdit;
