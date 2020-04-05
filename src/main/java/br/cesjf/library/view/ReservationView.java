@@ -208,7 +208,7 @@ public class ReservationView extends javax.swing.JFrame {
                     .addComponent(btClear)
                     .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btReservation))
-                .addGap(59, 59, 59))
+                .addContainerGap())
         );
 
         getContentPane().add(LoanPanel, java.awt.BorderLayout.CENTER);
