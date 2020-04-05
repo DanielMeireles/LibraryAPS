@@ -3,6 +3,8 @@ package br.cesjf.library.controller;
 import br.cesjf.library.dao.UserDAO;
 import br.cesjf.library.model.User;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class UserController {
@@ -24,6 +26,30 @@ public class UserController {
 
     public void findById(Long id) {
         users.add(UserDAO.getInstance().find(id));
+    }
+
+    public void findByName(String name) {
+        List<List> parameters = new ArrayList<>();
+        parameters.add(Arrays.asList("name", name));
+        users = UserDAO.getInstance().findByNamedQuery("User.findByName", parameters);
+    }
+
+    public void findByType(String type) {
+        List<List> parameters = new ArrayList<>();
+        parameters.add(Arrays.asList("type", type));
+        users = UserDAO.getInstance().findByNamedQuery("User.findByType", parameters);
+    }
+
+    public void findByEmail(String email) {
+        List<List> parameters = new ArrayList<>();
+        parameters.add(Arrays.asList("email", email));
+        users = UserDAO.getInstance().findByNamedQuery("User.findByEmail", parameters);
+    }
+
+    public void findByUser(String user) {
+        List<List> parameters = new ArrayList<>();
+        parameters.add(Arrays.asList("user", user));
+        users = UserDAO.getInstance().findByNamedQuery("User.findByUser", parameters);
     }
 
     public void findAll() {

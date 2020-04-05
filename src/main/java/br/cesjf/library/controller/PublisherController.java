@@ -3,6 +3,8 @@ package br.cesjf.library.controller;
 import br.cesjf.library.dao.PublisherDAO;
 import br.cesjf.library.model.Publisher;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PublisherController {
@@ -24,6 +26,12 @@ public class PublisherController {
 
     public void findById(Long id) {
         publishers.add(PublisherDAO.getInstance().find(id));
+    }
+
+    public void findByName(String name) {
+        List<List> parameters = new ArrayList<>();
+        parameters.add(Arrays.asList("name", name));
+        publishers = PublisherDAO.getInstance().findByNamedQuery("Publisher.findByName", parameters);
     }
 
     public void findAll() {

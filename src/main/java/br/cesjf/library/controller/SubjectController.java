@@ -1,55 +1,64 @@
 package br.cesjf.library.controller;
 
+import br.cesjf.library.dao.PublisherDAO;
 import br.cesjf.library.dao.SubjectDAO;
 import br.cesjf.library.model.Subject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SubjectController {
 
-    private Subject author;
-    private List<Subject> subject;
+    private Subject subject;
+    private List<Subject> subjects;
 
     public SubjectController() {
         this.clear();
     }
 
-    public void save(Subject author) {
-        SubjectDAO.getInstance().persist(author);
+    public void save(Subject subject) {
+        SubjectDAO.getInstance().persist(subject);
     }
 
-    public void delete(Subject author) {
-        SubjectDAO.getInstance().remove(author.getId());
+    public void delete(Subject subject) {
+        SubjectDAO.getInstance().remove(subject.getId());
     }
 
     public void findById(Long id) {
-        subject.add(SubjectDAO.getInstance().find(id));
+        subjects.add(SubjectDAO.getInstance().find(id));
+    }
+
+    public void findBySubject(String subject) {
+        List<List> parameters = new ArrayList<>();
+        parameters.add(Arrays.asList("subject", subject));
+        subjects = SubjectDAO.getInstance().findByNamedQuery("Subject.findBySubject", parameters);
     }
 
     public void findAll() {
-        subject = SubjectDAO.getInstance().getList();
+        subjects = SubjectDAO.getInstance().getList();
     }
 
     public void clear() {
-        author = Subject.Builder
+        subject = Subject.Builder
                 .newInstance()
                 .build();
     }
 
     public Subject getSubject() {
-        return author;
-    }
-
-    public void setSubject(Subject author) {
-        this.author = author;
-    }
-
-    public List getSubjects() {
         return subject;
     }
 
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+    }
+
+    public List getSubjects() {
+        return subjects;
+    }
+
     public void setSubjects(List subjects) {
-        this.subject = subjects;
+        this.subjects = subjects;
     }
 
 }

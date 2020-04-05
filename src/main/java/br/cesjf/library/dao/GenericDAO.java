@@ -84,7 +84,7 @@ public abstract class GenericDAO<T, I extends Serializable> {
         }
     }
 
-    public List<T> find(String namedQuery, List<List> parameters) {
+    public List<T> findByNamedQuery(String namedQuery, List<List> parameters) {
         Query query = entityManager.createNamedQuery(namedQuery, persistedClass);
         for (List<String> a : parameters) {
             query.setParameter(a.get(0), a.get(1));

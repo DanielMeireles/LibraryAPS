@@ -4,6 +4,8 @@ import br.cesjf.library.dao.BookDAO;
 import br.cesjf.library.model.Book;
 import br.cesjf.library.model.BookFactory;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BookController {
@@ -25,6 +27,30 @@ public class BookController {
 
     public void findById(Long id) {
         books.add(BookDAO.getInstance().find(id));
+    }
+
+    public void findByTitle(String title) {
+        List<List> parameters = new ArrayList<>();
+        parameters.add(Arrays.asList("title", title));
+        books = BookDAO.getInstance().findByNamedQuery("Book.findByTitle", parameters);
+    }
+
+    public void findByIsbn(String isbn) {
+        List<List> parameters = new ArrayList<>();
+        parameters.add(Arrays.asList("isbn", isbn));
+        books = BookDAO.getInstance().findByNamedQuery("Book.findByIsbn", parameters);
+    }
+
+    public void findByEdition(String edition) {
+        List<List> parameters = new ArrayList<>();
+        parameters.add(Arrays.asList("edition", edition));
+        books = BookDAO.getInstance().findByNamedQuery("Book.findByEdition", parameters);
+    }
+
+    public void findByYear(Integer year) {
+        List<List> parameters = new ArrayList<>();
+        parameters.add(Arrays.asList("year", year));
+        books = BookDAO.getInstance().findByNamedQuery("Book.findByYear", parameters);
     }
 
     public void findAll() {

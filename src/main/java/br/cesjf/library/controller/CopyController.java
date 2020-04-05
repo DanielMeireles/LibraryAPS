@@ -3,6 +3,8 @@ package br.cesjf.library.controller;
 import br.cesjf.library.dao.CopyDAO;
 import br.cesjf.library.model.Copy;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CopyController {
@@ -24,6 +26,12 @@ public class CopyController {
 
     public void findById(Long id) {
         copies.add(CopyDAO.getInstance().find(id));
+    }
+
+    public void findByLoanable(Boolean loanable) {
+        List<List> parameters = new ArrayList<>();
+        parameters.add(Arrays.asList("loanable", loanable));
+        copies = CopyDAO.getInstance().findByNamedQuery("Copy.findByLoanable", parameters);
     }
 
     public void findAll() {
