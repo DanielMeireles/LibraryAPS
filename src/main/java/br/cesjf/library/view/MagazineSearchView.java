@@ -1,6 +1,10 @@
 package br.cesjf.library.view;
 
 import br.cesjf.library.controller.MagazineController;
+import br.cesjf.library.model.Book;
+import br.cesjf.library.model.Magazine;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class MagazineSearchView extends javax.swing.JFrame {
 
@@ -9,6 +13,7 @@ public class MagazineSearchView extends javax.swing.JFrame {
     public MagazineSearchView() {
         initComponents();
         magazineController = new MagazineController();
+        this.createTable();
     }
 
     @SuppressWarnings("unchecked")
@@ -37,32 +42,11 @@ public class MagazineSearchView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Livro", "ISBN", "Edição", "Ano"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         tbMagazine.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tbMagazine);
-        if (tbMagazine.getColumnModel().getColumnCount() > 0) {
-            tbMagazine.getColumnModel().getColumn(0).setResizable(false);
-            tbMagazine.getColumnModel().getColumn(1).setResizable(false);
-            tbMagazine.getColumnModel().getColumn(2).setResizable(false);
-            tbMagazine.getColumnModel().getColumn(3).setResizable(false);
-        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -70,7 +54,7 @@ public class MagazineSearchView extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -105,30 +89,27 @@ public class MagazineSearchView extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGap(291, 291, 291)
+                .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(244, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
-
-        jPanel2.getAccessibleContext().setAccessibleName("Pesquisar Revista");
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -162,6 +143,34 @@ public class MagazineSearchView extends javax.swing.JFrame {
                 new MagazineSearchView().setVisible(true);
             }
         });
+    }
+    
+    private void createTable() {
+        DefaultTableModel model;
+        model = new DefaultTableModel();
+        model.addColumn("Id");
+        model.addColumn("Título");
+        model.addColumn("Edição");
+        model.addColumn("Ano");
+        model.addColumn("Assunto");
+        model.addColumn("Autor");
+        model.addColumn("Editora");
+        model.setNumRows(0);
+        
+        magazineController.findAll();
+        for (Magazine m: magazineController.getMagazines()) {
+            model.addRow(new Object[]{m.getId(), m.getTitle(), m.getEdition(), m.getYear(), m.getSubjects(), m.getAuthors(), m.getAuthors()});
+        }
+        
+        tbMagazine.setModel(model);
+        tbMagazine.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbMagazine.getColumnModel().getColumn(0).setPreferredWidth(30);
+        tbMagazine.getColumnModel().getColumn(1).setPreferredWidth(200);
+        tbMagazine.getColumnModel().getColumn(2).setPreferredWidth(80);
+        tbMagazine.getColumnModel().getColumn(3).setPreferredWidth(80);
+        tbMagazine.getColumnModel().getColumn(4).setPreferredWidth(100);
+        tbMagazine.getColumnModel().getColumn(5).setPreferredWidth(100);
+        tbMagazine.getColumnModel().getColumn(6).setPreferredWidth(100);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

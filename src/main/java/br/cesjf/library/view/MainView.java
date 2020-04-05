@@ -39,6 +39,7 @@ public class MainView extends javax.swing.JFrame {
         miSearchPublisher = new javax.swing.JMenuItem();
         miSearchCopy = new javax.swing.JMenuItem();
         miSearchBook = new javax.swing.JMenuItem();
+        miSearchMagazine = new javax.swing.JMenuItem();
         miSearchUser = new javax.swing.JMenuItem();
         mnLoan = new javax.swing.JMenu();
         miLoan = new javax.swing.JMenuItem();
@@ -243,6 +244,15 @@ public class MainView extends javax.swing.JFrame {
         });
         mnSearch.add(miSearchBook);
 
+        miSearchMagazine.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miSearchMagazine.setText("Revista");
+        miSearchMagazine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miSearchMagazineActionPerformed(evt);
+            }
+        });
+        mnSearch.add(miSearchMagazine);
+
         miSearchUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miSearchUser.setText("Usuário");
         miSearchUser.addActionListener(new java.awt.event.ActionListener() {
@@ -367,6 +377,10 @@ public class MainView extends javax.swing.JFrame {
         new ReservationView().setVisible(true);
     }//GEN-LAST:event_miReservationActionPerformed
 
+    private void miSearchMagazineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSearchMagazineActionPerformed
+        new MagazineSearchView().setVisible(true);
+    }//GEN-LAST:event_miSearchMagazineActionPerformed
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -416,6 +430,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JMenuItem miSearchAuthor;
     private javax.swing.JMenuItem miSearchBook;
     private javax.swing.JMenuItem miSearchCopy;
+    private javax.swing.JMenuItem miSearchMagazine;
     private javax.swing.JMenuItem miSearchPublisher;
     private javax.swing.JMenuItem miSearchSubject;
     private javax.swing.JMenuItem miSearchUser;

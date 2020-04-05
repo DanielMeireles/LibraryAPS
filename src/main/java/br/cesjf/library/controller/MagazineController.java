@@ -87,7 +87,7 @@ public class MagazineController {
         this.magazine = magazine;
     }
 
-    public List getMagazines() {
+    public List<Magazine> getMagazines() {
         return magazines;
     }
 

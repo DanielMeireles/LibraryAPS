@@ -118,7 +118,7 @@ public class Magazine implements Publication, Serializable, Comparable<Magazine>
         this.file = file;
     }
 
-    public String getSubject() {
+    public String getSubjects() {
         String text = "";
         for(Subject s: subjectList){
             text = text + s.getSubject() + "; ";
