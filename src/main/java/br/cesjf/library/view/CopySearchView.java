@@ -70,6 +70,11 @@ public class CopySearchView extends javax.swing.JFrame {
         btEdit.setMaximumSize(new java.awt.Dimension(99, 33));
         btEdit.setMinimumSize(new java.awt.Dimension(99, 33));
         btEdit.setPreferredSize(new java.awt.Dimension(99, 33));
+        btEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditActionPerformed(evt);
+            }
+        });
 
         btExit.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/exit_icon.png"))); // NOI18N
@@ -119,6 +124,18 @@ public class CopySearchView extends javax.swing.JFrame {
     private void btExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExitActionPerformed
         this.dispose();
     }//GEN-LAST:event_btExitActionPerformed
+
+    private void btEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditActionPerformed
+        int row = tbCopy.getSelectedRow();
+        Copy copy = new Copy();
+
+        copyController.findById(Long.parseLong(tbCopy.getModel().getValueAt(row, 0).toString()));
+        for(Copy c: copyController.getCopies()) {
+            copy = c;
+        }
+        new CopyView(copy).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btEditActionPerformed
 
     public static void main(String args[]) {
         try {

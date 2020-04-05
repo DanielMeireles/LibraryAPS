@@ -124,7 +124,6 @@ public class AuthorSearchView extends javax.swing.JFrame {
         int row = tbAuthor.getSelectedRow();
         Author author = new Author();
         
-        System.out.println(tbAuthor.getModel().getValueAt(row, 0).toString());
         authorController.findById(Long.parseLong(tbAuthor.getModel().getValueAt(row, 0).toString()));
         for(Author a: authorController.getAuthors()) {
             author = a;
