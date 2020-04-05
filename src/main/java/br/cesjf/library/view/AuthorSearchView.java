@@ -2,6 +2,7 @@ package br.cesjf.library.view;
 
 import br.cesjf.library.controller.AuthorController;
 import br.cesjf.library.model.Author;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,6 +26,7 @@ public class AuthorSearchView extends javax.swing.JFrame {
         tbAuthor = new javax.swing.JTable();
         btEdit = new javax.swing.JButton();
         btExit = new javax.swing.JButton();
+        btDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pesquisar Autor");
@@ -82,21 +84,35 @@ public class AuthorSearchView extends javax.swing.JFrame {
             }
         });
 
+        btDelete.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/edit_icon.png"))); // NOI18N
+        btDelete.setText("Apagar");
+        btDelete.setMaximumSize(new java.awt.Dimension(99, 33));
+        btDelete.setMinimumSize(new java.awt.Dimension(99, 33));
+        btDelete.setPreferredSize(new java.awt.Dimension(99, 33));
+        btDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
                         .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +122,8 @@ public class AuthorSearchView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -131,6 +148,26 @@ public class AuthorSearchView extends javax.swing.JFrame {
         new AuthorView(author).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btEditActionPerformed
+
+    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar o autor?", "Atenção", JOptionPane.YES_NO_OPTION);
+        if(opcao == JOptionPane.YES_OPTION){
+            int row = tbAuthor.getSelectedRow();
+            Author author = new Author();
+
+            authorController.findById(Long.parseLong(tbAuthor.getModel().getValueAt(row, 0).toString()));
+            for(Author a: authorController.getAuthors()) {
+                author = a;
+            }
+
+            authorController.setAuthor(author);
+            authorController.delete();
+
+            this.createTable();
+            
+            JOptionPane.showMessageDialog(null, "Autor apagado com sucesso!", "Autor apagado com sucesso", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btDeleteActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -177,6 +214,7 @@ public class AuthorSearchView extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btDelete;
     private javax.swing.JButton btEdit;
     private javax.swing.JButton btExit;
     private javax.swing.JPanel jPanel1;
