@@ -87,7 +87,7 @@ public class ReservationController {
         this.reservation = reservation;
     }
 
-    public List getReservations() {
+    public List<Reservation> getReservations() {
         return reservations;
     }
 

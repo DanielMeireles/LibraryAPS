@@ -41,6 +41,7 @@ public class MainView extends javax.swing.JFrame {
         miSearchBook = new javax.swing.JMenuItem();
         miSearchMagazine = new javax.swing.JMenuItem();
         miSearchUser = new javax.swing.JMenuItem();
+        miSearchReservation = new javax.swing.JMenuItem();
         miSearchLoan = new javax.swing.JMenuItem();
         mnLoan = new javax.swing.JMenu();
         miLoan = new javax.swing.JMenuItem();
@@ -263,6 +264,15 @@ public class MainView extends javax.swing.JFrame {
         });
         mnSearch.add(miSearchUser);
 
+        miSearchReservation.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miSearchReservation.setText("Reserva");
+        miSearchReservation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miSearchReservationActionPerformed(evt);
+            }
+        });
+        mnSearch.add(miSearchReservation);
+
         miSearchLoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miSearchLoan.setText("Empréstimo");
         miSearchLoan.addActionListener(new java.awt.event.ActionListener() {
@@ -395,6 +405,10 @@ public class MainView extends javax.swing.JFrame {
         new LoanSearchView().setVisible(true);
     }//GEN-LAST:event_miSearchLoanActionPerformed
 
+    private void miSearchReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSearchReservationActionPerformed
+        new ReservationSearchView().setVisible(true);
+    }//GEN-LAST:event_miSearchReservationActionPerformed
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -447,6 +461,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JMenuItem miSearchLoan;
     private javax.swing.JMenuItem miSearchMagazine;
     private javax.swing.JMenuItem miSearchPublisher;
+    private javax.swing.JMenuItem miSearchReservation;
     private javax.swing.JMenuItem miSearchSubject;
     private javax.swing.JMenuItem miSearchUser;
     private javax.swing.JMenu mnLoan;
