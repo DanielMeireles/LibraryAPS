@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bc036a98-adcc-4709-acb9-09405afcdba0" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Zxu2JquaSPlJWV3qxJF94tIAyD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="br.cesjf.library.model" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bc036a98-adcc-4709-acb9-09405afcdba0" name="Default Changelist" comment="" />
+      <created>1585792857651</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585792857651</updated>
+      <workItem from="1585792861146" duration="1441000" />
+      <workItem from="1585794317636" duration="3837000" />
+      <workItem from="1585824503689" duration="1062000" />
+      <workItem from="1585878436704" duration="3035000" />
+      <workItem from="1585951129113" duration="330000" />
+      <workItem from="1585953767402" duration="2046000" />
+      <workItem from="1586025784957" duration="3406000" />
+      <workItem from="1586029575662" duration="3297000" />
+      <workItem from="1586033072702" duration="788000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="555" y="184" width="804" height="677" key="#Assign_Data_Sources" timestamp="1585795534593">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state x="555" y="184" width="804" height="677" key="#Assign_Data_Sources/0.0.1920.1043@0.0.1920.1043" timestamp="1585795534593" />
+    <state x="555" y="184" width="804" height="677" key="#Project_Structure" timestamp="1585825552116">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state x="555" y="184" width="804" height="677" key="#Project_Structure/0.0.1920.1043@0.0.1920.1043" timestamp="1585825552116" />
+    <state x="555" y="184" width="804" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585878504817">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state x="555" y="184" width="804" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1043@0.0.1920.1043" timestamp="1585878504817" />
+    <state x="579" y="192" width="756" height="661" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1585794411041">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state x="579" y="192" width="756" height="661" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1920.1043@0.0.1920.1043" timestamp="1585794411041" />
+    <state x="715" y="384" width="483" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1585881435590">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state x="715" y="384" width="483" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1043@0.0.1920.1043" timestamp="1585881435590" />
+    <state x="493" y="180" width="928" height="684" key="Maven.ArtifactSearchDialog" timestamp="1585954070173">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state x="493" y="180" width="928" height="684" key="Maven.ArtifactSearchDialog/0.0.1920.1043@0.0.1920.1043" timestamp="1585954070173" />
+    <state x="639" y="350" key="com.intellij.ide.util.TipDialog" timestamp="1586033074568">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state x="639" y="350" key="com.intellij.ide.util.TipDialog/0.0.1920.1043@0.0.1920.1043" timestamp="1586033074568" />
+    <state x="637" y="114" width="645" height="816" key="find.popup" timestamp="1586030973238">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state x="637" y="114" width="645" height="816" key="find.popup/0.0.1920.1043@0.0.1920.1043" timestamp="1586030973238" />
+  </component>
+</project>
