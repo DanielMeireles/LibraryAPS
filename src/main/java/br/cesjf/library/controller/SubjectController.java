@@ -15,12 +15,16 @@ public class SubjectController {
     public SubjectController() {
         this.clear();
     }
+    
+    public SubjectController(Subject subject) {
+        this.subject = subject;
+    }
 
-    public void save(Subject subject) {
+    public void save() {
         SubjectDAO.getInstance().persist(subject);
     }
 
-    public void delete(Subject subject) {
+    public void delete() {
         SubjectDAO.getInstance().remove(subject.getId());
     }
 

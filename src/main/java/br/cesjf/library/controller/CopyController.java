@@ -24,12 +24,18 @@ public class CopyController {
         magazineController = new MagazineController();
         this.clear();
     }
+    
+    public CopyController(Copy copy) {
+        bookController = new BookController();
+        magazineController = new MagazineController();
+        this.copy = copy;
+    }
 
-    public void save(Copy copy) {
+    public void save() {
         CopyDAO.getInstance().persist(copy);
     }
 
-    public void delete(Copy copy) {
+    public void delete() {
         CopyDAO.getInstance().remove(copy.getId());
     }
 

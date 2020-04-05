@@ -25,12 +25,19 @@ public class BookController {
         authorController = new AuthorController();
         subjectController = new SubjectController();
     }
+    
+    public BookController(Book book) {
+        publisherController = new PublisherController();
+        authorController = new AuthorController();
+        subjectController = new SubjectController();
+        this.book = book;
+    }
 
-    public void save(Book book) {
+    public void save() {
         BookDAO.getInstance().persist(book);
     }
 
-    public void delete(Book book) {
+    public void delete() {
         BookDAO.getInstance().remove(book.getId());
     }
 

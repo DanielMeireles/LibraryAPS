@@ -22,12 +22,18 @@ public class ReservationController {
         copyController = new CopyController();
         userController = new UserController();
     }
+    
+    public ReservationController(Reservation reservation) {
+        copyController = new CopyController();
+        userController = new UserController();
+        this.reservation = reservation;
+    }
 
-    public void save(Reservation reservation) {
+    public void save() {
         ReservationDAO.getInstance().persist(reservation);
     }
 
-    public void delete(Reservation reservation) {
+    public void delete() {
         ReservationDAO.getInstance().remove(reservation.getId());
     }
 

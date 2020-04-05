@@ -22,12 +22,18 @@ public class LoanController {
         copyController = new CopyController();
         userController = new UserController();
     }
+    
+    public LoanController(Loan loan) {
+        copyController = new CopyController();
+        userController = new UserController();
+        this.loan = loan;
+    }
 
-    public void save(Loan loan) {
+    public void save() {
         LoanDAO.getInstance().persist(loan);
     }
 
-    public void delete(Loan loan) {
+    public void delete() {
         LoanDAO.getInstance().remove(loan.getId());
     }
 

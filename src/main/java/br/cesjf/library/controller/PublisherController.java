@@ -15,12 +15,16 @@ public class PublisherController {
     public PublisherController() {
         this.clear();
     }
+    
+    public PublisherController(Publisher publisher) {
+        this.publisher = publisher;
+    }
 
-    public void save(Publisher publisher) {
+    public void save() {
         PublisherDAO.getInstance().persist(publisher);
     }
 
-    public void delete(Publisher publisher) {
+    public void delete() {
         PublisherDAO.getInstance().remove(publisher.getId());
     }
 

@@ -15,6 +15,10 @@ public class UserController {
     public UserController() {
         this.clear();
     }
+    
+    public UserController(User user) {
+        this.user = user;
+    }
 
     public void save(User user) {
         UserDAO.getInstance().persist(user);

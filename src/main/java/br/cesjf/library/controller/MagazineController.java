@@ -25,12 +25,19 @@ public class MagazineController {
         authorController = new AuthorController();
         subjectController = new SubjectController();
     }
+    
+    public MagazineController(Magazine magazine) {
+        publisherController = new PublisherController();
+        authorController = new AuthorController();
+        subjectController = new SubjectController();
+        this.magazine = magazine;
+    }
 
-    public void save(Magazine magazine) {
+    public void save() {
         MagazineDAO.getInstance().persist(magazine);
     }
 
-    public void delete(Magazine magazine) {
+    public void delete() {
         MagazineDAO.getInstance().remove(magazine.getId());
     }
 
