@@ -3,6 +3,8 @@ package br.cesjf.library.controller;
 import br.cesjf.library.dao.CopyDAO;
 import br.cesjf.library.model.Book;
 import br.cesjf.library.model.Copy;
+import br.cesjf.library.model.Magazine;
+import br.cesjf.library.model.Publication;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,9 +15,13 @@ public class CopyController {
     private Copy copy;
     private List<Copy> copies;
     private BookController bookController;
+    private MagazineController magazineController;
+    private List<Book> books;
+    private List<Magazine> magazines;
 
     public CopyController() {
         bookController = new BookController();
+        magazineController = new MagazineController();
         this.clear();
     }
 
@@ -41,9 +47,30 @@ public class CopyController {
         copies = CopyDAO.getInstance().getList();
     }
     
-    public List<Book> findBooks() {
+    public void findBooks() {
         bookController.findAll();
-        return bookController.getBooks();
+        books = bookController.getBooks();
+    }
+    
+    public void findMagazines() {
+        magazineController.findAll();
+        magazines = magazineController.getMagazines();
+    }
+    
+    public List<Publication> findPublications() {
+        List<Publication> publications = new ArrayList<Publication>();
+        
+        this.findBooks();
+        for(Publication p: books) {
+            publications.add(p);
+        }
+        
+        this.findMagazines();
+        for(Publication p: magazines) {
+            publications.add(p);
+        }
+        
+        return publications;
     }
 
     public void clear() {

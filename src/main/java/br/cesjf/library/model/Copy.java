@@ -53,6 +53,7 @@ public class Copy implements Serializable {
         this.loanable = builder.loanable;
         this.loanList = builder.loanList;
         this.idBook = builder.idBook;
+        this.idMagazine = builder.idMagazine;
         this.reservationList = builder.reservationList;
     }
 
@@ -62,6 +63,7 @@ public class Copy implements Serializable {
         private Boolean loanable;
         private List<Loan> loanList;
         private Book idBook;
+        private Magazine idMagazine;
         private List<Reservation> reservationList;
 
         public static Builder newInstance() {
@@ -89,6 +91,11 @@ public class Copy implements Serializable {
 
         public Builder setIdBook(Book idBook) {
             this.idBook = idBook;
+            return this;
+        }
+        
+        public Builder setIdMagazine(Magazine idMagazine) {
+            this.idMagazine = idMagazine;
             return this;
         }
 
