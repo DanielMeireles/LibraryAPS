@@ -15,12 +15,16 @@ public class AuthorController {
     public AuthorController() {
         this.clear();
     }
+    
+    public AuthorController(Author author) {
+        this.author = author;
+    }
 
-    public void save(Author author) {
+    public void save() {
         AuthorDAO.getInstance().persist(author);
     }
 
-    public void delete(Author author) {
+    public void delete() {
         AuthorDAO.getInstance().remove(author.getId());
     }
 

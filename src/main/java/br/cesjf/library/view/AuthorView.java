@@ -12,6 +12,12 @@ public class AuthorView extends javax.swing.JFrame {
         initComponents();
         authorController = new AuthorController();
     }
+    
+    public AuthorView(Author author) {
+        initComponents();
+        authorController = new AuthorController(author);
+        this.fillData();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -144,11 +150,21 @@ public class AuthorView extends javax.swing.JFrame {
         if(tfName.getText().isEmpty() || tfName.getText().trim() == null) {
             JOptionPane.showMessageDialog(null, "Nome não preenchido!", "Nome não preenchido", JOptionPane.WARNING_MESSAGE);
         } else {
-            Author author = Author.Builder
-                                  .newInstance()
-                                  .setName(tfName.getText())
-                                  .build();
-            authorController.save(author);
+            Author author = new Author();
+            if(authorController.getAuthor().getId() == null) {
+                author = Author.Builder
+                               .newInstance()
+                               .setName(tfName.getText())
+                               .build();
+            } else {
+                author = Author.Builder
+                               .newInstance()
+                               .setId(authorController.getAuthor().getId())
+                               .setName(tfName.getText())
+                               .build();
+            }
+            authorController.setAuthor(author);
+            authorController.save();
             JOptionPane.showMessageDialog(null, "Autor salvo com sucesso!", "Autor salvo com sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btSaveActionPerformed
@@ -176,6 +192,11 @@ public class AuthorView extends javax.swing.JFrame {
                 new AuthorView().setVisible(true);
             }
         });
+    }
+    
+    public void fillData() {
+        Author author = authorController.getAuthor();
+        tfName.setText(author.getName());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
