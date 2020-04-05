@@ -29,8 +29,9 @@ public class MainView extends javax.swing.JFrame {
         miRegisterSubject = new javax.swing.JMenuItem();
         miRegisterAuthor = new javax.swing.JMenuItem();
         miRegisterPublisher = new javax.swing.JMenuItem();
-        miRegisterCopy = new javax.swing.JMenuItem();
         miRegisterBook = new javax.swing.JMenuItem();
+        miMagazine = new javax.swing.JMenuItem();
+        miRegisterCopy = new javax.swing.JMenuItem();
         miRegisterUser = new javax.swing.JMenuItem();
         mnSearch = new javax.swing.JMenu();
         miSearchSubject = new javax.swing.JMenuItem();
@@ -152,15 +153,6 @@ public class MainView extends javax.swing.JFrame {
         });
         mnRegister.add(miRegisterPublisher);
 
-        miRegisterCopy.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        miRegisterCopy.setText("Exemplar");
-        miRegisterCopy.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miRegisterCopyActionPerformed(evt);
-            }
-        });
-        mnRegister.add(miRegisterCopy);
-
         miRegisterBook.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miRegisterBook.setText("Livro");
         miRegisterBook.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +161,23 @@ public class MainView extends javax.swing.JFrame {
             }
         });
         mnRegister.add(miRegisterBook);
+
+        miMagazine.setText("Revista");
+        miMagazine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miMagazineActionPerformed(evt);
+            }
+        });
+        mnRegister.add(miMagazine);
+
+        miRegisterCopy.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miRegisterCopy.setText("Exemplar");
+        miRegisterCopy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miRegisterCopyActionPerformed(evt);
+            }
+        });
+        mnRegister.add(miRegisterCopy);
 
         miRegisterUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miRegisterUser.setText("Usuário");
@@ -336,6 +345,10 @@ public class MainView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btExitActionPerformed
 
+    private void miMagazineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miMagazineActionPerformed
+        new MagazineView().setVisible(true);
+    }//GEN-LAST:event_miMagazineActionPerformed
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -374,6 +387,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator5;
     private javax.swing.JMenuBar mbTopo;
     private javax.swing.JMenuItem miLoan;
+    private javax.swing.JMenuItem miMagazine;
     private javax.swing.JMenuItem miRegisterAuthor;
     private javax.swing.JMenuItem miRegisterBook;
     private javax.swing.JMenuItem miRegisterCopy;

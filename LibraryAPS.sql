@@ -174,7 +174,6 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `libraryaps`.`Magazine` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(100) NOT NULL,
-  `isbn` VARCHAR(9) NOT NULL,
   `edition` INT(11) NOT NULL,
   `year` INT(11) NOT NULL,
   `cover` VARCHAR(45) NULL DEFAULT NULL,
@@ -233,3 +232,7 @@ DEFAULT CHARACTER SET = utf8;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+USE libraryaps;
+INSERT INTO User (name, type, email, user, password) VALUES ('Administrador', 'ADMINISTRATOR', 'admin@admin.com', 'admin', 'admin');
+COMMIT;

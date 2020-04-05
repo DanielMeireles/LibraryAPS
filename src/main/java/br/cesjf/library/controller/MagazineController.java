@@ -3,6 +3,7 @@ package br.cesjf.library.controller;
 import br.cesjf.library.dao.MagazineDAO;
 import br.cesjf.library.model.Magazine;
 import br.cesjf.library.model.MagazineFactory;
+import br.cesjf.library.model.Publisher;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,9 +13,11 @@ public class MagazineController {
 
     private Magazine magazine;
     private List<Magazine> magazines;
+    private PublisherController publisherController;
 
     public MagazineController() {
         this.clear();
+        publisherController = new PublisherController();
     }
 
     public void save(Magazine magazine) {
@@ -49,6 +52,11 @@ public class MagazineController {
 
     public void findAll() {
         magazines = MagazineDAO.getInstance().getList();
+    }
+    
+    public List<Publisher> findPublishers() {
+        publisherController.findAll();
+        return publisherController.getPublishers();
     }
 
     public void clear() {

@@ -1,7 +1,5 @@
 package br.cesjf.library.model;
 
-import br.cesjf.library.dao.PublisherDAO;
-
 public class MagazineFactory implements PublicationFactory {
 
     private static MagazineFactory magazineFactory;
