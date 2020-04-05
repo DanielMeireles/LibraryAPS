@@ -2,32 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc036a98-adcc-4709-acb9-09405afcdba0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/AuthorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/AuthorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/CopyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/CopyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/LoanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/LoanController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/MagazineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/MagazineController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/PublisherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/PublisherController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/ReservationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/SubjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/SubjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/AuthorSearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/AuthorSearchView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/AuthorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/AuthorView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/BookSearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/BookSearchView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/BookView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/BookView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/CopySearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/CopySearchView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/CopyView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/CopyView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/LoanSearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/LoanSearchView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/LoanView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/LoanView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/MagazineSearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/MagazineSearchView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/MagazineView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/MagazineView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/PublisherSearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/PublisherSearchView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/PublisherView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/PublisherView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/SubjectSearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/SubjectSearchView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/SubjectView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/SubjectView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/UserSearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/UserSearchView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/UserView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/cesjf/library/view/UserView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +76,7 @@
       <workItem from="1586025784957" duration="3406000" />
       <workItem from="1586029575662" duration="3297000" />
       <workItem from="1586033072702" duration="788000" />
-      <workItem from="1586048006995" duration="3872000" />
+      <workItem from="1586048006995" duration="4336000" />
     </task>
     <servers />
   </component>
