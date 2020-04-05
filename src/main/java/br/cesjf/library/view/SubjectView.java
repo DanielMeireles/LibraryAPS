@@ -12,6 +12,12 @@ public class SubjectView extends javax.swing.JFrame {
         initComponents();
         subjectController = new SubjectController();
     }
+    
+    public SubjectView(Subject subject) {
+        initComponents();
+        subjectController = new SubjectController(subject);
+        this.fillData();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

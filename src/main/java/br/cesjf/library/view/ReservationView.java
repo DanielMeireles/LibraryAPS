@@ -23,6 +23,14 @@ public class ReservationView extends javax.swing.JFrame {
         this.fillCopies();
         this.fillUsers();
     }
+    
+    public ReservationView(Reservation reservation) {
+        initComponents();
+        ReservationController = new ReservationController(reservation);
+        this.fillCopies();
+        this.fillUsers();
+        this.fillData();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

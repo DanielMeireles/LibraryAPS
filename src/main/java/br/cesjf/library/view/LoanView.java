@@ -23,6 +23,14 @@ public class LoanView extends javax.swing.JFrame {
         this.fillCopies();
         this.fillUsers();
     }
+    
+    public LoanView(Loan loan) {
+        initComponents();
+        loanController = new LoanController(loan);
+        this.fillCopies();
+        this.fillUsers();
+        this.fillData();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

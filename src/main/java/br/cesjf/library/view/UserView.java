@@ -15,6 +15,13 @@ public class UserView extends javax.swing.JFrame {
         userController = new UserController();
         this.fillUserTypes();
     }
+    
+    public UserView(User user) {
+        initComponents();
+        userController = new UserController(user);
+        this.fillUserTypes();
+        this.fillData();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

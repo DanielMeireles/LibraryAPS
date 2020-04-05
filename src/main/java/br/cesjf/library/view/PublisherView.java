@@ -12,6 +12,12 @@ public class PublisherView extends javax.swing.JFrame {
         initComponents();
         publisherController = new PublisherController();
     }
+    
+    public PublisherView(Publisher publisher) {
+        initComponents();
+        publisherController = new PublisherController(publisher);
+        this.fillData();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

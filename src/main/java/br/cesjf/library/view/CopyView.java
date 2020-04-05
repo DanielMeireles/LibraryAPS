@@ -18,6 +18,13 @@ public class CopyView extends javax.swing.JFrame {
         copyController = new CopyController();
         this.fillPublications();
     }
+    
+    public CopyView(Copy copy) {
+        initComponents();
+        copyController = new CopyController(copy);
+        this.fillPublications();
+        this.fillData();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

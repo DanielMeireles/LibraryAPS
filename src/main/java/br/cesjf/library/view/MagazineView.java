@@ -25,6 +25,16 @@ public class MagazineView extends javax.swing.JFrame {
         this.fillAuthors();
         this.fillSubjects();
     }
+    
+    public MagazineView(Magazine magazine) {
+        initComponents();
+        magazineController = new MagazineController(magazine);
+        this.fillYears();
+        this.fillPublishers();
+        this.fillAuthors();
+        this.fillSubjects();
+        this.fillData();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
