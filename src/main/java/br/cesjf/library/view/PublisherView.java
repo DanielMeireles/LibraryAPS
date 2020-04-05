@@ -179,6 +179,11 @@ public class PublisherView extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void fillData() {
+        Publisher publisher = publisherController.getPublisher();
+        tfName.setText(publisher.getName());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PublisherPanel;

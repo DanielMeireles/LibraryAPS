@@ -253,6 +253,15 @@ public class UserView extends javax.swing.JFrame {
         cbType.setModel(model);
         cbType.setSelectedIndex(-1);
     }
+    
+    public void fillData() {
+        User user = userController.getUser();
+        tfName.setText(user.getName());
+        tfEmail.setText(user.getEmail());
+        cbType.setSelectedItem(user.getType());
+        tfUser.setText(user.getUser());
+        jpPassword.setText(user.getPassword());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel UserPanel;

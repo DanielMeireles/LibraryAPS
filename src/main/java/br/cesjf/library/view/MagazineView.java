@@ -313,6 +313,16 @@ public class MagazineView extends javax.swing.JFrame {
         cbSubjects.setModel(model);
         cbSubjects.setSelectedIndex(-1);
     }
+    
+    public void fillData() {
+        Magazine magazine = magazineController.getMagazine();
+        tfTitle.setText(magazine.getTitle());
+        ftEdition.setText(Integer.toString(magazine.getEdition()));
+        cbYear.setSelectedItem(magazine.getYear());
+        cbPublisher.setSelectedItem(magazine.getIdPublisher());
+        cbAuthors.setSelectedItem(magazine.getAuthorList());
+        cbSubjects.setSelectedItem(magazine.getSubjectList());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btClear;

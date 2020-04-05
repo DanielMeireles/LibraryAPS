@@ -15,18 +15,18 @@ import javax.swing.JOptionPane;
 
 public class ReservationView extends javax.swing.JFrame {
 
-    private ReservationController ReservationController;
+    private ReservationController reservationController;
 
     public ReservationView() {
         initComponents();
-        ReservationController = new ReservationController();
+        reservationController = new ReservationController();
         this.fillCopies();
         this.fillUsers();
     }
     
     public ReservationView(Reservation reservation) {
         initComponents();
-        ReservationController = new ReservationController(reservation);
+        reservationController = new ReservationController(reservation);
         this.fillCopies();
         this.fillUsers();
         this.fillData();
@@ -251,7 +251,7 @@ public class ReservationView extends javax.swing.JFrame {
                             .setCanceled(cbCanceled.isSelected())
                             .setNoteCancellation(taNoteCancellation.getText())
                             .build();
-            ReservationController.save(reservation);
+            reservationController.save(reservation);
             tfExpectedReturnDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(reservation.getExpectedReturnDate()));
             JOptionPane.showMessageDialog(null, "Reserva salvo com sucesso!", "Reserva salvo com sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -300,15 +300,24 @@ public class ReservationView extends javax.swing.JFrame {
     }
     
     public void fillCopies() {
-        DefaultComboBoxModel model = new DefaultComboBoxModel(new Vector(ReservationController.findCopies()));
+        DefaultComboBoxModel model = new DefaultComboBoxModel(new Vector(reservationController.findCopies()));
         cbCopy.setModel(model);
         cbCopy.setSelectedIndex(-1);
     }
     
     public void fillUsers() {
-        DefaultComboBoxModel model = new DefaultComboBoxModel(new Vector(ReservationController.findUsers()));
+        DefaultComboBoxModel model = new DefaultComboBoxModel(new Vector(reservationController.findUsers()));
         cbUser.setModel(model);
         cbUser.setSelectedIndex(-1);
+    }
+    
+    public void fillData() {
+        Reservation reservation = reservationController.getReservation();
+        tfReservationDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(reservation.getReservationDate()));
+        cbCopy.setSelectedItem(reservation.getIdCopy());
+        cbUser.setSelectedItem(reservation.getIdUser());
+        cbCanceled.setSelected(reservation.getCanceled());
+        taNoteCancellation.setText(reservation.getNoteCancellation());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

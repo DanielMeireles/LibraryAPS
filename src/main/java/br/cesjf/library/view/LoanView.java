@@ -288,6 +288,14 @@ public class LoanView extends javax.swing.JFrame {
         cbUser.setModel(model);
         cbUser.setSelectedIndex(-1);
     }
+    
+    public void fillData() {
+        Loan loan = loanController.getLoan();
+        tfLoanDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(loan.getLoanDate()));
+        tfReturnDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(loan.getReturnDate()));
+        cbCopy.setSelectedItem(loan.getIdCopy());
+        cbUser.setSelectedItem(loan.getIdUser());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel LoanPanel;

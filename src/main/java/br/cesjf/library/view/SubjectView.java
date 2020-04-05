@@ -18,6 +18,11 @@ public class SubjectView extends javax.swing.JFrame {
         subjectController = new SubjectController(subject);
         this.fillData();
     }
+    
+    public void fillData() {
+        Subject subject = subjectController.getSubject();
+        tfSubject.setText(subject.getSubject());
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

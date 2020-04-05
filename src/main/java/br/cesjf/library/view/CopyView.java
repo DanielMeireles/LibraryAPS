@@ -216,6 +216,16 @@ public class CopyView extends javax.swing.JFrame {
         cbBooksAndMagazines.setModel(model);
         cbBooksAndMagazines.setSelectedIndex(-1);
     }
+    
+    public void fillData() {
+        Copy copy = copyController.getCopy();
+        if(copy.getIdBook() != null) {
+            cbBooksAndMagazines.setSelectedItem(copy.getIdBook());
+        } else {
+            cbBooksAndMagazines.setSelectedItem(copy.getIdMagazine());
+        }
+        chLoanable.setSelected(copy.getLoanable());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CopyPanel;

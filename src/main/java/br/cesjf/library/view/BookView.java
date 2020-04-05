@@ -331,6 +331,17 @@ public class BookView extends javax.swing.JFrame {
         cbSubjects.setModel(model);
         cbSubjects.setSelectedIndex(-1);
     }
+    
+    public void fillData() {
+        Book book = bookController.getBook();
+        tfTitle.setText(book.getTitle());
+        ftEdition.setText(Integer.toString(book.getEdition()));
+        cbYear.setSelectedItem(book.getYear());
+        cbPublisher.setSelectedItem(book.getIdPublisher());
+        tfIsbn.setText(book.getIsbn());
+        cbAuthors.setSelectedItem(book.getAuthorList());
+        cbSubjects.setSelectedItem(book.getSubjectList());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btClear;
