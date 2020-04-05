@@ -1,8 +1,9 @@
 package br.cesjf.library.controller;
 
-import br.cesjf.library.dao.LoanDAO;
 import br.cesjf.library.dao.ReservationDAO;
+import br.cesjf.library.model.Copy;
 import br.cesjf.library.model.Reservation;
+import br.cesjf.library.model.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,9 +14,13 @@ public class ReservationController {
 
     private Reservation reservation;
     private List<Reservation> reservations;
+    private CopyController copyController;
+    private UserController userController;
 
     public ReservationController() {
         this.clear();
+        copyController = new CopyController();
+        userController = new UserController();
     }
 
     public void save(Reservation reservation) {
@@ -57,6 +62,16 @@ public class ReservationController {
     public void findAll() {
         reservations = ReservationDAO.getInstance().getList();
     }
+    
+    public List<Copy> findCopies() {
+        copyController.findAll();
+        return copyController.getCopies();
+    } 
+    
+    public List<User> findUsers() {
+        userController.findAll();
+        return userController.getUsers();
+    } 
 
     public void clear() {
         reservation = Reservation.Builder

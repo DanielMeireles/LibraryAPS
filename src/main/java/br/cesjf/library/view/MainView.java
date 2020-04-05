@@ -102,6 +102,11 @@ public class MainView extends javax.swing.JFrame {
         btReservation.setMaximumSize(new java.awt.Dimension(120, 57));
         btReservation.setPreferredSize(new java.awt.Dimension(120, 57));
         btReservation.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btReservation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btReservationActionPerformed(evt);
+            }
+        });
         tbTopo.add(btReservation);
         tbTopo.add(jSeparator4);
 
@@ -268,6 +273,11 @@ public class MainView extends javax.swing.JFrame {
 
         miReservation.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         miReservation.setText("Reservar");
+        miReservation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miReservationActionPerformed(evt);
+            }
+        });
         mnReservation.add(miReservation);
 
         mbTopo.add(mnReservation);
@@ -348,6 +358,14 @@ public class MainView extends javax.swing.JFrame {
     private void miMagazineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miMagazineActionPerformed
         new MagazineView().setVisible(true);
     }//GEN-LAST:event_miMagazineActionPerformed
+
+    private void btReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReservationActionPerformed
+        new ReservationView().setVisible(true);
+    }//GEN-LAST:event_btReservationActionPerformed
+
+    private void miReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miReservationActionPerformed
+        new ReservationView().setVisible(true);
+    }//GEN-LAST:event_miReservationActionPerformed
 
     public static void main(String args[]) {
         try {
