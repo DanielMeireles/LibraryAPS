@@ -1,7 +1,9 @@
 package br.cesjf.library.controller;
 
 import br.cesjf.library.dao.LoanDAO;
+import br.cesjf.library.model.Copy;
 import br.cesjf.library.model.Loan;
+import br.cesjf.library.model.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,9 +14,13 @@ public class LoanController {
 
     private Loan loan;
     private List<Loan> loans;
+    private CopyController copyController;
+    private UserController userController;
 
     public LoanController() {
         this.clear();
+        copyController = new CopyController();
+        userController = new UserController();
     }
 
     public void save(Loan loan) {
@@ -50,6 +56,16 @@ public class LoanController {
     public void findAll() {
         loans = LoanDAO.getInstance().getList();
     }
+    
+    public List<Copy> findCopies() {
+        copyController.findAll();
+        return copyController.getCopies();
+    } 
+    
+    public List<User> findUsers() {
+        userController.findAll();
+        return userController.getUsers();
+    } 
 
     public void clear() {
         loan = Loan.Builder

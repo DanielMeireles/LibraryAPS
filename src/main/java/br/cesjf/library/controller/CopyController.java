@@ -87,11 +87,11 @@ public class CopyController {
         this.copy = copy;
     }
 
-    public List getCopys() {
+    public List getCopies() {
         return copies;
     }
 
-    public void setCopys(List copies) {
+    public void setCopies(List copies) {
         this.copies = copies;
     }
 
