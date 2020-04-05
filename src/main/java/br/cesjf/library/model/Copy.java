@@ -128,9 +128,9 @@ public class Copy implements Serializable {
 
     public String getLoanableText() {
         if(loanable) {
-            return "Yes";
+            return "Sim";
         } else {
-            return "No";
+            return "Não";
         }
     }
 

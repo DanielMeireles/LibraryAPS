@@ -87,7 +87,7 @@ public class CopyController {
         this.copy = copy;
     }
 
-    public List getCopies() {
+    public List<Copy> getCopies() {
         return copies;
     }
 

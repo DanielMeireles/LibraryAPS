@@ -1,6 +1,9 @@
 package br.cesjf.library.view;
 
 import br.cesjf.library.controller.PublisherController;
+import br.cesjf.library.model.Publisher;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class PublisherSearchView extends javax.swing.JFrame {
 
@@ -9,6 +12,7 @@ public class PublisherSearchView extends javax.swing.JFrame {
     public PublisherSearchView() {
         initComponents();
         publisherController = new PublisherController();
+        this.createTable();
     }
 
     @SuppressWarnings("unchecked")
@@ -37,29 +41,11 @@ public class PublisherSearchView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Editora"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         tbPublisher.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tbPublisher);
-        if (tbPublisher.getColumnModel().getColumnCount() > 0) {
-            tbPublisher.getColumnModel().getColumn(0).setResizable(false);
-        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -156,6 +142,24 @@ public class PublisherSearchView extends javax.swing.JFrame {
                 new PublisherSearchView().setVisible(true);
             }
         });
+    }
+    
+    private void createTable() {
+        DefaultTableModel model;
+        model = new DefaultTableModel();
+        model.addColumn("Id");
+        model.addColumn("Nome");
+        model.setNumRows(0);
+        
+        publisherController.findAll();
+        for (Publisher p: publisherController.getPublishers()) {
+            model.addRow(new Object[]{p.getId(), p.getName()});
+        }
+        
+        tbPublisher.setModel(model);
+        tbPublisher.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbPublisher.getColumnModel().getColumn(0).setPreferredWidth(30);
+        tbPublisher.getColumnModel().getColumn(1).setPreferredWidth(270);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

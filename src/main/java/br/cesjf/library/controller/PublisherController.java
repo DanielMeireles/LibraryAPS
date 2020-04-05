@@ -52,7 +52,7 @@ public class PublisherController {
         this.publisher = publisher;
     }
 
-    public List getPublishers() {
+    public List<Publisher> getPublishers() {
         return publishers;
     }
 

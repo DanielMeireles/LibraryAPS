@@ -1,6 +1,9 @@
 package br.cesjf.library.view;
 
 import br.cesjf.library.controller.CopyController;
+import br.cesjf.library.model.Copy;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class CopySearchView extends javax.swing.JFrame {
 
@@ -9,6 +12,7 @@ public class CopySearchView extends javax.swing.JFrame {
     public CopySearchView() {
         initComponents();
         copyController = new CopyController();
+        this.createTable();
     }
 
     @SuppressWarnings("unchecked")
@@ -37,30 +41,11 @@ public class CopySearchView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Livro", "Circular"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         tbCopy.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tbCopy);
-        if (tbCopy.getColumnModel().getColumnCount() > 0) {
-            tbCopy.getColumnModel().getColumn(0).setResizable(false);
-            tbCopy.getColumnModel().getColumn(1).setResizable(false);
-        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -68,7 +53,7 @@ public class CopySearchView extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -102,28 +87,27 @@ public class CopySearchView extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(138, Short.MAX_VALUE)
+                .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(127, 127, 127))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -159,6 +143,30 @@ public class CopySearchView extends javax.swing.JFrame {
                 new CopySearchView().setVisible(true);
             }
         });
+    }
+    
+    private void createTable() {
+        DefaultTableModel model;
+        model = new DefaultTableModel();
+        model.addColumn("Id");
+        model.addColumn("Circular");
+        model.addColumn("Livro/Revista");
+        model.setNumRows(0);
+        
+        copyController.findAll();
+        for (Copy c: copyController.getCopies()) {
+            if(c.getIdMagazine() != null) {
+                model.addRow(new Object[]{c.getId(), c.getLoanableText(),c.getIdMagazine().getTitle()});
+            } else {
+                model.addRow(new Object[]{c.getId(), c.getLoanableText(),c.getIdBook().getTitle()});
+            }
+        }
+        
+        tbCopy.setModel(model);
+        tbCopy.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbCopy.getColumnModel().getColumn(0).setPreferredWidth(30);
+        tbCopy.getColumnModel().getColumn(1).setPreferredWidth(70);
+        tbCopy.getColumnModel().getColumn(2).setPreferredWidth(335);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
