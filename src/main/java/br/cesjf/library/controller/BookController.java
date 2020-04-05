@@ -93,7 +93,7 @@ public class BookController {
         this.book = book;
     }
 
-    public List getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 

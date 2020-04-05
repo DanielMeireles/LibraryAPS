@@ -130,7 +130,7 @@ public class Book implements Publication, Serializable, Comparable<Book> {
         this.file = file;
     }
 
-    public String getSubject() {
+    public String getSubjects() {
         String text = "";
         for(Subject s: subjectList){
             text = text + s.getSubject() + "; ";
