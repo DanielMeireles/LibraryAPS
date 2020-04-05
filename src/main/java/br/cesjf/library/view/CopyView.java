@@ -151,7 +151,11 @@ public class CopyView extends javax.swing.JFrame {
         if(cbBook.getSelectedIndex() < 0) {
             JOptionPane.showMessageDialog(null, "Não foi selecionado um livro!", "Não foi selecionado um livro", JOptionPane.WARNING_MESSAGE);
         } else {
-            Copy copy = Copy.Builder.newInstance().setIdBook((Book) cbBook.getModel().getSelectedItem()).setLoanable(chLoanable.isSelected()).build();
+            Copy copy = Copy.Builder
+                            .newInstance()
+                            .setIdBook((Book) cbBook.getModel().getSelectedItem())
+                            .setLoanable(chLoanable.isSelected())
+                            .build();
             copyController.save(copy);
             JOptionPane.showMessageDialog(null, "Exemplar salvo com sucesso!", "Exemplar salvo com sucesso", JOptionPane.INFORMATION_MESSAGE);
         }

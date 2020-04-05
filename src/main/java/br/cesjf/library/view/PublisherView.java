@@ -136,7 +136,10 @@ public class PublisherView extends javax.swing.JFrame {
         if(tfName.getText().isEmpty() || tfName.getText().trim() == null) {
             JOptionPane.showMessageDialog(null, "Nome não preenchido!", "Nome não preenchido", JOptionPane.WARNING_MESSAGE);
         } else {
-            Publisher publisher = Publisher.Builder.newInstance().setName(tfName.getText()).build();
+            Publisher publisher = Publisher.Builder
+                                           .newInstance()
+                                           .setName(tfName.getText())
+                                           .build();
             publisherController.save(publisher);
             JOptionPane.showMessageDialog(null, "Editora salva com sucesso!", "Editora salva com sucesso", JOptionPane.INFORMATION_MESSAGE);
         }

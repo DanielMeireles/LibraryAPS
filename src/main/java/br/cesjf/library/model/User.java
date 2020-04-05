@@ -102,6 +102,11 @@ public class User implements Serializable {
             this.type = type;
             return this;
         }
+        
+        public Builder setType(UserType type) {
+            this.type = type.name();
+            return this;
+        }
 
         public Builder setEmail(String email) {
             this.email = email;

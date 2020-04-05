@@ -18,5 +18,9 @@ public enum UserType {
     public String getTypeUser() {
         return typeUser;
     }
+    
+    public String toString() {
+        return typeUser;
+    }
 
 }

@@ -157,7 +157,10 @@ public class SubjectView extends javax.swing.JFrame {
         if(tfSubject.getText().isEmpty() || tfSubject.getText().trim() == null) {
             JOptionPane.showMessageDialog(null, "Assunto não preenchido!", "Assunto não preenchido", JOptionPane.WARNING_MESSAGE);
         } else {
-            Subject subject = Subject.Builder.newInstance().setSubject(tfSubject.getText()).build();
+            Subject subject = Subject.Builder
+                                     .newInstance()
+                                     .setSubject(tfSubject.getText())
+                                     .build();
             subjectController.save(subject);
             JOptionPane.showMessageDialog(null, "Assunto salvo com sucesso!", "Assunto salvo com sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
