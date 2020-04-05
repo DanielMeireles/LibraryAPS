@@ -7,7 +7,7 @@ public class SubjectDAO extends GenericDAO<Subject, Long> implements Serializabl
 
     public static SubjectDAO subjectDAO;
 
-    public SubjectDAO() {
+    private SubjectDAO() {
         super(Subject.class);
     }
 

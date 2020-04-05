@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 public class LoanDAO extends GenericDAO<Loan, Long> implements Serializable {
 
-    public static LoanDAO subjectDAO;
+    private static LoanDAO subjectDAO;
 
     public LoanDAO() {
         super(Loan.class);

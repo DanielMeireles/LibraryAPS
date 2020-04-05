@@ -7,7 +7,7 @@ public class BookDAO extends GenericDAO<Book, Long> implements Serializable {
 
     public static BookDAO subjectDAO;
 
-    public BookDAO() {
+    private BookDAO() {
         super(Book.class);
     }
 

@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 public class PublisherDAO extends GenericDAO<Publisher, Long> implements Serializable {
 
-    public static PublisherDAO subjectDAO;
+    private static PublisherDAO subjectDAO;
 
     public PublisherDAO() {
         super(Publisher.class);

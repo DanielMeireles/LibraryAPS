@@ -7,7 +7,7 @@ public class UserDAO extends GenericDAO<User, Long> implements Serializable {
 
     public static UserDAO subjectDAO;
 
-    public UserDAO() {
+    private UserDAO() {
         super(User.class);
     }
 

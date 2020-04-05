@@ -7,7 +7,7 @@ public class ReservationDAO extends GenericDAO<Reservation, Long> implements Ser
 
     public static ReservationDAO subjectDAO;
 
-    public ReservationDAO() {
+    private ReservationDAO() {
         super(Reservation.class);
     }
 

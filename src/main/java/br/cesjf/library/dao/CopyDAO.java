@@ -7,7 +7,7 @@ public class CopyDAO extends GenericDAO<Copy, Long> implements Serializable {
 
     public static CopyDAO subjectDAO;
 
-    public CopyDAO() {
+    private CopyDAO() {
         super(Copy.class);
     }
 

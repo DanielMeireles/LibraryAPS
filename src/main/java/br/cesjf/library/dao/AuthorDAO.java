@@ -7,7 +7,7 @@ public class AuthorDAO extends GenericDAO<Author, Long> implements Serializable 
 
     public static AuthorDAO subjectDAO;
 
-    public AuthorDAO() {
+    private AuthorDAO() {
         super(Author.class);
     }
 
