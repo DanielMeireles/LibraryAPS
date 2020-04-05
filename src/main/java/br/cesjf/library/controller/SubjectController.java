@@ -1,6 +1,5 @@
 package br.cesjf.library.controller;
 
-import br.cesjf.library.dao.PublisherDAO;
 import br.cesjf.library.dao.SubjectDAO;
 import br.cesjf.library.model.Subject;
 
