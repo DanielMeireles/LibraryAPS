@@ -31,8 +31,8 @@ public class AuthorView extends javax.swing.JFrame {
 
         AuthorPanel.setBackground(new java.awt.Color(255, 255, 255));
         AuthorPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        AuthorPanel.setMaximumSize(new java.awt.Dimension(539, 215));
-        AuthorPanel.setPreferredSize(new java.awt.Dimension(539, 215));
+        AuthorPanel.setMaximumSize(new java.awt.Dimension(539, 135));
+        AuthorPanel.setPreferredSize(new java.awt.Dimension(539, 135));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Autor", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
@@ -101,7 +101,7 @@ public class AuthorView extends javax.swing.JFrame {
             .addGroup(AuthorPanelLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AuthorPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -124,7 +124,7 @@ public class AuthorView extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(AuthorPanel, java.awt.BorderLayout.CENTER);
+        getContentPane().add(AuthorPanel, java.awt.BorderLayout.LINE_END);
         AuthorPanel.getAccessibleContext().setAccessibleName("AuthorView");
         AuthorPanel.getAccessibleContext().setAccessibleDescription("");
 
