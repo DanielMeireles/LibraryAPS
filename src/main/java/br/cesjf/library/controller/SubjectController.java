@@ -52,7 +52,7 @@ public class SubjectController {
         this.subject = subject;
     }
 
-    public List getSubjects() {
+    public List<Subject> getSubjects() {
         return subjects;
     }
 
