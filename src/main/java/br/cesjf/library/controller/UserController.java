@@ -70,7 +70,7 @@ public class UserController {
         this.user = user;
     }
 
-    public List getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 

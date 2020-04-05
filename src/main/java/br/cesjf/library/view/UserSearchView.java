@@ -1,6 +1,9 @@
 package br.cesjf.library.view;
 
 import br.cesjf.library.controller.UserController;
+import br.cesjf.library.model.User;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class UserSearchView extends javax.swing.JFrame {
 
@@ -9,6 +12,7 @@ public class UserSearchView extends javax.swing.JFrame {
     public UserSearchView() {
         initComponents();
         userController = new UserController();
+        this.createTable();
     }
 
     @SuppressWarnings("unchecked")
@@ -37,32 +41,11 @@ public class UserSearchView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Tipo", "Email", "Usuário"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         tbUser.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tbUser);
-        if (tbUser.getColumnModel().getColumnCount() > 0) {
-            tbUser.getColumnModel().getColumn(0).setResizable(false);
-            tbUser.getColumnModel().getColumn(1).setResizable(false);
-            tbUser.getColumnModel().getColumn(2).setResizable(false);
-            tbUser.getColumnModel().getColumn(3).setResizable(false);
-        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -70,7 +53,7 @@ public class UserSearchView extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -105,27 +88,26 @@ public class UserSearchView extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(227, 227, 227))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -161,6 +143,30 @@ public class UserSearchView extends javax.swing.JFrame {
                 new UserSearchView().setVisible(true);
             }
         });
+    }
+    
+    private void createTable() {
+        DefaultTableModel model;
+        model = new DefaultTableModel();
+        model.addColumn("Id");
+        model.addColumn("Nome");
+        model.addColumn("Tipo");
+        model.addColumn("Email");
+        model.addColumn("Usuário");
+        model.setNumRows(0);
+        
+        userController.findAll();
+        for (User u: userController.getUsers()) {
+            model.addRow(new Object[]{u.getId(), u.getName(), u.getType(), u.getEmail(), u.getUser()});
+        }
+        
+        tbUser.setModel(model);
+        tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbUser.getColumnModel().getColumn(0).setPreferredWidth(30);
+        tbUser.getColumnModel().getColumn(1).setPreferredWidth(200);
+        tbUser.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tbUser.getColumnModel().getColumn(3).setPreferredWidth(200);
+        tbUser.getColumnModel().getColumn(4).setPreferredWidth(100);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
