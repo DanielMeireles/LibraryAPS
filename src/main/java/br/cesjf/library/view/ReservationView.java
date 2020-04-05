@@ -48,7 +48,7 @@ public class ReservationView extends javax.swing.JFrame {
         btExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Emprestar");
+        setTitle("Reserva");
         setResizable(false);
 
         LoanPanel.setBackground(new java.awt.Color(255, 255, 255));

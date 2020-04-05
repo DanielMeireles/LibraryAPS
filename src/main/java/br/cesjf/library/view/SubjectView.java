@@ -138,11 +138,9 @@ public class SubjectView extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        getAccessibleContext().setAccessibleName("");
         getAccessibleContext().setAccessibleDescription("");
 
         pack();
-		setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExitActionPerformed

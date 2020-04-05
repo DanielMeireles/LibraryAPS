@@ -26,7 +26,7 @@ public class PublisherView extends javax.swing.JFrame {
         btExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastrar Editora");
+        setTitle("Editora");
         setResizable(false);
 
         PublisherPanel.setBackground(new java.awt.Color(255, 255, 255));

@@ -26,11 +26,13 @@ public class AuthorView extends javax.swing.JFrame {
         btExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastrar Autor");
+        setTitle("Autor");
         setResizable(false);
 
         AuthorPanel.setBackground(new java.awt.Color(255, 255, 255));
         AuthorPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        AuthorPanel.setMaximumSize(new java.awt.Dimension(539, 215));
+        AuthorPanel.setPreferredSize(new java.awt.Dimension(539, 215));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Autor", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
@@ -123,7 +125,9 @@ public class AuthorView extends javax.swing.JFrame {
         );
 
         getContentPane().add(AuthorPanel, java.awt.BorderLayout.CENTER);
-		
+        AuthorPanel.getAccessibleContext().setAccessibleName("AuthorView");
+        AuthorPanel.getAccessibleContext().setAccessibleDescription("");
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents

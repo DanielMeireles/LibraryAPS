@@ -51,7 +51,7 @@ public class BookView extends javax.swing.JFrame {
         btExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastrar Livro");
+        setTitle("Livro");
         setResizable(false);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
