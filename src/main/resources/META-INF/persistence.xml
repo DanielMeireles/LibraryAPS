@@ -6,6 +6,7 @@
         <class>br.cesjf.library.model.Book</class>
         <class>br.cesjf.library.model.Copy</class>
         <class>br.cesjf.library.model.Loan</class>
+        <class>br.cesjf.library.model.Magazine</class>
         <class>br.cesjf.library.model.Publisher</class>
         <class>br.cesjf.library.model.Reservation</class>
         <class>br.cesjf.library.model.Subject</class>

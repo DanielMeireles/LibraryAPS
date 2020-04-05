@@ -62,7 +62,7 @@ public class Book implements Publication, Serializable, Comparable<Book> {
     @ManyToMany
     @JoinTable(name = "AuthorBook",
             joinColumns = @JoinColumn(name = "idBook"),
-            inverseJoinColumns = @JoinColumn(name = "idBook")
+            inverseJoinColumns = @JoinColumn(name = "idAuthor")
     )
     private List<Author> authorList;
     @OneToMany(mappedBy = "idBook")

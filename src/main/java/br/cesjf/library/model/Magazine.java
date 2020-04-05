@@ -58,7 +58,7 @@ public class Magazine implements Publication, Serializable, Comparable<Magazine>
     @ManyToMany
     @JoinTable(name = "AuthorMagazine",
             joinColumns = @JoinColumn(name = "idMagazine"),
-            inverseJoinColumns = @JoinColumn(name = "idMagazine")
+            inverseJoinColumns = @JoinColumn(name = "idAuthor")
     )
     private List<Author> authorList;
     @OneToMany(mappedBy = "idMagazine")

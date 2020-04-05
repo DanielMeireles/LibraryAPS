@@ -36,9 +36,12 @@ public class Copy implements Serializable {
     private Boolean loanable;
     @OneToMany(mappedBy = "idCopy")
     private List<Loan> loanList;
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     @JoinColumn(name = "idBook", referencedColumnName = "id")
     private Book idBook;
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "idMagazine", referencedColumnName = "id")
+    private Magazine idMagazine;
     @OneToMany(mappedBy = "idCopy")
     private List<Reservation> reservationList;
 
@@ -139,6 +142,14 @@ public class Copy implements Serializable {
 
     public void setIdBook(Book idBook) {
         this.idBook = idBook;
+    }
+
+    public Magazine getIdMagazine() {
+        return idMagazine;
+    }
+
+    public void setIdMagazine(Magazine idMagazine) {
+        this.idMagazine = idMagazine;
     }
 
     @XmlTransient
