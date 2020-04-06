@@ -20,7 +20,6 @@ public class ReservationView extends javax.swing.JFrame {
     public ReservationView() {
         initComponents();
         reservationController = new ReservationController();
-        this.fillCopies();
         this.fillUsers();
     }
     
@@ -75,6 +74,11 @@ public class ReservationView extends javax.swing.JFrame {
         lbReservationDate.setText("Data Reserva:");
 
         tfReservationDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        tfReservationDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfReservationDateFocusLost(evt);
+            }
+        });
 
         lbExpectedReturnDate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbExpectedReturnDate.setText("Data Devolução Prevista:");
@@ -277,6 +281,16 @@ public class ReservationView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbCanceledStateChanged
 
+    private void tfReservationDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfReservationDateFocusLost
+        try {
+            Date reservationDate = new SimpleDateFormat("dd/MM/yyyy").parse(tfReservationDate.getText());
+            if(!reservationDate.equals(reservationController.getReservation().getReservationDate())) {
+                fillCopiesAvailables(reservationDate);
+                tfExpectedReturnDate.setText("");
+            }
+        } catch (ParseException ex) {}
+    }//GEN-LAST:event_tfReservationDateFocusLost
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -305,6 +319,11 @@ public class ReservationView extends javax.swing.JFrame {
     public void fillCopies() {
         DefaultComboBoxModel model = new DefaultComboBoxModel(new Vector(reservationController.findCopies()));
         cbCopy.setModel(model);
+    }
+    
+    public void fillCopiesAvailables(Date date) {
+        DefaultComboBoxModel model = new DefaultComboBoxModel(new Vector(reservationController.findCopiesAvailables(date)));
+        cbCopy.setModel(model);
         cbCopy.setSelectedIndex(-1);
     }
     
@@ -317,6 +336,7 @@ public class ReservationView extends javax.swing.JFrame {
     public void fillData() {
         Reservation reservation = reservationController.getReservation();
         tfReservationDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(reservation.getReservationDate()));
+        tfExpectedReturnDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(reservation.getExpectedReturnDate()));
         cbCopy.setSelectedItem(reservation.getIdCopy());
         cbUser.setSelectedItem(reservation.getIdUser());
         cbCanceled.setSelected(reservation.getCanceled());

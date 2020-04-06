@@ -212,6 +212,9 @@
                   <Format format="dd/MM/yyyy" subtype="-1" type="1"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfReservationDateFocusLost"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="cbUser">
               <Properties>
