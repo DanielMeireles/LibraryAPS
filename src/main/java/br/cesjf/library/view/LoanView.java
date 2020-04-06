@@ -20,7 +20,6 @@ public class LoanView extends javax.swing.JFrame {
     public LoanView() {
         initComponents();
         loanController = new LoanController();
-        this.fillCopies();
         this.fillUsers();
     }
     
@@ -72,6 +71,11 @@ public class LoanView extends javax.swing.JFrame {
         lbLoanDate.setText("Data Empréstimo:");
 
         tfLoanDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        tfLoanDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfLoanDateFocusLost(evt);
+            }
+        });
 
         lbReturnDate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbReturnDate.setText("Data Devolução:");
@@ -255,6 +259,16 @@ public class LoanView extends javax.swing.JFrame {
         cbUser.setSelectedIndex(-1);
     }//GEN-LAST:event_btClearActionPerformed
 
+    private void tfLoanDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfLoanDateFocusLost
+        try {
+            Date loanDate = new SimpleDateFormat("dd/MM/yyyy").parse(tfLoanDate.getText());
+            if(!loanDate.equals(loanController.getLoan().getLoanDate())) {
+                fillCopiesAvailables(loanDate);
+                tfExpectedReturnDate.setText("");
+            }
+        } catch (ParseException ex) {}
+    }//GEN-LAST:event_tfLoanDateFocusLost
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -298,8 +312,15 @@ public class LoanView extends javax.swing.JFrame {
         if(loan.getReturnDate() != null) {
             tfReturnDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(loan.getReturnDate()));
         }
+        tfExpectedReturnDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(loan.getExpectedReturnDate()));
         cbCopy.setSelectedItem(loan.getIdCopy());
         cbUser.setSelectedItem(loan.getIdUser());
+    }
+    
+    public void fillCopiesAvailables(Date date) {
+        DefaultComboBoxModel model = new DefaultComboBoxModel(new Vector(loanController.findCopiesAvailables(date)));
+        cbCopy.setModel(model);
+        cbCopy.setSelectedIndex(-1);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

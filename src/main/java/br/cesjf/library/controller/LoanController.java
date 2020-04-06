@@ -1,5 +1,6 @@
 package br.cesjf.library.controller;
 
+import br.cesjf.library.dao.CopyDAO;
 import br.cesjf.library.dao.LoanDAO;
 import br.cesjf.library.model.Copy;
 import br.cesjf.library.model.Loan;
@@ -67,6 +68,14 @@ public class LoanController {
         copyController.findAll();
         return copyController.getCopies();
     } 
+    
+    public List<Copy> findCopiesAvailables(Date date) {
+        List<List> parameters = new ArrayList<>();
+        parameters.add(Arrays.asList("date", date));
+        parameters.add(Arrays.asList("reservationId", null));
+        parameters.add(Arrays.asList("loanId", loan.getId()));
+        return CopyDAO.getInstance().findByNamedQuery("Copy.findByAvailableOnDate", parameters);
+    }
     
     public List<User> findUsers() {
         userController.findAll();
