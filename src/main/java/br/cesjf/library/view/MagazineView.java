@@ -320,10 +320,14 @@ public class MagazineView extends javax.swing.JFrame {
         Magazine magazine = magazineController.getMagazine();
         tfTitle.setText(magazine.getTitle());
         ftEdition.setText(Integer.toString(magazine.getEdition()));
-        cbYear.setSelectedItem(magazine.getYear());
+        cbYear.setSelectedItem(Integer.toString(magazine.getYear()));
         cbPublisher.setSelectedItem(magazine.getIdPublisher());
-        cbAuthors.setSelectedItem(magazine.getAuthorList());
-        cbSubjects.setSelectedItem(magazine.getSubjectList());
+        for(Author a: magazine.getAuthorList()){
+            cbAuthors.setSelectedItem(a);
+        }
+        for(Subject s: magazine.getSubjectList()) {
+            cbSubjects.setSelectedItem(s);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

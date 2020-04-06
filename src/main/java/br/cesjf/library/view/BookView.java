@@ -338,11 +338,15 @@ public class BookView extends javax.swing.JFrame {
         Book book = bookController.getBook();
         tfTitle.setText(book.getTitle());
         ftEdition.setText(Integer.toString(book.getEdition()));
-        cbYear.setSelectedItem(book.getYear());
+        cbYear.setSelectedItem(Integer.toString(book.getYear()));
         cbPublisher.setSelectedItem(book.getIdPublisher());
         tfIsbn.setText(book.getIsbn());
-        cbAuthors.setSelectedItem(book.getAuthorList());
-        cbSubjects.setSelectedItem(book.getSubjectList());
+        for(Author a: book.getAuthorList()){
+            cbAuthors.setSelectedItem(a);
+        }
+        for(Subject s: book.getSubjectList()) {
+            cbSubjects.setSelectedItem(s);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
