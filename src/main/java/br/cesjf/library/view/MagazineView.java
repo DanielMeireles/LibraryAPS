@@ -240,9 +240,7 @@ public class MagazineView extends javax.swing.JFrame {
         } else {
             MagazineFactory magazineFactory = MagazineFactory.getInstance();
             Magazine magazine = (Magazine) magazineFactory.createPublication();
-            if(magazineController.getMagazine().getId() != null) {
-                magazine.setId(magazineController.getMagazine().getId());
-            }
+            magazine.setId(magazineController.getMagazine().getId());
             magazine.setTitle(tfTitle.getText());
             magazine.setEdition(Integer.parseInt(ftEdition.getText()));
             magazine.setYear(Integer.parseInt(cbYear.getItemAt(cbYear.getSelectedIndex())));

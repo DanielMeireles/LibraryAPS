@@ -256,9 +256,7 @@ public class BookView extends javax.swing.JFrame {
         } else {
             BookFactory bookFactory = BookFactory.getInstance();
             Book book = (Book) bookFactory.createPublication();
-            if(bookController.getBook().getId() != null) {
-                book.setId(bookController.getBook().getId());
-            }
+            book.setId(bookController.getBook().getId());
             book.setTitle(tfTitle.getText());
             book.setEdition(Integer.parseInt(ftEdition.getText()));
             book.setYear(Integer.parseInt(cbYear.getItemAt(cbYear.getSelectedIndex())));

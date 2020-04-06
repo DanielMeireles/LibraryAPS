@@ -151,18 +151,11 @@ public class AuthorView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Nome não preenchido!", "Nome não preenchido", JOptionPane.WARNING_MESSAGE);
         } else {
             Author author = new Author();
-            if(authorController.getAuthor().getId() == null) {
-                author = Author.Builder
-                               .newInstance()
-                               .setName(tfName.getText())
-                               .build();
-            } else {
-                author = Author.Builder
-                               .newInstance()
-                               .setId(authorController.getAuthor().getId())
-                               .setName(tfName.getText())
-                               .build();
-            }
+            author = Author.Builder
+                           .newInstance()
+                           .setId(authorController.getAuthor().getId())
+                           .setName(tfName.getText())
+                           .build();
             authorController.setAuthor(author);
             authorController.save();
             JOptionPane.showMessageDialog(null, "Autor salvo com sucesso!", "Autor salvo com sucesso", JOptionPane.INFORMATION_MESSAGE);

@@ -162,40 +162,22 @@ public class CopyView extends javax.swing.JFrame {
         } else {
             Publication publication = (Publication) cbBooksAndMagazines.getModel().getSelectedItem();
             Copy copy;
-            if(copyController.getCopy().getId() == null) {
-                if(publication instanceof Book) {
-                    copy = Copy.Builder
-                               .newInstance()
-                               .setIdMagazine(null)
-                               .setIdBook((Book) publication)
-                               .setLoanable(chLoanable.isSelected())
-                               .build();
-                } else {
-                    copy = Copy.Builder
-                               .newInstance()
-                               .setIdMagazine((Magazine) publication)
-                               .setIdBook(null)
-                               .setLoanable(chLoanable.isSelected())
-                               .build();
-                }
+            if(publication instanceof Book) {
+                copy = Copy.Builder
+                           .newInstance()
+                           .setId(copyController.getCopy().getId())
+                           .setIdMagazine(null)
+                           .setIdBook((Book) publication)
+                           .setLoanable(chLoanable.isSelected())
+                           .build();
             } else {
-                if(publication instanceof Book) {
-                    copy = Copy.Builder
-                               .newInstance()
-                               .setId(copyController.getCopy().getId())
-                               .setIdMagazine(null)
-                               .setIdBook((Book) publication)
-                               .setLoanable(chLoanable.isSelected())
-                               .build();
-                } else {
-                    copy = Copy.Builder
-                               .newInstance()
-                               .setId(copyController.getCopy().getId())
-                               .setIdMagazine((Magazine) publication)
-                               .setIdBook(null)
-                               .setLoanable(chLoanable.isSelected())
-                               .build();
-                }
+                copy = Copy.Builder
+                           .newInstance()
+                           .setId(copyController.getCopy().getId())
+                           .setIdMagazine((Magazine) publication)
+                           .setIdBook(null)
+                           .setLoanable(chLoanable.isSelected())
+                           .build();
             }
             copyController.setCopy(copy);
             copyController.save();
