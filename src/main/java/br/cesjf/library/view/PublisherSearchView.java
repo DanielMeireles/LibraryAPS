@@ -1,7 +1,9 @@
 package br.cesjf.library.view;
 
 import br.cesjf.library.controller.PublisherController;
+import br.cesjf.library.model.Author;
 import br.cesjf.library.model.Publisher;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,6 +27,7 @@ public class PublisherSearchView extends javax.swing.JFrame {
         tbPublisher = new javax.swing.JTable();
         btEdit = new javax.swing.JButton();
         btExit = new javax.swing.JButton();
+        btDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pesquisar Editora");
@@ -88,6 +91,18 @@ public class PublisherSearchView extends javax.swing.JFrame {
             }
         });
 
+        btDelete.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete_icon.png"))); // NOI18N
+        btDelete.setText("Apagar");
+        btDelete.setMaximumSize(new java.awt.Dimension(99, 33));
+        btDelete.setMinimumSize(new java.awt.Dimension(99, 33));
+        btDelete.setPreferredSize(new java.awt.Dimension(99, 33));
+        btDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -95,12 +110,13 @@ public class PublisherSearchView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
                         .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
@@ -111,8 +127,9 @@ public class PublisherSearchView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -136,6 +153,26 @@ public class PublisherSearchView extends javax.swing.JFrame {
         new PublisherView(publisher).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btEditActionPerformed
+
+    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
+        int option = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a editora?", "Atenção", JOptionPane.YES_NO_OPTION);
+        if(option == JOptionPane.YES_OPTION){
+            int row = tbPublisher.getSelectedRow();
+            Publisher publisher = new Publisher();
+
+            publisherController.findById(Long.parseLong(tbPublisher.getModel().getValueAt(row, 0).toString()));
+            for(Publisher p: publisherController.getPublishers()) {
+                publisher = p;
+            }
+
+            publisherController.setPublisher(publisher);
+            publisherController.delete();
+
+            this.createTable();
+            
+            JOptionPane.showMessageDialog(null, "Editora apagada com sucesso!", "Editora apagada com sucesso", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btDeleteActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -181,6 +218,7 @@ public class PublisherSearchView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btDelete;
     private javax.swing.JButton btEdit;
     private javax.swing.JButton btExit;
     private javax.swing.JPanel jPanel1;

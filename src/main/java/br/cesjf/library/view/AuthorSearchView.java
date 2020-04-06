@@ -85,7 +85,7 @@ public class AuthorSearchView extends javax.swing.JFrame {
         });
 
         btDelete.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/edit_icon.png"))); // NOI18N
+        btDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete_icon.png"))); // NOI18N
         btDelete.setText("Apagar");
         btDelete.setMaximumSize(new java.awt.Dimension(99, 33));
         btDelete.setMinimumSize(new java.awt.Dimension(99, 33));
@@ -120,10 +120,11 @@ public class AuthorSearchView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -150,8 +151,8 @@ public class AuthorSearchView extends javax.swing.JFrame {
     }//GEN-LAST:event_btEditActionPerformed
 
     private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
-        int opcao = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar o autor?", "Atenção", JOptionPane.YES_NO_OPTION);
-        if(opcao == JOptionPane.YES_OPTION){
+        int option = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar o autor?", "Atenção", JOptionPane.YES_NO_OPTION);
+        if(option == JOptionPane.YES_OPTION){
             int row = tbAuthor.getSelectedRow();
             Author author = new Author();
 
