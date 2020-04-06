@@ -3,6 +3,7 @@ package br.cesjf.library.controller;
 import br.cesjf.library.dao.CopyDAO;
 import br.cesjf.library.dao.ReservationDAO;
 import br.cesjf.library.model.Copy;
+import br.cesjf.library.model.Loan;
 import br.cesjf.library.model.Reservation;
 import br.cesjf.library.model.User;
 
@@ -17,16 +18,19 @@ public class ReservationController {
     private List<Reservation> reservations;
     private CopyController copyController;
     private UserController userController;
+    private LoanController loanController;
 
     public ReservationController() {
         this.clear();
         copyController = new CopyController();
         userController = new UserController();
+        loanController = new LoanController();
     }
     
     public ReservationController(Reservation reservation) {
         copyController = new CopyController();
         userController = new UserController();
+        loanController = new LoanController();
         this.reservation = reservation;
     }
 
@@ -92,6 +96,21 @@ public class ReservationController {
         reservation = Reservation.Builder
                 .newInstance()
                 .build();
+    }
+    
+    public void generateLoan (){
+        if(!reservation.getId().equals(null)) {
+            Loan loan = Loan.Builder
+                            .newInstance()
+                            .setLoanDate(reservation.getReservationDate())
+                            .setIdCopy(reservation.getIdCopy())
+                            .setIdUser(reservation.getIdUser())
+                            .build();
+            loanController.setLoan(loan);
+            loanController.save();
+            reservation.setIdLoan(loan);
+            this.save();
+        }
     }
 
     public Reservation getReservation() {
