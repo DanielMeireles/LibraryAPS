@@ -135,6 +135,7 @@ public class MainView extends javax.swing.JFrame {
         mnRegister.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         miRegisterUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miRegisterUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16/user.png"))); // NOI18N
         miRegisterUser.setText("Usuário");
         miRegisterUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,6 +145,7 @@ public class MainView extends javax.swing.JFrame {
         mnRegister.add(miRegisterUser);
 
         miRegisterSubject.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miRegisterSubject.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16/Theme.png"))); // NOI18N
         miRegisterSubject.setText("Assunto");
         miRegisterSubject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,6 +155,7 @@ public class MainView extends javax.swing.JFrame {
         mnRegister.add(miRegisterSubject);
 
         miRegisterAuthor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miRegisterAuthor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16/user.png"))); // NOI18N
         miRegisterAuthor.setText("Autor");
         miRegisterAuthor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +165,7 @@ public class MainView extends javax.swing.JFrame {
         mnRegister.add(miRegisterAuthor);
 
         miRegisterPublisher.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miRegisterPublisher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16/university-icon.png"))); // NOI18N
         miRegisterPublisher.setText("Editora");
         miRegisterPublisher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +175,7 @@ public class MainView extends javax.swing.JFrame {
         mnRegister.add(miRegisterPublisher);
 
         miRegisterBook.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miRegisterBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16/books.png"))); // NOI18N
         miRegisterBook.setText("Livro");
         miRegisterBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,6 +185,7 @@ public class MainView extends javax.swing.JFrame {
         mnRegister.add(miRegisterBook);
 
         miMagazine.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miMagazine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16/books.png"))); // NOI18N
         miMagazine.setText("Revista");
         miMagazine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,6 +195,7 @@ public class MainView extends javax.swing.JFrame {
         mnRegister.add(miMagazine);
 
         miRegisterCopy.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miRegisterCopy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16/books.png"))); // NOI18N
         miRegisterCopy.setText("Exemplar");
         miRegisterCopy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,6 +210,7 @@ public class MainView extends javax.swing.JFrame {
         mnSearch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         miSearchUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miSearchUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16/user.png"))); // NOI18N
         miSearchUser.setText("Usuário");
         miSearchUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,6 +220,7 @@ public class MainView extends javax.swing.JFrame {
         mnSearch.add(miSearchUser);
 
         miSearchSubject.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miSearchSubject.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16/Theme.png"))); // NOI18N
         miSearchSubject.setText("Assunto");
         miSearchSubject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,6 +230,7 @@ public class MainView extends javax.swing.JFrame {
         mnSearch.add(miSearchSubject);
 
         miSearchAuthor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miSearchAuthor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16/user.png"))); // NOI18N
         miSearchAuthor.setText("Autor");
         miSearchAuthor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,6 +240,7 @@ public class MainView extends javax.swing.JFrame {
         mnSearch.add(miSearchAuthor);
 
         miSearchPublisher.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miSearchPublisher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16/university-icon.png"))); // NOI18N
         miSearchPublisher.setText("Editora");
         miSearchPublisher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -239,6 +250,7 @@ public class MainView extends javax.swing.JFrame {
         mnSearch.add(miSearchPublisher);
 
         miSearchBook.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miSearchBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16/books.png"))); // NOI18N
         miSearchBook.setText("Livro");
         miSearchBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,6 +260,7 @@ public class MainView extends javax.swing.JFrame {
         mnSearch.add(miSearchBook);
 
         miSearchMagazine.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miSearchMagazine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16/books.png"))); // NOI18N
         miSearchMagazine.setText("Revista");
         miSearchMagazine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,6 +270,7 @@ public class MainView extends javax.swing.JFrame {
         mnSearch.add(miSearchMagazine);
 
         miSearchCopy.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miSearchCopy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16/books.png"))); // NOI18N
         miSearchCopy.setText("Exemplar");
         miSearchCopy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,6 +280,7 @@ public class MainView extends javax.swing.JFrame {
         mnSearch.add(miSearchCopy);
 
         miSearchReservation.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miSearchReservation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16/clock-icon.png"))); // NOI18N
         miSearchReservation.setText("Reserva");
         miSearchReservation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -275,6 +290,7 @@ public class MainView extends javax.swing.JFrame {
         mnSearch.add(miSearchReservation);
 
         miSearchLoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miSearchLoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16/calendar-clock-icon.png"))); // NOI18N
         miSearchLoan.setText("Empréstimo");
         miSearchLoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -289,6 +305,7 @@ public class MainView extends javax.swing.JFrame {
         mnLoan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         miLoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miLoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16/calendar-clock-icon.png"))); // NOI18N
         miLoan.setText("Emprestar");
         miLoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -303,6 +320,7 @@ public class MainView extends javax.swing.JFrame {
         mnReservation.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         miReservation.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        miReservation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16/clock-icon.png"))); // NOI18N
         miReservation.setText("Reservar");
         miReservation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
