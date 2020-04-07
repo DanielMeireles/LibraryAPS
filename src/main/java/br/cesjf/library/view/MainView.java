@@ -22,8 +22,9 @@ public class MainView extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JToolBar.Separator();
         btReservation = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JToolBar.Separator();
-        btExit = new javax.swing.JButton();
+        btAbout = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JToolBar.Separator();
+        btExit = new javax.swing.JButton();
         mbTopo = new javax.swing.JMenuBar();
         mnRegister = new javax.swing.JMenu();
         miRegisterUser = new javax.swing.JMenuItem();
@@ -47,6 +48,8 @@ public class MainView extends javax.swing.JFrame {
         miLoan = new javax.swing.JMenuItem();
         mnReservation = new javax.swing.JMenu();
         miReservation = new javax.swing.JMenuItem();
+        mnAbout = new javax.swing.JMenu();
+        miAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Biblioteca");
@@ -113,6 +116,23 @@ public class MainView extends javax.swing.JFrame {
         tbTopo.add(btReservation);
         tbTopo.add(jSeparator4);
 
+        btAbout.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/about_icon.png"))); // NOI18N
+        btAbout.setText("Sobre");
+        btAbout.setFocusable(false);
+        btAbout.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btAbout.setMaximumSize(new java.awt.Dimension(120, 57));
+        btAbout.setMinimumSize(new java.awt.Dimension(120, 57));
+        btAbout.setPreferredSize(new java.awt.Dimension(120, 57));
+        btAbout.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAboutActionPerformed(evt);
+            }
+        });
+        tbTopo.add(btAbout);
+        tbTopo.add(jSeparator5);
+
         btExit.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/exit_icon.png"))); // NOI18N
         btExit.setText("Sair");
@@ -127,7 +147,6 @@ public class MainView extends javax.swing.JFrame {
             }
         });
         tbTopo.add(btExit);
-        tbTopo.add(jSeparator5);
 
         getContentPane().add(tbTopo, java.awt.BorderLayout.PAGE_START);
 
@@ -331,6 +350,20 @@ public class MainView extends javax.swing.JFrame {
 
         mbTopo.add(mnReservation);
 
+        mnAbout.setText("Sobre");
+        mnAbout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        miAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16/about_icon.png"))); // NOI18N
+        miAbout.setText("Sobre");
+        miAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miAboutActionPerformed(evt);
+            }
+        });
+        mnAbout.add(miAbout);
+
+        mbTopo.add(mnAbout);
+
         setJMenuBar(mbTopo);
 
         pack();
@@ -428,6 +461,14 @@ public class MainView extends javax.swing.JFrame {
         new ReservationSearchView().setVisible(true);
     }//GEN-LAST:event_miSearchReservationActionPerformed
 
+    private void miAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAboutActionPerformed
+        new AboutView().setVisible(true);
+    }//GEN-LAST:event_miAboutActionPerformed
+
+    private void btAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAboutActionPerformed
+        new AboutView().setVisible(true);
+    }//GEN-LAST:event_btAboutActionPerformed
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -454,6 +495,7 @@ public class MainView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAbout;
     private javax.swing.JButton btExit;
     private javax.swing.JButton btLoan;
     private javax.swing.JButton btReservation;
@@ -465,6 +507,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator4;
     private javax.swing.JToolBar.Separator jSeparator5;
     private javax.swing.JMenuBar mbTopo;
+    private javax.swing.JMenuItem miAbout;
     private javax.swing.JMenuItem miLoan;
     private javax.swing.JMenuItem miMagazine;
     private javax.swing.JMenuItem miRegisterAuthor;
@@ -483,6 +526,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JMenuItem miSearchReservation;
     private javax.swing.JMenuItem miSearchSubject;
     private javax.swing.JMenuItem miSearchUser;
+    private javax.swing.JMenu mnAbout;
     private javax.swing.JMenu mnLoan;
     private javax.swing.JMenu mnRegister;
     private javax.swing.JMenu mnReservation;
