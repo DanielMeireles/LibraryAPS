@@ -3,6 +3,7 @@ package br.cesjf.library.view;
 import br.cesjf.library.controller.SubjectController;
 import br.cesjf.library.model.Reservation;
 import br.cesjf.library.model.Subject;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -32,6 +33,11 @@ public class SubjectSearchView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pesquisar Assunto");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -193,6 +199,10 @@ public class SubjectSearchView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Assunto apagado com sucesso!", "Assunto apagado com sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btDeleteActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(new ImageIcon("src/main/resources/img16/Theme.png").getImage());
+    }//GEN-LAST:event_formWindowOpened
 
     public static void main(String args[]) {
         try {

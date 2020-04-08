@@ -2,6 +2,7 @@ package br.cesjf.library.view;
 
 import br.cesjf.library.controller.SubjectController;
 import br.cesjf.library.model.Subject;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class SubjectView extends javax.swing.JFrame {
@@ -34,6 +35,11 @@ public class SubjectView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Assunto");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         SubjectPanel.setBackground(new java.awt.Color(255, 255, 255));
         SubjectPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -145,7 +151,7 @@ public class SubjectView extends javax.swing.JFrame {
         getAccessibleContext().setAccessibleDescription("");
 
         pack();
-		setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExitActionPerformed
@@ -171,6 +177,10 @@ public class SubjectView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Assunto salvo com sucesso!", "Assunto salvo com sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btSaveActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(new ImageIcon("src/main/resources/img16/Theme.png").getImage());
+    }//GEN-LAST:event_formWindowOpened
 
     public static void main(String args[]) {
         try {

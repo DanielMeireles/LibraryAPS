@@ -3,6 +3,7 @@ package br.cesjf.library.view;
 import br.cesjf.library.controller.PublisherController;
 import br.cesjf.library.model.Author;
 import br.cesjf.library.model.Publisher;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -32,6 +33,11 @@ public class PublisherSearchView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pesquisar Editora");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -173,6 +179,10 @@ public class PublisherSearchView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Editora apagada com sucesso!", "Editora apagada com sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btDeleteActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(new ImageIcon("src/main/resources/img16/university-icon.png").getImage());
+    }//GEN-LAST:event_formWindowOpened
 
     public static void main(String args[]) {
         try {

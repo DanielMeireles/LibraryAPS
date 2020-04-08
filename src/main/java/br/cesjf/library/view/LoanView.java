@@ -11,6 +11,7 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class LoanView extends javax.swing.JFrame {
@@ -54,6 +55,11 @@ public class LoanView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Empréstimo");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         LoanPanel.setBackground(new java.awt.Color(255, 255, 255));
         LoanPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -268,6 +274,10 @@ public class LoanView extends javax.swing.JFrame {
             }
         } catch (ParseException ex) {}
     }//GEN-LAST:event_tfLoanDateFocusLost
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(new ImageIcon("src/main/resources/img16/calendar-clock-icon.png").getImage());
+    }//GEN-LAST:event_formWindowOpened
 
     public static void main(String args[]) {
         try {

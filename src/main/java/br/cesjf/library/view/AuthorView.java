@@ -2,6 +2,7 @@ package br.cesjf.library.view;
 
 import br.cesjf.library.controller.AuthorController;
 import br.cesjf.library.model.Author;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class AuthorView extends javax.swing.JFrame {
@@ -34,6 +35,11 @@ public class AuthorView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Autor");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         AuthorPanel.setBackground(new java.awt.Color(255, 255, 255));
         AuthorPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -161,6 +167,10 @@ public class AuthorView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Autor salvo com sucesso!", "Autor salvo com sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btSaveActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(new ImageIcon("src/main/resources/img16/user.png").getImage());
+    }//GEN-LAST:event_formWindowOpened
 
     public static void main(String args[]) {
         try {

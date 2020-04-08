@@ -4,6 +4,7 @@ import br.cesjf.library.controller.UserController;
 import br.cesjf.library.enums.UserType;
 import br.cesjf.library.model.User;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class UserView extends javax.swing.JFrame {
@@ -46,6 +47,11 @@ public class UserView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Usuário");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         UserPanel.setBackground(new java.awt.Color(255, 255, 255));
         UserPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -225,6 +231,10 @@ public class UserView extends javax.swing.JFrame {
         tfUser.setText("");
         jpPassword.setText("");
     }//GEN-LAST:event_btClearActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(new ImageIcon("src/main/resources/img16/user.png").getImage());
+    }//GEN-LAST:event_formWindowOpened
 
     public static void main(String args[]) {
         try {

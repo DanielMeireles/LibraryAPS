@@ -7,6 +7,7 @@ import br.cesjf.library.model.Magazine;
 import br.cesjf.library.model.Publication;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class CopyView extends javax.swing.JFrame {
@@ -42,6 +43,11 @@ public class CopyView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Exemplar");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         CopyPanel.setBackground(new java.awt.Color(255, 255, 255));
         CopyPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -189,6 +195,10 @@ public class CopyView extends javax.swing.JFrame {
         cbBooksAndMagazines.setSelectedIndex(-1);
         chLoanable.setSelected(false);
     }//GEN-LAST:event_btClearActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(new ImageIcon("src/main/resources/img16/books.png").getImage());
+    }//GEN-LAST:event_formWindowOpened
 
     public static void main(String args[]) {
 

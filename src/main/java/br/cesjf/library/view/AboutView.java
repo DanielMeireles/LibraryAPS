@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.event.HyperlinkEvent;
 
 /**
@@ -123,6 +124,7 @@ public class AboutView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(new ImageIcon("src/main/resources/img16/about_icon.png").getImage());
         tpPage.setContentType("text/html");        
         
         File arq = new File("src/main/resources/html/index.html");       
