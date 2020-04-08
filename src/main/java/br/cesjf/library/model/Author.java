@@ -35,6 +35,8 @@ public class Author implements Serializable, Comparable<Author> {
     private String name;
     @ManyToMany(mappedBy="authorList")
     private List<Book> bookList;
+    @ManyToMany(mappedBy="authorList")
+    private List<Magazine> magazineList;
 
     public Author() {
     }
@@ -43,6 +45,7 @@ public class Author implements Serializable, Comparable<Author> {
         this.id = builder.id;
         this.name = builder.name;
         this.bookList = builder.bookList;
+        this.magazineList = builder.magazineList;
     }
 
     public static class Builder {
@@ -50,6 +53,7 @@ public class Author implements Serializable, Comparable<Author> {
         private Long id;
         private String name;
         private List<Book> bookList;
+        private List<Magazine> magazineList;
 
         public static Builder newInstance() {
             return new Builder();
@@ -71,6 +75,11 @@ public class Author implements Serializable, Comparable<Author> {
 
         public Builder setBookList(List<Book> bookList) {
             this.bookList = bookList;
+            return this;
+        }
+        
+        public Builder setMagazineList(List<Magazine> magazineList) {
+            this.magazineList = magazineList;
             return this;
         }
 
@@ -103,6 +112,14 @@ public class Author implements Serializable, Comparable<Author> {
 
     public void setBookList(List<Book> bookList) {
         this.bookList = bookList;
+    }
+
+    public List<Magazine> getMagazineList() {
+        return magazineList;
+    }
+
+    public void setMagazineList(List<Magazine> magazineList) {
+        this.magazineList = magazineList;
     }
 
     @Override
