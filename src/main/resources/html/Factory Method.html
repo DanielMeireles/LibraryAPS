@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Factory Method</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Factory Method</h1>
+        <div>O Factory Method é um padrão que define uma interface para criar um objeto, mas permite às classes decidirem qual classe instanciar. O Factory Method permite a uma classe deferir a instanciação para subclasses.</div>
+        <br>
+        <div>No nosso projeto fizemos o uso do FactoryMethod da seguinte forma:</div>
+        <br/>
+        <div>Criamos uma interface publicação (Publication):</div>
+        <br/>
+        <img src="../documentation/FactoryMethod_1.png" alt="Interface Publication" width=357 height=111>
+        <br/>
+        <div>Implementamos Publication na classe livro (Book):</div>
+        <br/>
+        <img src="../documentation/FactoryMethod_2.png" alt="Classe Book" width=609 height=91>
+        <br/>
+        <div>Implementamos Publication na classe revista (Magazine):</div>
+        <br/>
+        <img src="../documentation/FactoryMethod_3.png" alt="Classe Magazine" width=673 height=98>
+        <br/>
+        <div>Criamos uma interface fábrica de publicação (PublicationFactory):</div>
+        <br/>
+        <img src="../documentation/FactoryMethod_4.png" alt="Interface PublicationFactory" width=360 height=98>
+        <br/>
+        <div>Implementamos PublicationFactory na classe fábrica de revista (MagazineFactory):</div>
+        <br/>
+        <img src="../documentation/FactoryMethod_6.png" alt="Classe MagazineFactory" width=495 height=295>
+        <br/>
+        <div>Instanciação da classe livro (Book):</div>
+        <br/>
+        <img src="../documentation/FactoryMethod_7.png" alt="Instanciação de Book" width=435 height=49>
+        <br/>
+        <div>Instanciação da classe revista (Magazine):</div>
+        <br/>
+        <img src="../documentation/FactoryMethod_8.png" alt="Instanciação de Magazine" width=551 height=46>
+    </body>
+</html>

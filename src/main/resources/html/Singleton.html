@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Singleton</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Singleton</h1>
+        <div>O Padrão Singleton tem como definição garantir que uma classe tenha apenas uma instância de si mesma e que forneça um ponto global de acesso a ela.</div>
+        <br>
+        <div>Ele foi utilizado nas classes DAO abaixo:</div>
+        <ul>
+            <li><b>AuthorDAO</b> (Autor)</li>
+            <li><b>BookDAO</b> (Livro)</li>
+            <li><b>CopyDAO</b> (Exemplar)</li>
+            <li><b>LoanDAO</b> (Empréstimo)</li>
+            <li><b>MagazineDAO</b> (Revista)</li>
+            <li><b>PublisherDAO</b> (Editora)</li>
+            <li><b>ReservationDAO</b> (Reserva)</li>
+            <li><b>SubjectDAO</b> (Assunto)</li>
+            <li><b>UserDAO</b> (Usuário)</li>
+        </ul>
+        <div>Além das classes DAO ele foi utilizado nas classes util abaixo:</div>
+        <ul>
+            <li>PersistenceUtil</li>
+        </ul>
+        <div><b>Obs.:</b> A classe persistencia é muito utilizada com o Singleton pois garante que só exista uma conexão ao Banco de Dados.</div>
+        <div>Exemplo de implementação:</div>
+        <br/>
+        <img src="../documentation/Singleton_1.png" alt="Implementação do Singleton no DAO" width=658 height=294>
+        <br/>
+        <div>Exemplo de instanciação da classe:</div>
+        <br/>
+        <img src="../documentation/Singleton_2.png" alt="Uso da instancia do Singleton" width=404 height=64>
+    </body>
+</html>

@@ -32,18 +32,28 @@ public class AboutView extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
-        getContentPane().setLayout(new java.awt.GridLayout());
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
-        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Início");
-        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Início");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Apresentação");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Documentação");
+        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Diagrama de Classes");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Diagrama de Banco de Dados");
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Teste");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Teste");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Padrões de Projeto");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Builder");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Factory Method");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("MVC");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Singleton");
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         trMenu.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
@@ -84,7 +94,7 @@ public class AboutView extends javax.swing.JFrame {
                         .addComponent(lbTextLogo))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,7 +119,7 @@ public class AboutView extends javax.swing.JFrame {
         this.setIconImage(new ImageIcon("src/main/resources/img16/about_icon.png").getImage());
         tpPage.setContentType("text/html;charset=utf-8");
         
-        File arq = new File("src/main/resources/html/Home.html");
+        File arq = new File("src/main/resources/html/Apresentação.html");
         if(arq != null){            
             try {
                 tpPage.setPage(arq.toURI().toURL());
