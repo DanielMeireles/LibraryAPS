@@ -2,6 +2,8 @@ package br.cesjf.library.view;
 
 import br.cesjf.library.controller.ReservationController;
 import br.cesjf.library.model.Reservation;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -221,17 +223,22 @@ public class ReservationSearchView extends javax.swing.JFrame {
         
         reservationController.findAll();
         for (Reservation r: reservationController.getReservations()) {
-            model.addRow(new Object[]{r.getId(), r.getReservationDate(), r.getExpectedReturnDate(), r.getIdCopy(), r.getIdCopy().getIdBook().getTitle(), r.getIdUser()});
+            model.addRow(new Object[]{r.getId(), convertDate(r.getReservationDate()), convertDate(r.getExpectedReturnDate()), r.getIdCopy(), r.getIdCopy().getIdBook().getTitle(), r.getIdUser()});
         }
         
         tbReservation.setModel(model);
         tbReservation.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         tbReservation.getColumnModel().getColumn(0).setPreferredWidth(30);
         tbReservation.getColumnModel().getColumn(1).setPreferredWidth(150);
-        tbReservation.getColumnModel().getColumn(2).setPreferredWidth(150);
+        tbReservation.getColumnModel().getColumn(2).setPreferredWidth(180);
         tbReservation.getColumnModel().getColumn(3).setPreferredWidth(200);
         tbReservation.getColumnModel().getColumn(4).setPreferredWidth(200);
         tbReservation.getColumnModel().getColumn(5).setPreferredWidth(100);
+    }
+    
+    private String convertDate(Date date) {
+        SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
+        return fm.format(date);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

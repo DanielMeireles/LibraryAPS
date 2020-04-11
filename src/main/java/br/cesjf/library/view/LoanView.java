@@ -42,12 +42,12 @@ public class LoanView extends javax.swing.JFrame {
         lbCopy = new javax.swing.JLabel();
         cbCopy = new javax.swing.JComboBox<>();
         lbLoanDate = new javax.swing.JLabel();
-        tfLoanDate = new javax.swing.JFormattedTextField();
         lbReturnDate = new javax.swing.JLabel();
-        tfReturnDate = new javax.swing.JFormattedTextField();
         cbUser = new javax.swing.JComboBox<>();
         lbExpectedReturnDate = new javax.swing.JLabel();
         tfExpectedReturnDate = new javax.swing.JFormattedTextField();
+        tfLoanDate = new javax.swing.JFormattedTextField();
+        tfReturnDate = new javax.swing.JFormattedTextField();
         btLoan = new javax.swing.JButton();
         btClear = new javax.swing.JButton();
         btExit = new javax.swing.JButton();
@@ -76,23 +76,31 @@ public class LoanView extends javax.swing.JFrame {
         lbLoanDate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbLoanDate.setText("Data Empréstimo:");
 
-        tfLoanDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        tfLoanDate.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tfLoanDateFocusLost(evt);
-            }
-        });
-
         lbReturnDate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbReturnDate.setText("Data Devolução:");
-
-        tfReturnDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
 
         lbExpectedReturnDate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbExpectedReturnDate.setText("Data Devolução Prevista:");
 
         tfExpectedReturnDate.setEditable(false);
         tfExpectedReturnDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+
+        try {
+            tfLoanDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        tfLoanDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfLoanDateFocusLost(evt);
+            }
+        });
+
+        try {
+            tfReturnDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -106,19 +114,18 @@ public class LoanView extends javax.swing.JFrame {
                         .addGap(114, 114, 114)
                         .addComponent(cbUser, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lbLoanDate)
-                        .addGap(54, 54, 54)
-                        .addComponent(tfLoanDate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbExpectedReturnDate)
                             .addComponent(lbReturnDate)
-                            .addComponent(lbCopy))
+                            .addComponent(lbCopy)
+                            .addComponent(lbLoanDate))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfReturnDate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfExpectedReturnDate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbCopy, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cbCopy, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(tfReturnDate, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfLoanDate, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfExpectedReturnDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -134,9 +141,9 @@ public class LoanView extends javax.swing.JFrame {
                     .addComponent(lbExpectedReturnDate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfReturnDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbReturnDate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbReturnDate)
+                    .addComponent(tfReturnDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCopy)
                     .addComponent(cbCopy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -218,7 +225,7 @@ public class LoanView extends javax.swing.JFrame {
     }//GEN-LAST:event_btExitActionPerformed
 
     private void btLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoanActionPerformed
-        if(tfLoanDate.getText().isEmpty() || tfLoanDate.getText().trim() == null) {
+        if(tfLoanDate.getText().replace("/", "").trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Data do empréstimo não preenchida!", "Data do empréstimo não preenchida", JOptionPane.WARNING_MESSAGE);
         } else if(cbCopy.getSelectedIndex() < 0) {
             JOptionPane.showMessageDialog(null, "Não foi selecionado um exemplar!", "Não foi selecionado um exemplar", JOptionPane.WARNING_MESSAGE);
@@ -232,7 +239,7 @@ public class LoanView extends javax.swing.JFrame {
                 Logger.getLogger(LoanView.class.getName()).log(Level.SEVERE, "Falha ao converter String para Date", ex);
             }
             Date returnDate = new Date();
-            if(tfReturnDate.getText().isEmpty() || tfReturnDate.getText().trim() == null) {
+            if(tfReturnDate.getText().replace("/", "").trim().isEmpty()) {
                 returnDate = null;
             } else {
                 try {
@@ -266,6 +273,10 @@ public class LoanView extends javax.swing.JFrame {
         tfLoanDate.requestFocus();
     }//GEN-LAST:event_btClearActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(new ImageIcon("src/main/resources/img16/calendar-clock-icon.png").getImage());
+    }//GEN-LAST:event_formWindowOpened
+
     private void tfLoanDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfLoanDateFocusLost
         try {
             Date loanDate = new SimpleDateFormat("dd/MM/yyyy").parse(tfLoanDate.getText());
@@ -275,10 +286,6 @@ public class LoanView extends javax.swing.JFrame {
             }
         } catch (ParseException ex) {}
     }//GEN-LAST:event_tfLoanDateFocusLost
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        this.setIconImage(new ImageIcon("src/main/resources/img16/calendar-clock-icon.png").getImage());
-    }//GEN-LAST:event_formWindowOpened
 
     public static void main(String args[]) {
         try {

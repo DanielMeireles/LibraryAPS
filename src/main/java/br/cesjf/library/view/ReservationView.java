@@ -42,7 +42,6 @@ public class ReservationView extends javax.swing.JFrame {
         lbCopy = new javax.swing.JLabel();
         cbCopy = new javax.swing.JComboBox<>();
         lbReservationDate = new javax.swing.JLabel();
-        tfReservationDate = new javax.swing.JFormattedTextField();
         cbUser = new javax.swing.JComboBox<>();
         lbExpectedReturnDate = new javax.swing.JLabel();
         tfExpectedReturnDate = new javax.swing.JFormattedTextField();
@@ -51,6 +50,7 @@ public class ReservationView extends javax.swing.JFrame {
         lbNoteCancellation = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         taNoteCancellation = new javax.swing.JTextArea();
+        tfReservationDate = new javax.swing.JFormattedTextField();
         btReservation = new javax.swing.JButton();
         btClear = new javax.swing.JButton();
         btExit = new javax.swing.JButton();
@@ -80,13 +80,6 @@ public class ReservationView extends javax.swing.JFrame {
         lbReservationDate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbReservationDate.setText("Data Reserva:");
 
-        tfReservationDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        tfReservationDate.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tfReservationDateFocusLost(evt);
-            }
-        });
-
         lbExpectedReturnDate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbExpectedReturnDate.setText("Data Devolução Prevista:");
 
@@ -110,6 +103,17 @@ public class ReservationView extends javax.swing.JFrame {
         taNoteCancellation.setRows(5);
         jScrollPane1.setViewportView(taNoteCancellation);
 
+        try {
+            tfReservationDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        tfReservationDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfReservationDateFocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -117,15 +121,14 @@ public class ReservationView extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(lbReservationDate)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfReservationDate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbExpectedReturnDate)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(tfExpectedReturnDate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lbReservationDate))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfExpectedReturnDate, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(tfReservationDate)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbUser)
@@ -253,7 +256,7 @@ public class ReservationView extends javax.swing.JFrame {
     }//GEN-LAST:event_btExitActionPerformed
 
     private void btReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReservationActionPerformed
-        if(tfReservationDate.getText().isEmpty() || tfReservationDate.getText().trim() == null) {
+        if(tfReservationDate.getText().replace("/", "").trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Data da Reserva não preenchida!", "Data da Reserva não preenchida", JOptionPane.WARNING_MESSAGE);
         } else if(cbCopy.getSelectedIndex() < 0) {
             JOptionPane.showMessageDialog(null, "Não foi selecionado um exemplar!", "Não foi selecionado um exemplar", JOptionPane.WARNING_MESSAGE);
@@ -301,16 +304,6 @@ public class ReservationView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbCanceledStateChanged
 
-    private void tfReservationDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfReservationDateFocusLost
-        try {
-            Date reservationDate = new SimpleDateFormat("dd/MM/yyyy").parse(tfReservationDate.getText());
-            if(!reservationDate.equals(reservationController.getReservation().getReservationDate())) {
-                fillCopiesAvailables(reservationDate);
-                tfExpectedReturnDate.setText("");
-            }
-        } catch (ParseException ex) {}
-    }//GEN-LAST:event_tfReservationDateFocusLost
-
     private void btLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoanActionPerformed
         if(!reservationController.getReservation().getId().equals(null)) {
             reservationController.generateLoan();
@@ -323,6 +316,16 @@ public class ReservationView extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(new ImageIcon("src/main/resources/img/schedule_icon.png").getImage());
     }//GEN-LAST:event_formWindowOpened
+
+    private void tfReservationDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfReservationDateFocusLost
+        try {
+            Date reservationDate = new SimpleDateFormat("dd/MM/yyyy").parse(tfReservationDate.getText());
+            if(!reservationDate.equals(reservationController.getReservation().getReservationDate())) {
+                fillCopiesAvailables(reservationDate);
+                tfExpectedReturnDate.setText("");
+            }
+        } catch (ParseException ex) {}
+    }//GEN-LAST:event_tfReservationDateFocusLost
 
     public static void main(String args[]) {
         try {

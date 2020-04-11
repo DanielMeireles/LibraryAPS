@@ -2,6 +2,8 @@ package br.cesjf.library.view;
 
 import br.cesjf.library.controller.LoanController;
 import br.cesjf.library.model.Loan;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -222,18 +224,23 @@ public class LoanSearchView extends javax.swing.JFrame {
         
         loanController.findAll();
         for (Loan l: loanController.getLoans()) {
-            model.addRow(new Object[]{l.getId(), l.getLoanDate(), l.getExpectedReturnDate(), l.getReturnDate(), l.getIdCopy(), l.getIdCopy().getIdBook().getTitle(), l.getIdUser()});
+            model.addRow(new Object[]{l.getId(), convertDate(l.getLoanDate()), convertDate(l.getExpectedReturnDate()), convertDate(l.getReturnDate()), l.getIdCopy(), l.getIdCopy().getIdBook().getTitle(), l.getIdUser()});
         }
         
         tbLoan.setModel(model);
         tbLoan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         tbLoan.getColumnModel().getColumn(0).setPreferredWidth(30);
         tbLoan.getColumnModel().getColumn(1).setPreferredWidth(150);
-        tbLoan.getColumnModel().getColumn(2).setPreferredWidth(150);
+        tbLoan.getColumnModel().getColumn(2).setPreferredWidth(180);
         tbLoan.getColumnModel().getColumn(3).setPreferredWidth(150);
         tbLoan.getColumnModel().getColumn(4).setPreferredWidth(200);
         tbLoan.getColumnModel().getColumn(5).setPreferredWidth(200);
         tbLoan.getColumnModel().getColumn(6).setPreferredWidth(100);
+    }
+    
+    private String convertDate(Date date) {
+        SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
+        return fm.format(date);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
