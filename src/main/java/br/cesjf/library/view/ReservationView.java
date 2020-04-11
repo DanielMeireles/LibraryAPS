@@ -22,7 +22,7 @@ public class ReservationView extends javax.swing.JFrame {
         initComponents();
         reservationController = new ReservationController();
         this.fillUsers();
-        btLoan.setEnabled(false);
+        btLoan.setVisible(false);
     }
     
     public ReservationView(Reservation reservation) {
@@ -52,9 +52,9 @@ public class ReservationView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         taNoteCancellation = new javax.swing.JTextArea();
         tfReservationDate = new javax.swing.JFormattedTextField();
+        btLoan = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btReservation = new javax.swing.JButton();
-        btLoan = new javax.swing.JButton();
         btClear = new javax.swing.JButton();
         btExit = new javax.swing.JButton();
 
@@ -116,6 +116,15 @@ public class ReservationView extends javax.swing.JFrame {
             }
         });
 
+        btLoan.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btLoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mark_icon.png"))); // NOI18N
+        btLoan.setText("Emprestar");
+        btLoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLoanActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -130,7 +139,9 @@ public class ReservationView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tfExpectedReturnDate, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(tfReservationDate)))
+                            .addComponent(tfReservationDate))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btLoan))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbUser)
@@ -142,17 +153,20 @@ public class ReservationView extends javax.swing.JFrame {
                             .addComponent(cbCanceled)
                             .addComponent(cbCopy, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbUser, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbReservationDate)
-                    .addComponent(tfReservationDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbReservationDate)
+                            .addComponent(tfReservationDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btLoan))
+                .addGap(8, 8, 8)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfExpectedReturnDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbExpectedReturnDate))
@@ -186,15 +200,6 @@ public class ReservationView extends javax.swing.JFrame {
             }
         });
 
-        btLoan.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btLoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mark_icon.png"))); // NOI18N
-        btLoan.setText("Emprestar");
-        btLoan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btLoanActionPerformed(evt);
-            }
-        });
-
         btClear.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clear_icon.png"))); // NOI18N
         btClear.setText("Limpar");
@@ -222,19 +227,18 @@ public class ReservationView extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(btReservation)
-                .addGap(0, 0, 0)
-                .addComponent(btLoan)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btClear)
-                .addGap(0, 0, 0)
-                .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btReservation)
-            .addComponent(btLoan)
-            .addComponent(btClear)
-            .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(btReservation)
+                .addComponent(btClear)
+                .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout LoanPanelLayout = new javax.swing.GroupLayout(LoanPanel);
@@ -243,12 +247,13 @@ public class ReservationView extends javax.swing.JFrame {
             LoanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LoanPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(LoanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(LoanPanelLayout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(LoanPanelLayout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(110, Short.MAX_VALUE))
         );
         LoanPanelLayout.setVerticalGroup(
             LoanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,7 +328,7 @@ public class ReservationView extends javax.swing.JFrame {
         if(!reservationController.getReservation().getId().equals(null)) {
             reservationController.generateLoan();
             JOptionPane.showMessageDialog(null, "Empréstimo realizado com sucesso!", "Empréstimo realizado com sucesso", JOptionPane.INFORMATION_MESSAGE);
-            btLoan.setEnabled(false);
+            btLoan.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(null, "Não foi possível concluir o empréstimo!", "Não foi possível concluir o empréstimo", JOptionPane.WARNING_MESSAGE);
         }
@@ -394,9 +399,9 @@ public class ReservationView extends javax.swing.JFrame {
         cbCanceled.setSelected(reservation.getCanceled());
         taNoteCancellation.setText(reservation.getNoteCancellation());
         if(reservationController.getReservation().getIdLoan() == null) {
-            btLoan.setEnabled(true);
+            btLoan.setVisible(true);
         } else {
-            btLoan.setEnabled(false);
+            btLoan.setVisible(false);
         }
         
     }
