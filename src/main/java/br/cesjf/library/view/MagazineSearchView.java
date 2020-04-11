@@ -150,20 +150,7 @@ public class MagazineSearchView extends javax.swing.JFrame {
     }//GEN-LAST:event_btExitActionPerformed
 
     private void btEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditActionPerformed
-        int row = tbMagazine.getSelectedRow();
-        Magazine magazine = new Magazine();
-
-        magazineController.findById(Long.parseLong(tbMagazine.getModel().getValueAt(row, 0).toString()));
-        for(Magazine m: magazineController.getMagazines()) {
-            magazine = m;
-        }
-        new MagazineView(magazine).setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btEditActionPerformed
-
-    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
-        int option = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a revista?", "Atenção", JOptionPane.YES_NO_OPTION);
-        if(option == JOptionPane.YES_OPTION){
+        try{
             int row = tbMagazine.getSelectedRow();
             Magazine magazine = new Magazine();
 
@@ -171,13 +158,36 @@ public class MagazineSearchView extends javax.swing.JFrame {
             for(Magazine m: magazineController.getMagazines()) {
                 magazine = m;
             }
+            new MagazineView(magazine).setVisible(true);
+            this.dispose();
+        }catch(ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Selecione um item!", "Atenção", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btEditActionPerformed
 
-            magazineController.setMagazine(magazine);
-            magazineController.delete();
+    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
+        try{
+            int row = tbMagazine.getSelectedRow();
+            Magazine magazine = new Magazine();
 
-            this.createTable();
+            magazineController.findById(Long.parseLong(tbMagazine.getModel().getValueAt(row, 0).toString()));
+            
+            int option = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a revista?", "Atenção", JOptionPane.YES_NO_OPTION);
+            if(option == JOptionPane.YES_OPTION){
+                
+                for(Magazine m: magazineController.getMagazines()) {
+                    magazine = m;
+                }
 
-            JOptionPane.showMessageDialog(null, "Revista apagada com sucesso!", "Revista apagada com sucesso", JOptionPane.INFORMATION_MESSAGE);
+                magazineController.setMagazine(magazine);
+                magazineController.delete();
+
+                this.createTable();
+
+                JOptionPane.showMessageDialog(null, "Revista apagada com sucesso!", "Revista apagada com sucesso", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }catch(ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Selecione um item!", "Atenção", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btDeleteActionPerformed
 

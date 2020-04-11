@@ -149,20 +149,7 @@ public class CopySearchView extends javax.swing.JFrame {
     }//GEN-LAST:event_btExitActionPerformed
 
     private void btEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditActionPerformed
-        int row = tbCopy.getSelectedRow();
-        Copy copy = new Copy();
-
-        copyController.findById(Long.parseLong(tbCopy.getModel().getValueAt(row, 0).toString()));
-        for(Copy c: copyController.getCopies()) {
-            copy = c;
-        }
-        new CopyView(copy).setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btEditActionPerformed
-
-    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
-        int option = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar o exemplar?", "Atenção", JOptionPane.YES_NO_OPTION);
-        if(option == JOptionPane.YES_OPTION){
+        try{
             int row = tbCopy.getSelectedRow();
             Copy copy = new Copy();
 
@@ -170,13 +157,36 @@ public class CopySearchView extends javax.swing.JFrame {
             for(Copy c: copyController.getCopies()) {
                 copy = c;
             }
+            new CopyView(copy).setVisible(true);
+            this.dispose();
+        }catch(ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Selecione um item!", "Atenção", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btEditActionPerformed
 
-            copyController.setCopy(copy);
-            copyController.delete();
+    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
+        try{
+            int row = tbCopy.getSelectedRow();
+            Copy copy = new Copy();
 
-            this.createTable();
+            copyController.findById(Long.parseLong(tbCopy.getModel().getValueAt(row, 0).toString()));
+            
+            int option = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar o exemplar?", "Atenção", JOptionPane.YES_NO_OPTION);
+            if(option == JOptionPane.YES_OPTION){
+                
+                for(Copy c: copyController.getCopies()) {
+                    copy = c;
+                }
 
-            JOptionPane.showMessageDialog(null, "Exemplar apagado com sucesso!", "Exemplar apagado com sucesso", JOptionPane.INFORMATION_MESSAGE);
+                copyController.setCopy(copy);
+                copyController.delete();
+
+                this.createTable();
+
+                JOptionPane.showMessageDialog(null, "Exemplar apagado com sucesso!", "Exemplar apagado com sucesso", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }catch(ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Selecione um item!", "Atenção", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btDeleteActionPerformed
 

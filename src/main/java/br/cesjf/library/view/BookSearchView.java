@@ -149,20 +149,7 @@ public class BookSearchView extends javax.swing.JFrame {
     }//GEN-LAST:event_btExitActionPerformed
 
     private void btEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditActionPerformed
-        int row = tbBook.getSelectedRow();
-        Book book = new Book();
-
-        bookController.findById(Long.parseLong(tbBook.getModel().getValueAt(row, 0).toString()));
-        for(Book b: bookController.getBooks()) {
-            book = b;
-        }
-        new BookView(book).setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btEditActionPerformed
-
-    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
-        int option = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar o livro?", "Atenção", JOptionPane.YES_NO_OPTION);
-        if(option == JOptionPane.YES_OPTION){
+        try{
             int row = tbBook.getSelectedRow();
             Book book = new Book();
 
@@ -170,13 +157,36 @@ public class BookSearchView extends javax.swing.JFrame {
             for(Book b: bookController.getBooks()) {
                 book = b;
             }
+            new BookView(book).setVisible(true);
+            this.dispose();
+        }catch(ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Selecione um item!", "Atenção", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btEditActionPerformed
 
-            bookController.setBook(book);
-            bookController.delete();
+    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
+        try{
+            int row = tbBook.getSelectedRow();
+            Book book = new Book();
 
-            this.createTable();
+            bookController.findById(Long.parseLong(tbBook.getModel().getValueAt(row, 0).toString()));
+            
+            int option = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar o livro?", "Atenção", JOptionPane.YES_NO_OPTION);
+            if(option == JOptionPane.YES_OPTION){
+                
+                for(Book b: bookController.getBooks()) {
+                    book = b;
+                }
 
-            JOptionPane.showMessageDialog(null, "Livro apagado com sucesso!", "Livro apagado com sucesso", JOptionPane.INFORMATION_MESSAGE);
+                bookController.setBook(book);
+                bookController.delete();
+
+                this.createTable();
+
+                JOptionPane.showMessageDialog(null, "Livro apagado com sucesso!", "Livro apagado com sucesso", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }catch(ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Selecione um item!", "Atenção", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btDeleteActionPerformed
 

@@ -149,20 +149,7 @@ public class PublisherSearchView extends javax.swing.JFrame {
     }//GEN-LAST:event_btExitActionPerformed
 
     private void btEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditActionPerformed
-        int row = tbPublisher.getSelectedRow();
-        Publisher publisher = new Publisher();
-
-        publisherController.findById(Long.parseLong(tbPublisher.getModel().getValueAt(row, 0).toString()));
-        for(Publisher p: publisherController.getPublishers()) {
-            publisher = p;
-        }
-        new PublisherView(publisher).setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btEditActionPerformed
-
-    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
-        int option = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a editora?", "Atenção", JOptionPane.YES_NO_OPTION);
-        if(option == JOptionPane.YES_OPTION){
+        try{
             int row = tbPublisher.getSelectedRow();
             Publisher publisher = new Publisher();
 
@@ -170,13 +157,36 @@ public class PublisherSearchView extends javax.swing.JFrame {
             for(Publisher p: publisherController.getPublishers()) {
                 publisher = p;
             }
+            new PublisherView(publisher).setVisible(true);
+            this.dispose();
+        }catch(ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Selecione um item!", "Atenção", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btEditActionPerformed
 
-            publisherController.setPublisher(publisher);
-            publisherController.delete();
+    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
+        try{
+            int row = tbPublisher.getSelectedRow();
+            Publisher publisher = new Publisher();
 
-            this.createTable();
+            publisherController.findById(Long.parseLong(tbPublisher.getModel().getValueAt(row, 0).toString()));
             
-            JOptionPane.showMessageDialog(null, "Editora apagada com sucesso!", "Editora apagada com sucesso", JOptionPane.INFORMATION_MESSAGE);
+            int option = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a editora?", "Atenção", JOptionPane.YES_NO_OPTION);
+            if(option == JOptionPane.YES_OPTION){
+                
+                for(Publisher p: publisherController.getPublishers()) {
+                    publisher = p;
+                }
+
+                publisherController.setPublisher(publisher);
+                publisherController.delete();
+
+                this.createTable();
+
+                JOptionPane.showMessageDialog(null, "Editora apagada com sucesso!", "Editora apagada com sucesso", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }catch(ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Selecione um item!", "Atenção", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btDeleteActionPerformed
 

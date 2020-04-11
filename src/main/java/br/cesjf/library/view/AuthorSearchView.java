@@ -145,20 +145,7 @@ public class AuthorSearchView extends javax.swing.JFrame {
     }//GEN-LAST:event_btExitActionPerformed
 
     private void btEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditActionPerformed
-        int row = tbAuthor.getSelectedRow();
-        Author author = new Author();
-        
-        authorController.findById(Long.parseLong(tbAuthor.getModel().getValueAt(row, 0).toString()));
-        for(Author a: authorController.getAuthors()) {
-            author = a;
-        }
-        new AuthorView(author).setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btEditActionPerformed
-
-    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
-        int option = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar o autor?", "Atenção", JOptionPane.YES_NO_OPTION);
-        if(option == JOptionPane.YES_OPTION){
+        try{
             int row = tbAuthor.getSelectedRow();
             Author author = new Author();
 
@@ -166,13 +153,36 @@ public class AuthorSearchView extends javax.swing.JFrame {
             for(Author a: authorController.getAuthors()) {
                 author = a;
             }
+            new AuthorView(author).setVisible(true);
+            this.dispose();
+        }catch(ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Selecione um item!", "Atenção", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btEditActionPerformed
 
-            authorController.setAuthor(author);
-            authorController.delete();
+    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
+        try{
+            int row = tbAuthor.getSelectedRow();
+            Author author = new Author();
 
-            this.createTable();
+            authorController.findById(Long.parseLong(tbAuthor.getModel().getValueAt(row, 0).toString()));
             
-            JOptionPane.showMessageDialog(null, "Autor apagado com sucesso!", "Autor apagado com sucesso", JOptionPane.INFORMATION_MESSAGE);
+            int option = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar o autor?", "Atenção", JOptionPane.YES_NO_OPTION);
+            if(option == JOptionPane.YES_OPTION){
+                
+                for(Author a: authorController.getAuthors()) {
+                    author = a;
+                }
+
+                authorController.setAuthor(author);
+                authorController.delete();
+
+                this.createTable();
+
+                JOptionPane.showMessageDialog(null, "Autor apagado com sucesso!", "Autor apagado com sucesso", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }catch(ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Selecione um item!", "Atenção", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btDeleteActionPerformed
 

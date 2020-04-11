@@ -151,20 +151,7 @@ public class ReservationSearchView extends javax.swing.JFrame {
     }//GEN-LAST:event_btExitActionPerformed
 
     private void btEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditActionPerformed
-        int row = tbReservation.getSelectedRow();
-        Reservation reservation = new Reservation();
-
-        reservationController.findById(Long.parseLong(tbReservation.getModel().getValueAt(row, 0).toString()));
-        for(Reservation r: reservationController.getReservations()) {
-            reservation = r;
-        }
-        new ReservationView(reservation).setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btEditActionPerformed
-
-    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
-        int option = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a reserva?", "Atenção", JOptionPane.YES_NO_OPTION);
-        if(option == JOptionPane.YES_OPTION){
+        try{
             int row = tbReservation.getSelectedRow();
             Reservation reservation = new Reservation();
 
@@ -172,13 +159,36 @@ public class ReservationSearchView extends javax.swing.JFrame {
             for(Reservation r: reservationController.getReservations()) {
                 reservation = r;
             }
+            new ReservationView(reservation).setVisible(true);
+            this.dispose();
+        }catch(ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Selecione um item!", "Atenção", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btEditActionPerformed
 
-            reservationController.setReservation(reservation);
-            reservationController.delete();
+    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
+        try {
+            int row = tbReservation.getSelectedRow();
+            Reservation reservation = new Reservation();
 
-            this.createTable();
+            reservationController.findById(Long.parseLong(tbReservation.getModel().getValueAt(row, 0).toString()));
+                
+            int option = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a reserva?", "Atenção", JOptionPane.YES_NO_OPTION);
+            if(option == JOptionPane.YES_OPTION){
+              
+                for(Reservation r: reservationController.getReservations()) {
+                    reservation = r;
+                }
 
-            JOptionPane.showMessageDialog(null, "Reserva apagada com sucesso!", "Reserva apagada com sucesso", JOptionPane.INFORMATION_MESSAGE);
+                reservationController.setReservation(reservation);
+                reservationController.delete();
+
+                this.createTable();
+
+                JOptionPane.showMessageDialog(null, "Reserva apagada com sucesso!", "Reserva apagada com sucesso", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }catch(ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Selecione um item!", "Atenção", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btDeleteActionPerformed
 

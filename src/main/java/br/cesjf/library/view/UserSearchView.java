@@ -149,20 +149,7 @@ public class UserSearchView extends javax.swing.JFrame {
     }//GEN-LAST:event_btExitActionPerformed
 
     private void btEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditActionPerformed
-        int row = tbUser.getSelectedRow();
-        User user = new User();
-
-        userController.findById(Long.parseLong(tbUser.getModel().getValueAt(row, 0).toString()));
-        for(User u: userController.getUsers()) {
-            user = u;
-        }
-        new UserView(user).setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btEditActionPerformed
-
-    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
-        int option = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar o usuário?", "Atenção", JOptionPane.YES_NO_OPTION);
-        if(option == JOptionPane.YES_OPTION){
+        try{
             int row = tbUser.getSelectedRow();
             User user = new User();
 
@@ -170,13 +157,36 @@ public class UserSearchView extends javax.swing.JFrame {
             for(User u: userController.getUsers()) {
                 user = u;
             }
+            new UserView(user).setVisible(true);
+            this.dispose();
+        }catch(ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Selecione um item!", "Atenção", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btEditActionPerformed
 
-            userController.setUser(user);
-            userController.delete();
+    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
+        try{
+            int row = tbUser.getSelectedRow();
+            User user = new User();
 
-            this.createTable();
+            userController.findById(Long.parseLong(tbUser.getModel().getValueAt(row, 0).toString()));
+                
+            int option = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar o usuário?", "Atenção", JOptionPane.YES_NO_OPTION);
+            if(option == JOptionPane.YES_OPTION){
+                
+                for(User u: userController.getUsers()) {
+                    user = u;
+                }
 
-            JOptionPane.showMessageDialog(null, "Usuário apagado com sucesso!", "Usuário apagado com sucesso", JOptionPane.INFORMATION_MESSAGE);
+                userController.setUser(user);
+                userController.delete();
+
+                this.createTable();
+
+                JOptionPane.showMessageDialog(null, "Usuário apagado com sucesso!", "Usuário apagado com sucesso", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }catch(ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Selecione um item!", "Atenção", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btDeleteActionPerformed
 

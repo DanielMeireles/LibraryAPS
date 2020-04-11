@@ -169,20 +169,7 @@ public class SubjectSearchView extends javax.swing.JFrame {
     }//GEN-LAST:event_btExitActionPerformed
 
     private void btEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditActionPerformed
-        int row = tbSubject.getSelectedRow();
-        Subject subject = new Subject();
-
-        subjectController.findById(Long.parseLong(tbSubject.getModel().getValueAt(row, 0).toString()));
-        for(Subject s: subjectController.getSubjects()) {
-            subject = s;
-        }
-        new SubjectView(subject).setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btEditActionPerformed
-
-    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
-        int option = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar o assunto?", "Atenção", JOptionPane.YES_NO_OPTION);
-        if(option == JOptionPane.YES_OPTION){
+        try{
             int row = tbSubject.getSelectedRow();
             Subject subject = new Subject();
 
@@ -190,13 +177,36 @@ public class SubjectSearchView extends javax.swing.JFrame {
             for(Subject s: subjectController.getSubjects()) {
                 subject = s;
             }
+            new SubjectView(subject).setVisible(true);
+            this.dispose();
+        }catch(ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Selecione um item!", "Atenção", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btEditActionPerformed
 
-            subjectController.setSubject(subject);
-            subjectController.delete();
+    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
+        try{
+            int row = tbSubject.getSelectedRow();
+            Subject subject = new Subject();
 
-            this.createTable();
+            subjectController.findById(Long.parseLong(tbSubject.getModel().getValueAt(row, 0).toString()));
+            
+            int option = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar o assunto?", "Atenção", JOptionPane.YES_NO_OPTION);
+            if(option == JOptionPane.YES_OPTION){
+                
+                for(Subject s: subjectController.getSubjects()) {
+                    subject = s;
+                }
 
-            JOptionPane.showMessageDialog(null, "Assunto apagado com sucesso!", "Assunto apagado com sucesso", JOptionPane.INFORMATION_MESSAGE);
+                subjectController.setSubject(subject);
+                subjectController.delete();
+
+                this.createTable();
+
+                JOptionPane.showMessageDialog(null, "Assunto apagado com sucesso!", "Assunto apagado com sucesso", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }catch(ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Selecione um item!", "Atenção", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btDeleteActionPerformed
 
