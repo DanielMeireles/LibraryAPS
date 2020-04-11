@@ -164,7 +164,7 @@ public class SubjectView extends javax.swing.JFrame {
     }//GEN-LAST:event_btClearActionPerformed
 
     private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed
-        if(tfSubject.getText().isEmpty() || tfSubject.getText().trim() == null) {
+        if(tfSubject.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Assunto não preenchido!", "Assunto não preenchido", JOptionPane.WARNING_MESSAGE);
         } else {
             Subject subject;

@@ -231,9 +231,9 @@ public class MagazineView extends javax.swing.JFrame {
     }//GEN-LAST:event_btExitActionPerformed
 
     private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed
-        if(tfTitle.getText().isEmpty() || tfTitle.getText().trim() == null) {
+        if(tfTitle.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Título não preenchido!", "Título não preenchido", JOptionPane.WARNING_MESSAGE);
-        } else if(ftEdition.getText().isEmpty() || ftEdition.getText().trim() == null) {
+        } else if(ftEdition.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Edição não preenchida!", "Edição não preenchida", JOptionPane.WARNING_MESSAGE);
         } else if(cbYear.getSelectedIndex() < 0) {
             JOptionPane.showMessageDialog(null, "Não foi selecionado um ano!", "Não foi selecionado um ano", JOptionPane.WARNING_MESSAGE);

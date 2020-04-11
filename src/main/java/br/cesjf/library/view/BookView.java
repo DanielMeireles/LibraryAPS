@@ -245,15 +245,15 @@ public class BookView extends javax.swing.JFrame {
     }//GEN-LAST:event_btExitActionPerformed
 
     private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed
-        if(tfTitle.getText().isEmpty() || tfTitle.getText().trim() == null) {
+        if(tfTitle.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Título não preenchido!", "Título não preenchido", JOptionPane.WARNING_MESSAGE);
-        } else if(ftEdition.getText().isEmpty() || ftEdition.getText().trim() == null) {
+        } else if(ftEdition.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Edição não preenchida!", "Edição não preenchida", JOptionPane.WARNING_MESSAGE);
         } else if(cbYear.getSelectedIndex() < 0) {
             JOptionPane.showMessageDialog(null, "Não foi selecionado um ano!", "Não foi selecionado um ano", JOptionPane.WARNING_MESSAGE);
         } else if(cbPublisher.getSelectedIndex() < 0) {
             JOptionPane.showMessageDialog(null, "Não foi selecionada uma editora!", "Não foi selecionada uma editora", JOptionPane.WARNING_MESSAGE);
-        } else if(tfIsbn.getText().isEmpty() || tfIsbn.getText().trim() == null) {
+        } else if(tfIsbn.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "ISBN não preenchido!", "ISBN não preenchido", JOptionPane.WARNING_MESSAGE);
         } else if(cbAuthors.getSelectedIndex() < 0) {
             JOptionPane.showMessageDialog(null, "Não foi selecionado um autor!", "Não foi selecionado um autor", JOptionPane.WARNING_MESSAGE);

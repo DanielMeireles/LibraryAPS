@@ -197,15 +197,15 @@ public class UserView extends javax.swing.JFrame {
     }//GEN-LAST:event_btExitActionPerformed
 
     private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed
-        if(tfName.getText().isEmpty() || tfName.getText().trim() == null) {
+        if(tfName.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nome não preenchido!", "Nome não preenchido", JOptionPane.WARNING_MESSAGE);
-        } else if(tfEmail.getText().isEmpty() || tfEmail.getText().trim() == null) {
+        } else if(tfEmail.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Email não preenchido!", "Email não preenchido", JOptionPane.WARNING_MESSAGE);
         } else if(cbType.getSelectedIndex() < 0) {
             JOptionPane.showMessageDialog(null, "Não foi selecionado um tipo!", "Não foi selecionado um tipo", JOptionPane.WARNING_MESSAGE);
-        } else if(tfUser.getText().isEmpty() || tfUser.getText().trim() == null) {
+        } else if(tfUser.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Usuário não preenchido!", "Usuário não preenchido", JOptionPane.WARNING_MESSAGE);
-        } else if(new String(jpPassword.getPassword()).isEmpty() || new String(jpPassword.getPassword()).trim() == null){
+        } else if(new String(jpPassword.getPassword()).trim().isEmpty()){
             JOptionPane.showMessageDialog(null, "Senha não preenchida!", "Senha não preenchida", JOptionPane.WARNING_MESSAGE);
         } else {
             User user = new User();

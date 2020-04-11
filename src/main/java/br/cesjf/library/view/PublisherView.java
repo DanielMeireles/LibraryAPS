@@ -145,7 +145,7 @@ public class PublisherView extends javax.swing.JFrame {
     }//GEN-LAST:event_btExitActionPerformed
 
     private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed
-        if(tfName.getText().isEmpty() || tfName.getText().trim() == null) {
+        if(tfName.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nome não preenchido!", "Nome não preenchido", JOptionPane.WARNING_MESSAGE);
         } else {
             Publisher publisher;
