@@ -233,7 +233,11 @@ public class ReservationSearchView extends javax.swing.JFrame {
         
         reservationController.findAll();
         for (Reservation r: reservationController.getReservations()) {
-            model.addRow(new Object[]{r.getId(), convertDate(r.getReservationDate()), convertDate(r.getExpectedReturnDate()), r.getIdCopy(), r.getIdCopy().getIdBook().getTitle(), r.getIdUser()});
+            if(r.getIdCopy().getIdBook() != null) {
+                model.addRow(new Object[]{r.getId(), convertDate(r.getReservationDate()), convertDate(r.getExpectedReturnDate()), r.getIdCopy(), r.getIdCopy().getIdBook().getTitle(), r.getIdUser()});
+            } else {
+                model.addRow(new Object[]{r.getId(), convertDate(r.getReservationDate()), convertDate(r.getExpectedReturnDate()), r.getIdCopy(), r.getIdCopy().getIdMagazine().getTitle(), r.getIdUser()});
+            }
         }
         
         tbReservation.setModel(model);

@@ -53,7 +53,6 @@ public class ReservationView extends javax.swing.JFrame {
         taNoteCancellation = new javax.swing.JTextArea();
         tfReservationDate = new javax.swing.JFormattedTextField();
         btLoan = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
         btReservation = new javax.swing.JButton();
         btClear = new javax.swing.JButton();
         btExit = new javax.swing.JButton();
@@ -189,8 +188,6 @@ public class ReservationView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
         btReservation.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btReservation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mark_icon.png"))); // NOI18N
         btReservation.setText("Reservar");
@@ -221,26 +218,6 @@ public class ReservationView extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(btReservation)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btClear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(btReservation)
-                .addComponent(btClear)
-                .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
         javax.swing.GroupLayout LoanPanelLayout = new javax.swing.GroupLayout(LoanPanel);
         LoanPanel.setLayout(LoanPanelLayout);
         LoanPanelLayout.setHorizontalGroup(
@@ -250,19 +227,25 @@ public class ReservationView extends javax.swing.JFrame {
                 .addGroup(LoanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(LoanPanelLayout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(144, 144, 144)
+                        .addComponent(btReservation)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btClear)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         LoanPanelLayout.setVerticalGroup(
             LoanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LoanPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(LoanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btReservation)
+                    .addComponent(btClear)
+                    .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         getContentPane().add(LoanPanel, java.awt.BorderLayout.CENTER);
@@ -270,51 +253,6 @@ public class ReservationView extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExitActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btExitActionPerformed
-
-    private void btReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReservationActionPerformed
-        if(tfReservationDate.getText().replace("/", "").trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Data da Reserva não preenchida!", "Data da Reserva não preenchida", JOptionPane.WARNING_MESSAGE);
-        } else if(cbCopy.getSelectedIndex() < 0) {
-            JOptionPane.showMessageDialog(null, "Não foi selecionado um exemplar!", "Não foi selecionado um exemplar", JOptionPane.WARNING_MESSAGE);
-        } else if(cbUser.getSelectedIndex() < 0) {
-            JOptionPane.showMessageDialog(null, "Não foi selecionado um usuário!", "Não foi selecionado um usuário", JOptionPane.WARNING_MESSAGE);
-        } else {
-            Date ReservationDate = new Date();
-            try {
-                ReservationDate = new SimpleDateFormat("dd/MM/yyyy").parse(tfReservationDate.getText());
-            } catch (ParseException ex) {
-                Logger.getLogger(ReservationView.class.getName()).log(Level.SEVERE, "Falha ao converter String para Date", ex);
-            }
-            Reservation reservation;
-            reservation = Reservation.Builder
-                                     .newInstance()
-                                     .setId(reservationController.getReservation().getId())
-                                     .setReservationDate(ReservationDate)
-                                     .setIdCopy((Copy) cbCopy.getModel().getSelectedItem())
-                                     .setIdUser((User) cbUser.getModel().getSelectedItem())
-                                     .setCanceled(cbCanceled.isSelected())
-                                     .setNoteCancellation(taNoteCancellation.getText())
-                                     .build();
-            reservationController.setReservation(reservation);
-            reservationController.save();
-            tfExpectedReturnDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(reservation.getExpectedReturnDate()));
-            JOptionPane.showMessageDialog(null, "Reserva salvo com sucesso!", "Reserva salvo com sucesso", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_btReservationActionPerformed
-
-    private void btClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearActionPerformed
-        tfReservationDate.setText("");
-        tfExpectedReturnDate.setText("");
-        cbCopy.setSelectedIndex(-1);
-        cbUser.setSelectedIndex(-1);
-        cbCanceled.setSelected(false);
-        taNoteCancellation.setText("");
-        tfReservationDate.requestFocus();
-    }//GEN-LAST:event_btClearActionPerformed
 
     private void cbCanceledStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cbCanceledStateChanged
         if(cbCanceled.isSelected()) {
@@ -347,6 +285,51 @@ public class ReservationView extends javax.swing.JFrame {
             }
         } catch (ParseException ex) {}
     }//GEN-LAST:event_tfReservationDateFocusLost
+
+    private void btExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExitActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btExitActionPerformed
+
+    private void btClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearActionPerformed
+        tfReservationDate.setText("");
+        tfExpectedReturnDate.setText("");
+        cbCopy.setSelectedIndex(-1);
+        cbUser.setSelectedIndex(-1);
+        cbCanceled.setSelected(false);
+        taNoteCancellation.setText("");
+        tfReservationDate.requestFocus();
+    }//GEN-LAST:event_btClearActionPerformed
+
+    private void btReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReservationActionPerformed
+        if(tfReservationDate.getText().replace("/", "").trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Data da Reserva não preenchida!", "Data da Reserva não preenchida", JOptionPane.WARNING_MESSAGE);
+        } else if(cbCopy.getSelectedIndex() < 0) {
+            JOptionPane.showMessageDialog(null, "Não foi selecionado um exemplar!", "Não foi selecionado um exemplar", JOptionPane.WARNING_MESSAGE);
+        } else if(cbUser.getSelectedIndex() < 0) {
+            JOptionPane.showMessageDialog(null, "Não foi selecionado um usuário!", "Não foi selecionado um usuário", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Date ReservationDate = new Date();
+            try {
+                ReservationDate = new SimpleDateFormat("dd/MM/yyyy").parse(tfReservationDate.getText());
+            } catch (ParseException ex) {
+                Logger.getLogger(ReservationView.class.getName()).log(Level.SEVERE, "Falha ao converter String para Date", ex);
+            }
+            Reservation reservation;
+            reservation = Reservation.Builder
+            .newInstance()
+            .setId(reservationController.getReservation().getId())
+            .setReservationDate(ReservationDate)
+            .setIdCopy((Copy) cbCopy.getModel().getSelectedItem())
+            .setIdUser((User) cbUser.getModel().getSelectedItem())
+            .setCanceled(cbCanceled.isSelected())
+            .setNoteCancellation(taNoteCancellation.getText())
+            .build();
+            reservationController.setReservation(reservation);
+            reservationController.save();
+            tfExpectedReturnDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(reservation.getExpectedReturnDate()));
+            JOptionPane.showMessageDialog(null, "Reserva salvo com sucesso!", "Reserva salvo com sucesso", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btReservationActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -415,7 +398,6 @@ public class ReservationView extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbCanceled;
     private javax.swing.JComboBox<String> cbCopy;
     private javax.swing.JComboBox<String> cbUser;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbCanceled;

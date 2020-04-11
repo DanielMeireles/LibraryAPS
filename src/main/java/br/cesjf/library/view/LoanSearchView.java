@@ -234,7 +234,11 @@ public class LoanSearchView extends javax.swing.JFrame {
         
         loanController.findAll();
         for (Loan l: loanController.getLoans()) {
-            model.addRow(new Object[]{l.getId(), convertDate(l.getLoanDate()), convertDate(l.getExpectedReturnDate()), convertDate(l.getReturnDate()), l.getIdCopy(), l.getIdCopy().getIdBook().getTitle(), l.getIdUser()});
+            if(l.getIdCopy().getIdBook() != null) {
+                model.addRow(new Object[]{l.getId(), convertDate(l.getLoanDate()), convertDate(l.getExpectedReturnDate()), convertDate(l.getReturnDate()), l.getIdCopy(), l.getIdCopy().getIdBook().getTitle(), l.getIdUser()});
+            } else {
+                model.addRow(new Object[]{l.getId(), convertDate(l.getLoanDate()), convertDate(l.getExpectedReturnDate()), convertDate(l.getReturnDate()), l.getIdCopy(), l.getIdCopy().getIdMagazine().getTitle(), l.getIdUser()});
+            }
         }
         
         tbLoan.setModel(model);
@@ -249,8 +253,12 @@ public class LoanSearchView extends javax.swing.JFrame {
     }
     
     private String convertDate(Date date) {
-        SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
-        return fm.format(date);
+        if(date != null) {
+            SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
+            return fm.format(date);
+        } else {
+            return "";
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
