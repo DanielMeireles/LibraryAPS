@@ -437,8 +437,8 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_btLoanActionPerformed
 
     private void btExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExitActionPerformed
-        int opcao = JOptionPane.showConfirmDialog(null, "Deseja realmente sair da aplicação?", "Encerrar", JOptionPane.YES_NO_OPTION);
-        if(opcao == JOptionPane.YES_OPTION){
+        Object[] options = {"Sim", "Não"};
+        if(JOptionPane.showOptionDialog(null, "Deseja realmente sair da aplicação?", "Encerrar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == JOptionPane.YES_OPTION){
             System.exit(0);
         }
     }//GEN-LAST:event_btExitActionPerformed
