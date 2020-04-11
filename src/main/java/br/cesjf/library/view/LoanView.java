@@ -263,6 +263,7 @@ public class LoanView extends javax.swing.JFrame {
         tfReturnDate.setText("");
         cbCopy.setSelectedIndex(-1);
         cbUser.setSelectedIndex(-1);
+        tfLoanDate.requestFocus();
     }//GEN-LAST:event_btClearActionPerformed
 
     private void tfLoanDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfLoanDateFocusLost

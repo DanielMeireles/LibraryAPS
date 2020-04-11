@@ -150,6 +150,7 @@ public class AuthorView extends javax.swing.JFrame {
 
     private void btClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearActionPerformed
         tfName.setText("");
+        tfName.requestFocus();
     }//GEN-LAST:event_btClearActionPerformed
 
     private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed

@@ -288,6 +288,7 @@ public class BookView extends javax.swing.JFrame {
         tfIsbn.setText("");
         cbAuthors.setSelectedIndex(-1);
         cbSubjects.setSelectedIndex(-1);
+        tfTitle.requestFocus();
     }//GEN-LAST:event_btClearActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

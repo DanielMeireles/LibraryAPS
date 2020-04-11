@@ -230,6 +230,7 @@ public class UserView extends javax.swing.JFrame {
         cbType.setSelectedIndex(-1);
         tfUser.setText("");
         jpPassword.setText("");
+        tfName.requestFocus();
     }//GEN-LAST:event_btClearActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

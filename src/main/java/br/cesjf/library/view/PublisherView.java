@@ -162,6 +162,7 @@ public class PublisherView extends javax.swing.JFrame {
 
     private void btClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearActionPerformed
         tfName.setText("");
+        tfName.requestFocus();
     }//GEN-LAST:event_btClearActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

@@ -290,6 +290,7 @@ public class ReservationView extends javax.swing.JFrame {
         cbUser.setSelectedIndex(-1);
         cbCanceled.setSelected(false);
         taNoteCancellation.setText("");
+        tfReservationDate.requestFocus();
     }//GEN-LAST:event_btClearActionPerformed
 
     private void cbCanceledStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cbCanceledStateChanged

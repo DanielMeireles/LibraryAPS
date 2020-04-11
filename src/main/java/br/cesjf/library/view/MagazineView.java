@@ -270,6 +270,7 @@ public class MagazineView extends javax.swing.JFrame {
         cbPublisher.setSelectedIndex(-1);
         cbAuthors.setSelectedIndex(-1);
         cbSubjects.setSelectedIndex(-1);
+        tfTitle.requestFocus();
     }//GEN-LAST:event_btClearActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

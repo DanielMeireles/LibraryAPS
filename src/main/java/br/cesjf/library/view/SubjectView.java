@@ -160,6 +160,7 @@ public class SubjectView extends javax.swing.JFrame {
 
     private void btClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearActionPerformed
         tfSubject.setText("");
+        tfSubject.requestFocus();
     }//GEN-LAST:event_btClearActionPerformed
 
     private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed
