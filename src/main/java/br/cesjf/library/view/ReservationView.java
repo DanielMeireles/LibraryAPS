@@ -22,6 +22,7 @@ public class ReservationView extends javax.swing.JFrame {
         initComponents();
         reservationController = new ReservationController();
         this.fillUsers();
+        btLoan.setEnabled(false);
     }
     
     public ReservationView(Reservation reservation) {
@@ -51,10 +52,11 @@ public class ReservationView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         taNoteCancellation = new javax.swing.JTextArea();
         tfReservationDate = new javax.swing.JFormattedTextField();
+        jPanel1 = new javax.swing.JPanel();
         btReservation = new javax.swing.JButton();
+        btLoan = new javax.swing.JButton();
         btClear = new javax.swing.JButton();
         btExit = new javax.swing.JButton();
-        btLoan = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Reserva");
@@ -140,7 +142,7 @@ public class ReservationView extends javax.swing.JFrame {
                             .addComponent(cbCanceled)
                             .addComponent(cbCopy, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbUser, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane1))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -173,12 +175,23 @@ public class ReservationView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         btReservation.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btReservation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mark_icon.png"))); // NOI18N
         btReservation.setText("Reservar");
         btReservation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btReservationActionPerformed(evt);
+            }
+        });
+
+        btLoan.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btLoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mark_icon.png"))); // NOI18N
+        btLoan.setText("Emprestar");
+        btLoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLoanActionPerformed(evt);
             }
         });
 
@@ -203,14 +216,26 @@ public class ReservationView extends javax.swing.JFrame {
             }
         });
 
-        btLoan.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btLoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mark_icon.png"))); // NOI18N
-        btLoan.setText("Emprestar");
-        btLoan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btLoanActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(btReservation)
+                .addGap(0, 0, 0)
+                .addComponent(btLoan)
+                .addGap(0, 0, 0)
+                .addComponent(btClear)
+                .addGap(0, 0, 0)
+                .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btReservation)
+            .addComponent(btLoan)
+            .addComponent(btClear)
+            .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         javax.swing.GroupLayout LoanPanelLayout = new javax.swing.GroupLayout(LoanPanel);
         LoanPanel.setLayout(LoanPanelLayout);
@@ -221,28 +246,18 @@ public class ReservationView extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(LoanPanelLayout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(btReservation)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btLoan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btClear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(82, 82, 82)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         LoanPanelLayout.setVerticalGroup(
             LoanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LoanPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(LoanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btClear)
-                    .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btReservation)
-                    .addComponent(btLoan))
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(LoanPanel, java.awt.BorderLayout.CENTER);
@@ -308,6 +323,7 @@ public class ReservationView extends javax.swing.JFrame {
         if(!reservationController.getReservation().getId().equals(null)) {
             reservationController.generateLoan();
             JOptionPane.showMessageDialog(null, "Empréstimo realizado com sucesso!", "Empréstimo realizado com sucesso", JOptionPane.INFORMATION_MESSAGE);
+            btLoan.setEnabled(false);
         } else {
             JOptionPane.showMessageDialog(null, "Não foi possível concluir o empréstimo!", "Não foi possível concluir o empréstimo", JOptionPane.WARNING_MESSAGE);
         }
@@ -377,6 +393,12 @@ public class ReservationView extends javax.swing.JFrame {
         cbUser.setSelectedItem(reservation.getIdUser());
         cbCanceled.setSelected(reservation.getCanceled());
         taNoteCancellation.setText(reservation.getNoteCancellation());
+        if(reservationController.getReservation().getIdLoan() == null) {
+            btLoan.setEnabled(true);
+        } else {
+            btLoan.setEnabled(false);
+        }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -388,6 +410,7 @@ public class ReservationView extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbCanceled;
     private javax.swing.JComboBox<String> cbCopy;
     private javax.swing.JComboBox<String> cbUser;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbCanceled;
