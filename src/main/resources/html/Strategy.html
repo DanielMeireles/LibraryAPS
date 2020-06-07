@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Strategy</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Strategy</h1>
+        <div>O Strategy é um padrão de projeto comportamental que permite que você defina uma família de algoritmos, coloque-os em classes separadas, e faça os objetos deles intercambiáveis.</div>
+        <br>
+        <div>Ele foi utilizado nas classes Model abaixo:</div>
+        <ul>
+            <li><b>IExpectedReturnDate</b> (Interface)</li>
+            <li><b>ExpectedReturnDateAdministrator</b> (Implementaçao para cálculo de data de devolução prevista para usuário de tipo Administrador)</li>
+            <li><b>ExpectedReturnDateEmployee</b> (Implementaçao para cálculo de data de devolução prevista para usuário de tipo Funcionário)</li>
+            <li><b>ExpectedReturnDateLibrarian</b> (Implementaçao para cálculo de data de devolução prevista para usuário de tipo Bibliotecário)</li>
+            <li><b>ExpectedReturnDateStudent</b> (Implementaçao para cálculo de data de devolução prevista para usuário de tipo Aluno)</li>
+            <li><b>ExpectedReturnDateTeacher</b> (Implementaçao para cálculo de data de devolução prevista para usuário de tipo Professor)</li>
+            <li><b>Reservation</b> (Uso do Strategy no método calculatesExpectedReturnDate)</li>
+            <li><b>Loan</b> (Uso do Strategy no método calculatesExpectedReturnDate)</li>
+        </ul>
+        <div>Exemplo de implementação:</div>
+        <br/>
+        <div>Interface:</div>
+        <br/>
+        <img src="../documentation/Strategy_1.png" alt="Interface" width=583 height=152>
+        <br/>
+        <div>Implementaçao para cálculo de data de devolução prevista para usuário de tipo Administrador:</div>
+        <br/>
+        <img src="../documentation/Strategy_2.png" alt="Implementaçao para cálculo de data de devolução prevista para usuário de tipo Administrador" width=630 height=646>
+        <br/>
+        <div>Implementaçao para cálculo de data de devolução prevista para usuário de tipo Funcionário:</div>
+        <br/>
+        <img src="../documentation/Strategy_3.png" alt="Implementaçao para cálculo de data de devolução prevista para usuário de tipo Funcionário" width=592 height=646>
+        <br/>
+        <div>Implementaçao para cálculo de data de devolução prevista para usuário de tipo Bibliotecário:</div>
+        <br/>
+        <img src="../documentation/Strategy_4.png" alt="Implementaçao para cálculo de data de devolução prevista para usuário de tipo Bibliotecário" width=602 height=646>
+        <br/>
+        <div>Implementaçao para cálculo de data de devolução prevista para usuário de tipo Aluno:</div>
+        <br/>
+        <img src="../documentation/Strategy_5.png" alt="Implementaçao para cálculo de data de devolução prevista para usuário de tipo Aluno" width=584 height=646>
+        <br/>
+        <div>Implementaçao para cálculo de data de devolução prevista para usuário de tipo Professor:</div>
+        <br/>
+        <img src="../documentation/Strategy_6.png" alt="Implementaçao para cálculo de data de devolução prevista para usuário de tipo Professor" width=586 height=645>
+        <br/>
+        <div>Exemplo de uso do Strategy:</div>
+        <br/>
+        <div>Uso do Strategy no método calculatesExpectedReturnDate na classe Reservation:</div>
+        <br/>
+        <img src="../documentation/Strategy_7.png" alt="Uso do Strategy no método calculatesExpectedReturnDate" width=718 height=466>
+        <br/>
+        <div>Uso do Strategy no método calculatesExpectedReturnDate na classe Loan:</div>
+        <br/>
+        <img src="../documentation/Strategy_8.png" alt="Uso do Strategy no método calculatesExpectedReturnDate" width=664 height=484>
+    </body>
+</html>

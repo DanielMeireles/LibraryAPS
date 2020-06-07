@@ -88,7 +88,7 @@
             <Component class="javax.swing.JTree" name="trMenu">
               <Properties>
                 <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
-                  <TreeModel code="Apresenta&#xe7;&#xe3;o&#xa;Documenta&#xe7;&#xe3;o&#xa; Diagrama de Classes&#xa; Diagrama de Banco de Dados&#xa;Padr&#xf5;es de Projeto&#xa; Builder&#xa; Factory Method&#xa; MVC&#xa; Singleton&#xa; "/>
+                  <TreeModel code="Apresenta&#xe7;&#xe3;o&#xa;Documenta&#xe7;&#xe3;o&#xa; Diagrama de Classes&#xa; Diagrama de Banco de Dados&#xa;Padr&#xf5;es de Projeto&#xa; Builder&#xa; Factory Method&#xa; MVC&#xa; Singleton&#xa; Strategy"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>

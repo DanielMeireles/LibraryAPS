@@ -55,6 +55,8 @@ public class AboutView extends javax.swing.JFrame {
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Singleton");
         treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Strategy");
+        treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         trMenu.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         trMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
