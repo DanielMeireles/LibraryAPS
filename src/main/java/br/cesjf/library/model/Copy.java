@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
         @NamedQuery(name = "Copy.findAll", query = "SELECT c FROM Copy c")
         , @NamedQuery(name = "Copy.findById", query = "SELECT c FROM Copy c WHERE c.id = :id")
         , @NamedQuery(name = "Copy.findByLoanable", query = "SELECT c FROM Copy c WHERE c.loanable = :loanable")
-        , @NamedQuery(name = "Copy.findByAvailableOnDate", query = "SELECT c FROM Copy c WHERE NOT EXISTS (SELECT l FROM Loan l WHERE l.idCopy = c.id AND :date BETWEEN l.loanDate AND COALESCE(l.returnDate, l.expectedReturnDate) AND l.id <> NVL(:loanId, 0)) AND NOT EXISTS (SELECT r FROM Reservation r WHERE r.idCopy = c.id AND :date BETWEEN r.reservationDate AND r.expectedReturnDate AND r.id <> COALESCE(:reservationId, 0) AND r.canceled = 0)")})
+        , @NamedQuery(name = "Copy.findByAvailableOnDate", query = "SELECT c FROM Copy c WHERE NOT EXISTS (SELECT l FROM Loan l WHERE l.idCopy = c.id AND :date BETWEEN l.loanDate AND COALESCE(l.returnDate, l.expectedReturnDate) AND l.id <> COALESCE(:loanId, 0)) AND NOT EXISTS (SELECT r FROM Reservation r WHERE r.idCopy = c.id AND :date BETWEEN r.reservationDate AND r.expectedReturnDate AND r.id <> COALESCE(:reservationId, 0) AND r.canceled = 0)")})
 public class Copy implements Serializable {
 
     private static final long serialVersionUID = 1L;
