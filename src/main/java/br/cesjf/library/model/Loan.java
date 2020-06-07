@@ -1,8 +1,6 @@
 package br.cesjf.library.model;
 
-import br.cesjf.library.enums.UserType;
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -64,7 +62,9 @@ public class Loan implements Serializable {
         this.returnDate = builder.returnDate;
         this.idCopy = builder.idCopy;
         this.idUser = builder.idUser;
-        this.calculatesExpectedReturnDate();
+        if(builder.idUser != null) {
+            this.calculatesExpectedReturnDate();
+        }
     }
 
     public static class Builder {
