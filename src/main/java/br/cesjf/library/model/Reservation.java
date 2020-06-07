@@ -200,28 +200,31 @@ public class Reservation implements Serializable {
     }
 
     public void calculatesExpectedReturnDate() {
-        Calendar c = Calendar.getInstance();
-        if(reservationDate != null){
-
-            c.setTime(reservationDate);
-
-            if(idCopy.getLoanable() && idUser.getType().equals(UserType.STUDENT)){
-                c.add(Calendar.DAY_OF_MONTH, 10);
-            } else if(idCopy.getLoanable() && !idUser.getType().equals(UserType.STUDENT)){
-                c.add(Calendar.DAY_OF_MONTH, 15);
-            } else if(!idCopy.getLoanable()) {
-                c.add(Calendar.DAY_OF_MONTH, 1);
-            }
-
-            if(c.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY){
-                c.add(Calendar.DAY_OF_MONTH, 2);
-            } else if(c.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY){
-                c.add(Calendar.DAY_OF_MONTH, 1);
-            }
-        }else {
-            c.setTime(new Date());
+        
+        IExpectedReturnDate strategy;
+        
+        switch(idUser.getType()) {
+            case STUDENT:
+                strategy = new ExpectedReturnDateStudent();
+                break;
+            case TEACHER:
+                strategy = new ExpectedReturnDateTeacher();
+                break;
+            case EMPLOYEE:
+                strategy = new ExpectedReturnDateEmployee();
+                break;
+            case LIBRARIAN:
+                strategy = new ExpectedReturnDateLibrarian();
+                break;
+            case ADMINISTRATOR:
+                strategy = new ExpectedReturnDateAdministrator();
+                break;
+            default:
+                strategy = new ExpectedReturnDateStudent();
+                break;
         }
-        expectedReturnDate = c.getTime();
+        
+        expectedReturnDate = strategy.calculatesExpectedReturnDate(idCopy, reservationDate);
     }
 
     @Override
