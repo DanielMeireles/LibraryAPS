@@ -2,6 +2,7 @@ package br.cesjf.library.controller;
 
 import br.cesjf.library.dao.CopyDAO;
 import br.cesjf.library.dao.LoanDAO;
+import br.cesjf.library.model.CareTaker;
 import br.cesjf.library.model.Copy;
 import br.cesjf.library.model.Loan;
 import br.cesjf.library.model.User;
@@ -17,25 +18,41 @@ public class LoanController {
     private List<Loan> loans;
     private CopyController copyController;
     private UserController userController;
+    private CareTaker careTaker;
 
     public LoanController() {
         this.clear();
         copyController = new CopyController();
         userController = new UserController();
+        careTaker = new CareTaker();
     }
     
     public LoanController(Loan loan) {
         copyController = new CopyController();
         userController = new UserController();
         this.loan = loan;
+        careTaker = new CareTaker();
+        careTaker.addMemento(loan);
     }
 
     public void save() {
         LoanDAO.getInstance().persist(loan);
+        this.setState();
     }
-
+    
     public void delete() {
         LoanDAO.getInstance().remove(loan.getId());
+    }
+    
+    public void undo() {
+        Loan state = (Loan) careTaker.getMemento();
+        if(state != null) {
+            this.loan = state;
+        }
+    }
+    
+    public void setState() {
+        careTaker.addMemento(this.loan);
     }
 
     public void findById(Long id) {
