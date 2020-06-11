@@ -63,7 +63,7 @@ public class Loan implements Serializable {
         this.returnDate = builder.returnDate;
         this.idCopy = builder.idCopy;
         this.idUser = builder.idUser;
-        if(builder.idUser != null) {
+        if(this.idUser != null) {
             this.calculatesExpectedReturnDate();
         }
     }
@@ -135,7 +135,6 @@ public class Loan implements Serializable {
 
     public void setLoanDate(Date loanDate) {
         this.loanDate = loanDate;
-        this.calculatesExpectedReturnDate();
     }
 
     public Date getReturnDate() {
