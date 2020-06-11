@@ -15,7 +15,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -53,9 +52,8 @@ public class Loan implements Serializable {
     @JoinColumn(name = "idUser", referencedColumnName = "id")
     private User idUser;
     
-    
-
     public Loan() {
+        
     }
 
     public Loan(Builder builder) {

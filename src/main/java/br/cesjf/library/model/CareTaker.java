@@ -5,24 +5,25 @@ import java.util.List;
 
 public class CareTaker {
     
-    private List<Object> savedStates;
+    private List<Memento> states;
     
     public CareTaker() {
-        savedStates = new ArrayList<>();
+        states = new ArrayList<>();
     }
     
-    public void addMemento(Object state) {
-        savedStates.add(state);
+    public void addMemento(Memento state) {
+        states.add(state);
     }
     
-    public Object getMemento() {
-        Object state = null;
-        try {
-            state = savedStates.get(savedStates.size()-1);
-            savedStates.remove(savedStates.size()-1);
-        } finally {
-            return state;
+    public Memento getMemento() {
+        Memento state = null;
+        if(states.size() > 0) {
+            state = states.get(states.size()-1);
         }
+        if(states.size() > 1) {
+            states.remove(states.size()-1);
+        }
+        return state;
     }
     
 }

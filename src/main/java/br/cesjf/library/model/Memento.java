@@ -4,7 +4,7 @@ public class Memento {
     
     private Object state;
     
-    public void setState(Object state) {
+    public Memento(Object state) {
         this.state = state;
     }
     

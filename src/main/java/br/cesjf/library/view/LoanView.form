@@ -113,15 +113,11 @@
                           <Component id="lbUser" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="tfReturnDate" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="tfLoanDate" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="tfExpectedReturnDate" alignment="0" pref="100" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btUndo" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="tfReturnDate" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tfLoanDate" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tfExpectedReturnDate" alignment="0" pref="100" max="32767" attributes="0"/>
                           </Group>
                           <Component id="cbUser" min="-2" pref="330" max="-2" attributes="0"/>
                           <Component id="cbCopy" alignment="0" min="-2" pref="330" max="-2" attributes="0"/>
@@ -133,17 +129,12 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lbLoanDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tfLoanDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="btUndo" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lbLoanDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfLoanDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="tfExpectedReturnDate" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbExpectedReturnDate" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -253,16 +244,6 @@
                   <Format format="##/##/####" subtype="-1" type="5"/>
                 </Property>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btUndo">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/undo_icon.png"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btUndoActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>
