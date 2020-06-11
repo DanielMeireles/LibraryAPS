@@ -31,9 +31,11 @@ public class MagazineController {
         authorController = new AuthorController();
         subjectController = new SubjectController();
         this.magazine = magazine;
+        setState();
     }
 
     public void save() {
+        setState();
         MagazineDAO.getInstance().persist(magazine);
     }
 
@@ -100,6 +102,14 @@ public class MagazineController {
 
     public void setMagazines(List magazines) {
         this.magazines = magazines;
+    }
+    
+    public void setState() {
+        magazine.setState();
+    }
+    
+    public void getState() {
+        magazine = (Magazine) magazine.getState();
     }
 
 }

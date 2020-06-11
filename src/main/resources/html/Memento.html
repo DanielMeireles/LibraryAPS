@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Memento</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Memento</h1>
+        <div>O Strategy é um padrão de projeto comportamental que permite permite armazenar o estado interno de um objeto em um determinando momento, para que seja possível retorná-lo a este estado, sem que isso cause problemas com o encapsulamento.</div>
+        <br>
+        <div>Ele foi utilizado nas classes Model abaixo:</div>
+        <ul>
+            <li><b>Memento</b></li>
+            <li><b>CareTaker</b></li>
+            <li><b>Book</b> (Implementação do Memento)</li>
+            <li><b>Magazine</b> (Implementação do Memento)</li>
+        </ul>
+        <br>
+        <div>Para o uso do Memento na interface foi necessário também a inclusão de código nos Controllers e Views abaixo:</div>
+        <ul>
+            <li><b>BookController</b></li>
+            <li><b>BookView</b> (Somente na alteração de Livro)</li>
+            <li><b>MagazineController</b></li>
+            <li><b>MagazineView</b> (Somente na alteração de Revista)</li>
+        </ul>
+        <div>Exemplo de implementação:</div>
+        <br/>
+        <div>Memento:</div>
+        <br/>
+        <img src="../documentation/Memento_1.png" alt="Memento" width=283 height=255>
+        <br/>
+        <div>CareTaker:</div>
+        <br/>
+        <img src="../documentation/Memento_2.png" alt="CareTaker" width=400 height=493>
+        <br/>
+        <div>Implementaçao nas classes Book e Mazazine (Model):</div>
+        <br/>
+        <img src="../documentation/Memento_3.png" alt="Implementaçao nas classes Book e Mazazine (Model)" width=486 height=182>
+        <br/>
+        <div>Uso do Memento no ControllerBook:</div>
+        <br/>
+        <img src="../documentation/Memento_4.png" alt="Uso do Memento no ControllerBook" width=291 height=131>
+        <br/>
+        <div>Uso do Memento no ControllerMagazine:</div>
+        <br/>
+        <img src="../documentation/Memento_5.png" alt="Uso do Memento no ControllerMagazine" width=381 height=126>
+        <br/>
+        <div>Implementação do botão de desfazer na tela de Alteração de Livro:</div>
+        <br/>
+        <img src="../documentation/Memento_6.png" alt="Implementação do botão de desfazer na tela de Alteração de Livro" width=560 height=79>
+        <br/>
+        <div>Implementação do botão de desfazer na tela de Alteração de Revista:</div>
+        <br/>
+        <img src="../documentation/Memento_7.png" alt="Implementação do botão de desfazer na tela de Alteração de Revista" width=561 height=81>
+    </body>
+</html>

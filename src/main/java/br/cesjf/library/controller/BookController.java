@@ -31,9 +31,11 @@ public class BookController {
         authorController = new AuthorController();
         subjectController = new SubjectController();
         this.book = book;
+        setState();
     }
 
     public void save() {
+        setState();
         BookDAO.getInstance().persist(book);
     }
 
@@ -106,6 +108,14 @@ public class BookController {
 
     public void setBooks(List books) {
         this.books = books;
+    }
+    
+    public void setState() {
+        book.setState();
+    }
+    
+    public void getState() {
+        book = (Book) book.getState();
     }
 
 }

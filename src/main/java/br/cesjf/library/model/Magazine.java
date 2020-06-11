@@ -16,6 +16,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -66,8 +67,12 @@ public class Magazine implements Publication, Serializable, Comparable<Magazine>
     @ManyToOne(optional = false)
     @JoinColumn(name = "idPublisher", referencedColumnName = "id")
     private Publisher idPublisher;
+    
+    @Transient
+    private CareTaker careTaker;
 
     public Magazine() {
+        careTaker = new CareTaker();
     }
 
     public Long getId() {
@@ -169,6 +174,14 @@ public class Magazine implements Publication, Serializable, Comparable<Magazine>
         this.idPublisher = idPublisher;
     }
 
+    public CareTaker getCareTaker() {
+        return careTaker;
+    }
+
+    public void setCareTaker(CareTaker careTaker) {
+        this.careTaker = careTaker;
+    }
+
     public int getAmountCopyLoanable() {
         int i = 0;
         for(Copy c: copyList) {
@@ -187,6 +200,14 @@ public class Magazine implements Publication, Serializable, Comparable<Magazine>
             }
         }
         return i;
+    }
+    
+    public void setState() {
+        careTaker.addMemento(new Memento(this));
+    }
+    
+    public Publication getState() {
+        return (Publication) careTaker.getMemento().getState();
     }
 
     @Override
