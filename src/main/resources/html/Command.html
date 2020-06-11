@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Command</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Command</h1>
+        <div>o command é um padrão no qual um objeto é usado para encapsular toda informação necessária para executar uma ação ou acionar um evento em um momento posterior.</div>
+        <br>
+        <div>Ele foi implementado nas classes abaixo:</div>
+        <ul>
+            <li><b>Find</b> (Interface)</li>
+            <li><b>FindAuthor</b> (Implementação do Command para executar as buscas referentes a autores)</li>
+            <li><b>FindBook</b> (Implementação do Command para executar as buscas referentes a livros)</li>
+            <li><b>FindCopy</b> (Implementação do Command para executar as buscas referentes a exemplares)</li>
+            <li><b>FindLoan</b> (Implementação do Command para executar as buscas referentes a empréstimos)</li>
+            <li><b>FindMagazine</b> (Implementação do Command para executar as buscas referentes a revistas)</li>
+            <li><b>FindPublisher</b> (Implementação do Command para executar as buscas referentes a editoras)</li>
+            <li><b>FindReservation</b> (Implementação do Command para executar as buscas referentes a reservas)</li>
+            <li><b>FindSubject</b> (Implementação do Command para executar as buscas referentes a assuntos)</li>
+            <li><b>FindUser</b> (Implementação do Command para executar as buscas referentes a usuários)</li>
+        </ul>
+        <br>
+        <div>Além disso foi utilizado (Consumido) nas classes (Controller) abaixo:</div>
+        <ul>
+            <li><b>AuthorController</b></li>
+            <li><b>BookController</b></li>
+            <li><b>CopyController</b></li>
+            <li><b>LoanController</b></li>
+            <li><b>MagazineController</b></li>
+            <li><b>PublisherController</b></li>
+            <li><b>ReservationController</b></li>
+            <li><b>SubjectController</b></li>
+            <li><b>UserController</b></li>
+        </ul>
+        <div>Exemplo de implementação:</div>
+        <br/>
+        <div>Interface:</div>
+        <br/>
+        <img src="../documentation/Command_1.png" alt="Interface" width=416 height=152>
+        <br/>
+        <div>Implementação do Command para executar as buscas referentes a autores:</div>
+        <br/>
+        <img src="../documentation/Command_2.png" alt="Implementação do Command para executar as buscas referentes a autores" width=721 height=730>
+        <br/>
+        <div>Uso do Command no Controller:</div>
+        <br/>
+        <img src="../documentation/Command_3.png" alt="Uso do Command no Controller" width=411 height=249>
+    </body>
+</html>
