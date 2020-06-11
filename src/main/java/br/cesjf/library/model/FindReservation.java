@@ -91,14 +91,14 @@ public class FindReservation implements Find {
         list = ReservationDAO.getInstance().getList();
     }
     
-    public List<Copy> findCopies() {
+    public void findCopies() {
         copyController.findAll();
-        return copyController.getCopies();
+        list = copyController.getCopies();
     }
     
-    public List<User> findUsers() {
+    private void findUsers() {
         userController.findAll();
-        return userController.getUsers();
+        list = userController.getUsers();
     } 
     
 }
