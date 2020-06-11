@@ -3,8 +3,11 @@ package br.cesjf.library.controller;
 import br.cesjf.library.dao.CopyDAO;
 import br.cesjf.library.dao.LoanDAO;
 import br.cesjf.library.model.Copy;
+import br.cesjf.library.model.Find;
+import br.cesjf.library.model.FindLoan;
 import br.cesjf.library.model.Loan;
 import br.cesjf.library.model.User;
+import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,18 +18,13 @@ public class LoanController {
 
     private Loan loan;
     private List<Loan> loans;
-    private CopyController copyController;
-    private UserController userController;
+    
 
     public LoanController() {
         this.clear();
-        copyController = new CopyController();
-        userController = new UserController();
     }
     
     public LoanController(Loan loan) {
-        copyController = new CopyController();
-        userController = new UserController();
         this.loan = loan;
     }
 
@@ -39,34 +37,36 @@ public class LoanController {
     }
 
     public void findById(Long id) {
-        loans.add(LoanDAO.getInstance().find(id));
+        Find find = new FindLoan();
+        loans = find.find("Id", Long.toString(id));
     }
 
     public void findByLoanDate(Date loanDate) {
-        List<List> parameters = new ArrayList<>();
-        parameters.add(Arrays.asList("loanDate", loanDate));
-        loans = LoanDAO.getInstance().findByNamedQuery("Loan.findByLoanDate", parameters);
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Find find = new FindLoan();
+        loans = find.find("LoanDate", format.format(loanDate));
     }
 
     public void findByExpectedReturnDate(Date expectedReturnDate) {
-        List<List> parameters = new ArrayList<>();
-        parameters.add(Arrays.asList("expectedReturnDate", expectedReturnDate));
-        loans = LoanDAO.getInstance().findByNamedQuery("Loan.findByExpectedReturnDate", parameters);
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Find find = new FindLoan();
+        loans = find.find("ExpectedReturnDate", format.format(expectedReturnDate));
     }
 
     public void findByReturnDate(Date returnDate) {
-        List<List> parameters = new ArrayList<>();
-        parameters.add(Arrays.asList("returnDate", returnDate));
-        loans = LoanDAO.getInstance().findByNamedQuery("Loan.findByReturnDate", parameters);
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Find find = new FindLoan();
+        loans = find.find("ReturnDate", format.format(returnDate));
     }
 
     public void findAll() {
-        loans = LoanDAO.getInstance().getList();
+        Find find = new FindLoan();
+        loans = find.find("All", "");
     }
     
     public List<Copy> findCopies() {
-        copyController.findAll();
-        return copyController.getCopies();
+        Find find = new FindLoan();
+        return find.find("Copies", "");
     } 
     
     public List<Copy> findCopiesAvailables(Date date) {
@@ -78,8 +78,8 @@ public class LoanController {
     }
     
     public List<User> findUsers() {
-        userController.findAll();
-        return userController.getUsers();
+        Find find = new FindLoan();
+        return find.find("Users", "");
     } 
 
     public void clear() {

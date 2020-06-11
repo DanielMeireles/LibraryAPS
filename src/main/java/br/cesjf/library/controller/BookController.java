@@ -4,32 +4,24 @@ import br.cesjf.library.dao.BookDAO;
 import br.cesjf.library.model.Author;
 import br.cesjf.library.model.Book;
 import br.cesjf.library.model.BookFactory;
+import br.cesjf.library.model.Find;
+import br.cesjf.library.model.FindBook;
 import br.cesjf.library.model.Publisher;
 import br.cesjf.library.model.Subject;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class BookController {
 
     private Book book;
     private List<Book> books;
-    private PublisherController publisherController;
-    private AuthorController authorController;
-    private SubjectController subjectController;
+    
 
     public BookController() {
         this.clear();
-        publisherController = new PublisherController();
-        authorController = new AuthorController();
-        subjectController = new SubjectController();
     }
     
     public BookController(Book book) {
-        publisherController = new PublisherController();
-        authorController = new AuthorController();
-        subjectController = new SubjectController();
         this.book = book;
         setState();
     }
@@ -44,50 +36,48 @@ public class BookController {
     }
 
     public void findById(Long id) {
-        books.add(BookDAO.getInstance().find(id));
+        Find find = new FindBook();
+        books = find.find("Id", Long.toString(id));
     }
 
     public void findByTitle(String title) {
-        List<List> parameters = new ArrayList<>();
-        parameters.add(Arrays.asList("title", title));
-        books = BookDAO.getInstance().findByNamedQuery("Book.findByTitle", parameters);
+        Find find = new FindBook();
+        books = find.find("Title", title);
     }
 
     public void findByIsbn(String isbn) {
-        List<List> parameters = new ArrayList<>();
-        parameters.add(Arrays.asList("isbn", isbn));
-        books = BookDAO.getInstance().findByNamedQuery("Book.findByIsbn", parameters);
+        Find find = new FindBook();
+        books = find.find("Isbn", isbn);
     }
 
     public void findByEdition(String edition) {
-        List<List> parameters = new ArrayList<>();
-        parameters.add(Arrays.asList("edition", edition));
-        books = BookDAO.getInstance().findByNamedQuery("Book.findByEdition", parameters);
+        Find find = new FindBook();
+        books = find.find("Edition", edition);
     }
 
     public void findByYear(Integer year) {
-        List<List> parameters = new ArrayList<>();
-        parameters.add(Arrays.asList("year", year));
-        books = BookDAO.getInstance().findByNamedQuery("Book.findByYear", parameters);
+        Find find = new FindBook();
+        books = find.find("Year", Integer.toString(year));
     }
 
     public void findAll() {
-        books = BookDAO.getInstance().getList();
+        Find find = new FindBook();
+        books = find.find("All", "");
     }
     
     public List<Publisher> findPublishers() {
-        publisherController.findAll();
-        return publisherController.getPublishers();
+        Find find = new FindBook();
+        return find.find("Publishers", "");
     }
     
     public List<Author> findAuthors() {
-        authorController.findAll();
-        return authorController.getAuthors();
+        Find find = new FindBook();
+        return find.find("Authors", "");
     }
     
     public List<Subject> findSubjects() {
-        subjectController.findAll();
-        return subjectController.getSubjects();
+        Find find = new FindBook();
+        return find.find("Subjects", "");
     }
 
     public void clear() {

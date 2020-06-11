@@ -12,7 +12,7 @@ public class PersistenceUtil {
     private static final String PERSISTENCE_UNIT_NAME = "Library";
     private static EntityManagerFactory FACTORY;
     private static ThreadLocal<EntityManager> MANAGER = new ThreadLocal<EntityManager>();
-    private static Session session;
+    private static Session SESSION;
 
     static {
         if (FACTORY == null) {
@@ -44,10 +44,10 @@ public class PersistenceUtil {
     }
 
     public static Session getSession() {
-        if (session == null) {
-            session = (Session) getEntityManager().getDelegate();
+        if (SESSION == null) {
+            SESSION = (Session) getEntityManager().getDelegate();
         }
-        return session;
+        return SESSION;
     }
 
 }

@@ -1,33 +1,24 @@
 package br.cesjf.library.controller;
 
 import br.cesjf.library.dao.CopyDAO;
-import br.cesjf.library.model.Book;
 import br.cesjf.library.model.Copy;
-import br.cesjf.library.model.Magazine;
+import br.cesjf.library.model.Find;
+import br.cesjf.library.model.FindCopy;
 import br.cesjf.library.model.Publication;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CopyController {
 
     private Copy copy;
     private List<Copy> copies;
-    private BookController bookController;
-    private MagazineController magazineController;
-    private List<Book> books;
-    private List<Magazine> magazines;
+    
 
     public CopyController() {
-        bookController = new BookController();
-        magazineController = new MagazineController();
         this.clear();
     }
     
     public CopyController(Copy copy) {
-        bookController = new BookController();
-        magazineController = new MagazineController();
         this.copy = copy;
     }
 
@@ -40,43 +31,23 @@ public class CopyController {
     }
 
     public void findById(Long id) {
-        copies.add(CopyDAO.getInstance().find(id));
+        Find find = new FindCopy();
+        copies = find.find("Id", Long.toString(id));
     }
 
     public void findByLoanable(Boolean loanable) {
-        List<List> parameters = new ArrayList<>();
-        parameters.add(Arrays.asList("loanable", loanable));
-        copies = CopyDAO.getInstance().findByNamedQuery("Copy.findByLoanable", parameters);
+        Find find = new FindCopy();
+        copies = find.find("Loanable", Boolean.toString(loanable));
     }
 
     public void findAll() {
-        copies = CopyDAO.getInstance().getList();
-    }
-    
-    public void findBooks() {
-        bookController.findAll();
-        books = bookController.getBooks();
-    }
-    
-    public void findMagazines() {
-        magazineController.findAll();
-        magazines = magazineController.getMagazines();
+        Find find = new FindCopy();
+        copies = find.find("All", "");
     }
     
     public List<Publication> findPublications() {
-        List<Publication> publications = new ArrayList<Publication>();
-        
-        this.findBooks();
-        for(Publication p: books) {
-            publications.add(p);
-        }
-        
-        this.findMagazines();
-        for(Publication p: magazines) {
-            publications.add(p);
-        }
-        
-        return publications;
+        Find find = new FindCopy();
+        return find.find("Publications", "");
     }
 
     public void clear() {

@@ -3,9 +3,12 @@ package br.cesjf.library.controller;
 import br.cesjf.library.dao.CopyDAO;
 import br.cesjf.library.dao.ReservationDAO;
 import br.cesjf.library.model.Copy;
+import br.cesjf.library.model.Find;
+import br.cesjf.library.model.FindReservation;
 import br.cesjf.library.model.Loan;
 import br.cesjf.library.model.Reservation;
 import br.cesjf.library.model.User;
+import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,40 +46,40 @@ public class ReservationController {
     }
 
     public void findById(Long id) {
-        reservations.add(ReservationDAO.getInstance().find(id));
+        Find find = new FindReservation();
+        reservations = find.find("Id", Long.toString(id));
     }
 
     public void findByReservationDate(Date reservationDate) {
-        List<List> parameters = new ArrayList<>();
-        parameters.add(Arrays.asList("reservationDate", reservationDate));
-        reservations = ReservationDAO.getInstance().findByNamedQuery("Reservation.findByReservationDate", parameters);
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Find find = new FindReservation();
+        reservations = find.find("ReservationDate", format.format(reservationDate));
     }
 
     public void findByExpectedReturnDate(Date expectedReturnDate) {
-        List<List> parameters = new ArrayList<>();
-        parameters.add(Arrays.asList("expectedReturnDate", expectedReturnDate));
-        reservations = ReservationDAO.getInstance().findByNamedQuery("Reservation.findByExpectedReturnDate", parameters);
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Find find = new FindReservation();
+        reservations = find.find("ExpectedReturnDate", format.format(expectedReturnDate));
     }
 
     public void findByCanceled(Boolean canceled) {
-        List<List> parameters = new ArrayList<>();
-        parameters.add(Arrays.asList("canceled", canceled));
-        reservations = ReservationDAO.getInstance().findByNamedQuery("Reservation.findByCanceled", parameters);
+        Find find = new FindReservation();
+        reservations = find.find("Canceled", Boolean.toString(canceled));
     }
 
     public void findByNoteCancellation(String noteCancellation) {
-        List<List> parameters = new ArrayList<>();
-        parameters.add(Arrays.asList("noteCancellation", noteCancellation));
-        reservations = ReservationDAO.getInstance().findByNamedQuery("Reservation.findByNoteCancellation", parameters);
+        Find find = new FindReservation();
+        reservations = find.find("NoteCancellation", noteCancellation);
     }
 
     public void findAll() {
-        reservations = ReservationDAO.getInstance().getList();
+        Find find = new FindReservation();
+        reservations = find.find("All", "");
     }
     
     public List<Copy> findCopies() {
-        copyController.findAll();
-        return copyController.getCopies();
+        Find find = new FindReservation();
+        return find.find("Copies", "");
     } 
     
     public List<Copy> findCopiesAvailables(Date date) {
@@ -88,8 +91,8 @@ public class ReservationController {
     }
     
     public List<User> findUsers() {
-        userController.findAll();
-        return userController.getUsers();
+        Find find = new FindReservation();
+        return find.find("Users", "");
     } 
 
     public void clear() {

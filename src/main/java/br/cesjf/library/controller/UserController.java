@@ -1,10 +1,10 @@
 package br.cesjf.library.controller;
 
 import br.cesjf.library.dao.UserDAO;
+import br.cesjf.library.model.Find;
+import br.cesjf.library.model.FindUser;
 import br.cesjf.library.model.User;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class UserController {
@@ -29,31 +29,28 @@ public class UserController {
     }
 
     public void findById(Long id) {
-        users.add(UserDAO.getInstance().find(id));
+        Find find = new FindUser();
+        users = find.find("Id", Long.toString(id));
     }
 
     public void findByName(String name) {
-        List<List> parameters = new ArrayList<>();
-        parameters.add(Arrays.asList("name", name));
-        users = UserDAO.getInstance().findByNamedQuery("User.findByName", parameters);
+        Find find = new FindUser();
+        users = find.find("Name", name);
     }
 
     public void findByType(String type) {
-        List<List> parameters = new ArrayList<>();
-        parameters.add(Arrays.asList("type", type));
-        users = UserDAO.getInstance().findByNamedQuery("User.findByType", parameters);
+        Find find = new FindUser();
+        users = find.find("Type", type);
     }
 
     public void findByEmail(String email) {
-        List<List> parameters = new ArrayList<>();
-        parameters.add(Arrays.asList("email", email));
-        users = UserDAO.getInstance().findByNamedQuery("User.findByEmail", parameters);
+        Find find = new FindUser();
+        users = find.find("Email", email);
     }
 
     public void findByUser(String user) {
-        List<List> parameters = new ArrayList<>();
-        parameters.add(Arrays.asList("user", user));
-        users = UserDAO.getInstance().findByNamedQuery("User.findByUser", parameters);
+        Find find = new FindUser();
+        users = find.find("User", user);
     }
 
     public void findAll() {

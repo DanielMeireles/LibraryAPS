@@ -1,10 +1,10 @@
 package br.cesjf.library.controller;
 
 import br.cesjf.library.dao.SubjectDAO;
+import br.cesjf.library.model.Find;
+import br.cesjf.library.model.FindSubject;
 import br.cesjf.library.model.Subject;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SubjectController {
@@ -29,17 +29,18 @@ public class SubjectController {
     }
 
     public void findById(Long id) {
-        subjects.add(SubjectDAO.getInstance().find(id));
+        Find find = new FindSubject();
+        subjects = find.find("Id", Long.toString(id));
     }
 
     public void findBySubject(String subject) {
-        List<List> parameters = new ArrayList<>();
-        parameters.add(Arrays.asList("subject", subject));
-        subjects = SubjectDAO.getInstance().findByNamedQuery("Subject.findBySubject", parameters);
+        Find find = new FindSubject();
+        subjects = find.find("Subject", subject);
     }
 
     public void findAll() {
-        subjects = SubjectDAO.getInstance().getList();
+        Find find = new FindSubject();
+        subjects = find.find("All", "");
     }
 
     public void clear() {

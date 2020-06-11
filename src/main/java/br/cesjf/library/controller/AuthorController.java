@@ -2,9 +2,9 @@ package br.cesjf.library.controller;
 
 import br.cesjf.library.dao.AuthorDAO;
 import br.cesjf.library.model.Author;
+import br.cesjf.library.model.Find;
+import br.cesjf.library.model.FindAuthor;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class AuthorController {
@@ -29,17 +29,18 @@ public class AuthorController {
     }
 
     public void findById(Long id) {
-        authors.add(AuthorDAO.getInstance().find(id));
+        Find find = new FindAuthor();
+        authors = find.find("Id", Long.toString(id));
     }
 
     public void findByName(String name) {
-        List<List> parameters = new ArrayList<>();
-        parameters.add(Arrays.asList("name", name));
-        authors = AuthorDAO.getInstance().findByNamedQuery("Author.findByName", parameters);
+        Find find = new FindAuthor();
+        authors = find.find("Name", name);
     }
 
     public void findAll() {
-        authors = AuthorDAO.getInstance().getList();
+        Find find = new FindAuthor();
+        authors = find.find("All", "");
     }
 
     public void clear() {
